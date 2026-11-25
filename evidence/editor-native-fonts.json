@@ -1,0 +1,105 @@
+[
+  {
+    "file": "assets/fonts/SF-Compact-Display-Regular.otf",
+    "sha256": "5006936cb9d018bc3e72015cf39eed7939911388d510ba0322370febe7a6c09f",
+    "names": {
+      "1": [
+        "SF Compact Display"
+      ],
+      "2": [
+        "Regular"
+      ],
+      "4": [
+        "SF Compact Display Regular"
+      ],
+      "6": [
+        "SFCompactDisplay-Regular"
+      ],
+      "16": [
+        "SF Compact Display"
+      ],
+      "17": [
+        "Regular"
+      ]
+    },
+    "axes": []
+  },
+  {
+    "file": "assets/fonts/SFAdaptiveSoftNumeric-VF.otf",
+    "sha256": "337e5736f88aa5360fcb8f509f38349f3b6483e12e7ba3e9f18436c085a026ef",
+    "names": {
+      "1": [
+        ".SF Adaptive Soft Numeric"
+      ],
+      "2": [
+        "Regular"
+      ],
+      "4": [
+        "SF Adaptive Soft Numeric :hg=10"
+      ],
+      "6": [
+        "SFAdaptiveSoftNumeric-hg100wd"
+      ],
+      "259": [
+        "Hght"
+      ],
+      "260": [
+        "Width"
+      ],
+      "261": [
+        "Weight"
+      ],
+      "262": [
+        "Soft"
+      ],
+      "16": [
+        "SF Adaptive Soft Numeric"
+      ],
+      "17": [
+        ":hg=100,wd=100,wt=400,so=70"
+      ]
+    },
+    "axes": [
+      {
+        "tag": "HGHT",
+        "minimum": 100.0,
+        "default": 100.0,
+        "maximum": 500.0,
+        "name_id": 259,
+        "names": [
+          "Hght"
+        ]
+      },
+      {
+        "tag": "wdth",
+        "minimum": 60.0,
+        "default": 100.0,
+        "maximum": 100.0,
+        "name_id": 260,
+        "names": [
+          "Width"
+        ]
+      },
+      {
+        "tag": "wght",
+        "minimum": 1.0,
+        "default": 400.0,
+        "maximum": 1000.0,
+        "name_id": 261,
+        "names": [
+          "Weight"
+        ]
+      },
+      {
+        "tag": "SOFT",
+        "minimum": 0.0,
+        "default": 70.0,
+        "maximum": 100.0,
+        "name_id": 262,
+        "names": [
+          "Soft"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,262 @@
+{
+  "path": "/var/minis/workspace/liquidass-clock/extract/var/jb/Library/PreferenceBundles/LiquidAssPrefs.bundle/LiquidAssPrefs",
+  "sha256": "be1f127297d2a0b8c1cdf0378425ecf7260ef2eccafec177b70051c58d241d3f",
+  "slice_offset": 655360,
+  "slice_sha256": "e10fd694fc4239451a6661e8b2ddf88e75cd301b23579fb912592c3d3f8bd522",
+  "subtype": "0x80000002",
+  "init_offsets": [],
+  "functions": 1180,
+  "sections": {
+    "__TEXT,__text": {
+      "addr": 16384,
+      "size": 345860,
+      "off": 16384,
+      "flags": 2147484672,
+      "header": 104
+    },
+    "__TEXT,__auth_stubs": {
+      "addr": 362244,
+      "size": 2272,
+      "off": 362244,
+      "flags": 2147484680,
+      "header": 184
+    },
+    "__TEXT,__objc_stubs": {
+      "addr": 364544,
+      "size": 34464,
+      "off": 364544,
+      "flags": 2147484672,
+      "header": 264
+    },
+    "__TEXT,__objc_methlist": {
+      "addr": 399008,
+      "size": 10608,
+      "off": 399008,
+      "flags": 0,
+      "header": 344
+    },
+    "__TEXT,__cstring": {
+      "addr": 409616,
+      "size": 19836,
+      "off": 409616,
+      "flags": 2,
+      "header": 424
+    },
+    "__TEXT,__const": {
+      "addr": 429456,
+      "size": 2720,
+      "off": 429456,
+      "flags": 0,
+      "header": 504
+    },
+    "__TEXT,__gcc_except_tab": {
+      "addr": 432176,
+      "size": 3740,
+      "off": 432176,
+      "flags": 0,
+      "header": 584
+    },
+    "__TEXT,__objc_methname": {
+      "addr": 435916,
+      "size": 38471,
+      "off": 435916,
+      "flags": 2,
+      "header": 664
+    },
+    "__TEXT,__objc_classname": {
+      "addr": 474387,
+      "size": 787,
+      "off": 474387,
+      "flags": 2,
+      "header": 744
+    },
+    "__TEXT,__objc_methtype": {
+      "addr": 475174,
+      "size": 5795,
+      "off": 475174,
+      "flags": 2,
+      "header": 824
+    },
+    "__TEXT,__ustring": {
+      "addr": 480970,
+      "size": 72,
+      "off": 480970,
+      "flags": 0,
+      "header": 904
+    },
+    "__TEXT,__unwind_info": {
+      "addr": 481044,
+      "size": 3200,
+      "off": 481044,
+      "flags": 0,
+      "header": 984
+    },
+    "__TEXT,__eh_frame": {
+      "addr": 484248,
+      "size": 160,
+      "off": 484248,
+      "flags": 1744830475,
+      "header": 1064
+    },
+    "__DATA_CONST,__auth_got": {
+      "addr": 491520,
+      "size": 1152,
+      "off": 491520,
+      "flags": 6,
+      "header": 1216
+    },
+    "__DATA_CONST,__got": {
+      "addr": 492672,
+      "size": 392,
+      "off": 492672,
+      "flags": 6,
+      "header": 1296
+    },
+    "__DATA_CONST,__auth_ptr": {
+      "addr": 493064,
+      "size": 8,
+      "off": 493064,
+      "flags": 0,
+      "header": 1376
+    },
+    "__DATA_CONST,__const": {
+      "addr": 493072,
+      "size": 9664,
+      "off": 493072,
+      "flags": 0,
+      "header": 1456
+    },
+    "__DATA_CONST,__cfstring": {
+      "addr": 502736,
+      "size": 24832,
+      "off": 502736,
+      "flags": 0,
+      "header": 1536
+    },
+    "__DATA_CONST,__objc_classlist": {
+      "addr": 527568,
+      "size": 192,
+      "off": 527568,
+      "flags": 268435456,
+      "header": 1616
+    },
+    "__DATA_CONST,__objc_protolist": {
+      "addr": 527760,
+      "size": 80,
+      "off": 527760,
+      "flags": 0,
+      "header": 1696
+    },
+    "__DATA_CONST,__objc_imageinfo": {
+      "addr": 527840,
+      "size": 8,
+      "off": 527840,
+      "flags": 0,
+      "header": 1776
+    },
+    "__DATA_CONST,__objc_arraydata": {
+      "addr": 527848,
+      "size": 2024,
+      "off": 527848,
+      "flags": 0,
+      "header": 1856
+    },
+    "__DATA_CONST,__objc_dictobj": {
+      "addr": 529872,
+      "size": 560,
+      "off": 529872,
+      "flags": 0,
+      "header": 1936
+    },
+    "__DATA_CONST,__objc_arrayobj": {
+      "addr": 530432,
+      "size": 960,
+      "off": 530432,
+      "flags": 0,
+      "header": 2016
+    },
+    "__DATA_CONST,__objc_intobj": {
+      "addr": 531392,
+      "size": 48,
+      "off": 531392,
+      "flags": 0,
+      "header": 2096
+    },
+    "__DATA_CONST,__objc_doubleobj": {
+      "addr": 531440,
+      "size": 944,
+      "off": 531440,
+      "flags": 0,
+      "header": 2176
+    },
+    "__DATA,__objc_const": {
+      "addr": 540672,
+      "size": 20792,
+      "off": 540672,
+      "flags": 0,
+      "header": 2328
+    },
+    "__DATA,__objc_selrefs": {
+      "addr": 561464,
+      "size": 10584,
+      "off": 561464,
+      "flags": 268435461,
+      "header": 2408
+    },
+    "__DATA,__objc_classrefs": {
+      "addr": 572048,
+      "size": 904,
+      "off": 572048,
+      "flags": 268435456,
+      "header": 2488
+    },
+    "__DATA,__objc_superrefs": {
+      "addr": 572952,
+      "size": 152,
+      "off": 572952,
+      "flags": 268435456,
+      "header": 2568
+    },
+    "__DATA,__objc_ivar": {
+      "addr": 573104,
+      "size": 1036,
+      "off": 573104,
+      "flags": 0,
+      "header": 2648
+    },
+    "__DATA,__objc_data": {
+      "addr": 574144,
+      "size": 1920,
+      "off": 574144,
+      "flags": 0,
+      "header": 2728
+    },
+    "__DATA,__data": {
+      "addr": 576064,
+      "size": 1136,
+      "off": 576064,
+      "flags": 0,
+      "header": 2808
+    },
+    "__DATA,__bss": {
+      "addr": 577200,
+      "size": 416,
+      "off": 0,
+      "flags": 1,
+      "header": 2888
+    }
+  },
+  "dependencies": [
+    "/usr/lib/libobjc.A.dylib",
+    "/System/Library/Frameworks/Foundation.framework/Foundation",
+    "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+    "/System/Library/Frameworks/UIKit.framework/UIKit",
+    "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+    "/System/Library/Frameworks/CoreText.framework/CoreText",
+    "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+    "/System/Library/Frameworks/CoreMotion.framework/CoreMotion",
+    "/System/Library/PrivateFrameworks/Preferences.framework/Preferences",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libSystem.B.dylib"
+  ]
+}

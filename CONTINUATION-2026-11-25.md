@@ -1,0 +1,23 @@
+# 2026-11-25 continuation checkpoint
+
+Source of truth remains the uploaded `dylv.liquidass` 0.1.2t+r2 deb (SHA-256 `e9f579c00b768376dd807c79c1796ee3bbce93d852e97b8f0354511208278a99`); all addresses below refer to its arm64e slices. No sample was executed; no device state, package, remote repository, CI, or installation was modified.
+
+## This continuation
+- Added `renderer/ClockOnly.metal` as a deterministic derivative of the byte-extracted sample shader. Entry points have clock-specific names; the fragment entry rejects non-clock `useGlyphMask` values before sampling/calling the shared pixel helper. The generated file SHA-256 is `4f62835a5a313c39614cda43602028fa7688ac5422c3c04441463917fb2f358c`. This gates the entry point; it does **not** mean every internal helper is a newly reimplemented clock-only renderer, nor is it a Metal-device compile/runtime result.
+- Added `tools/make_clock_shader.py`, `tests/test_clock_shader.py`, and `tests/run_regression.py`. The runner locks source font/embedded-renderer hashes and runs offline Python tests plus host Clang C layout/reader tests.
+- Corrected the field magic comment: numeric `0x4c474446` is little-endian bytes `46 44 47 4c`; added a Python byte assertion. C reader, conversion codec and Metal uniform host layout compile with `-Wall -Wextra -Werror`. The first integrated ABI test run exposed a missing link input; `tests/test_clock_abi.py` and its template in `abi/finalize_abi.py` now link `field/clock_field_reader.c`, and the ABI tests pass.
+- Regenerated `evidence/reconstruction-sha256.txt` via `tools/update_hash_ledger.py` to remove stale hashes.
+- Re-read `isolation/main-startup-direct.json`: all 30 main dylib constructors were indexed. Constructor `0x75b90` has 64 observed hooks (the existing 35-item manifest is only a candidate subset), and demonstrably includes non-clock logic such as MediaRemote artwork visibility. Other constructors register material-host or preference observers and install unrelated hooks. `objc_lifecycle` inventory has zero `+load`/`+initialize` method names in the parsed class metadata, but that alone does not prove all registration/dependency side effects absent. Original ctor remains unsafe to reuse as a clock-only initializer.
+
+## Further continuation (16:04 local)
+- Settings task has now produced `prefs/prefs-schema.json`, `prefs/PREFS-EVIDENCE.md`, `prefs/Root.plist`, `prefs/ClockOnlyPrefsController.m`, a schema/page generator, raw-evidence extraction, and 20 sample-instruction/schema tests. It is a native adapter proposal, not compiled or UIKit-tested. It uses the original preference domain and `Reload` notification; tint fields are OS-gated, FPS remains runtime-derived, and it explicitly omits sample Apply/Cancel UI behavior.
+- ABI review has produced `abi/ABI-EVIDENCE.md`, `abi/clock-abi.json`, exact offsets/constants in `renderer/clock_uniforms.h`, and a corrected `tests/test_clock_abi.py` linking the production reader. Static evidence confirms the 192-byte uniform layout, Backboardd buffer index 0, backdrop texture index 0, field texture index 1, wire float32 SDF and R16Float upload row stride `width*2` after conversion. Unknown kinds/cursor semantics/producer ordering stay marked unknown.
+- Added `src/clock/NGClockFieldCodec.{h,c}` implementing a snapshot-to-R16 converter and IEEE binary32→binary16 rounding. Host C tests cover ordinary values, subnormals, ties, infinity/NaN and snapshot validation; Python cross-checks 100,012 vectors. This tests conversion correctness only, not the original Metal driver.
+- The unified run `python3 tests/run_regression.py` passes: 23 tests in the main Python discovery (20 settings/schema/raw-byte + 3 shader), 7 ABI host commands, 5 field protocol tests, 4 editor model tests, C reader/layout/codec checks, and 100,012 float16 cross-check vectors. This is all host/offline scope, not iOS or runtime.
+
+## Still genuinely blocking a standalone plugin
+- No independently implemented native system clock hook/install path and no completed SpringBoard/Backboardd filter targets. The sample's mixed ctor cannot safely be reused.
+- No end-to-end shared-file mapping/ownership/lifetime integration, source hook signatures fully implemented, clock-only renderer invocation, editor UI, widget/PosterBoard state restoration, or poster depth-mask integration has been compiled as a product.
+- Field producer post-odd memory ordering, cursor units, kind names and several layout semantics remain open. Existing tests do not resolve them.
+- No iOS SDK/Theos build, Metal library compilation/reflection, live rendering, device verification, package, repository creation or remote write has occurred. No installable plugin is available yet.
+

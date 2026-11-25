@@ -1,0 +1,443 @@
+{
+  "path": "/tmp/liquidass-extract/var/jb/Library/MobileSubstrate/DynamicLibraries/liquidass.dylib",
+  "sha256": "ab85ba3d9fee2e695789a50df90eadcb837a86d0864061b6215a1cf281dd7a66",
+  "slice_offset": 1032192,
+  "slice_sha256": "f4c49bb1faccc253cad3c804a2f80a509cbf6e26d1669669b68a47f52b7a93a2",
+  "subtype": "0x80000002",
+  "init_offsets": [
+    "0x4768",
+    "0x852c",
+    "0xdce4",
+    "0xeca4",
+    "0xee14",
+    "0x10b64",
+    "0x14554",
+    "0x161d0",
+    "0x1c870",
+    "0x27970",
+    "0x34adc",
+    "0x35a74",
+    "0x3b888",
+    "0x3d650",
+    "0x3df94",
+    "0x3f198",
+    "0x42134",
+    "0x42270",
+    "0x44964",
+    "0x44ca8",
+    "0x44ddc",
+    "0x45764",
+    "0x45874",
+    "0x4a39c",
+    "0x54b98",
+    "0x5984c",
+    "0x5c1a8",
+    "0x75b90",
+    "0x987c4",
+    "0x98854"
+  ],
+  "functions": 2552,
+  "sections": {
+    "__TEXT,__text": {
+      "addr": 16384,
+      "size": 653796,
+      "off": 16384,
+      "flags": 2147484672,
+      "header": 104
+    },
+    "__TEXT,__auth_stubs": {
+      "addr": 670180,
+      "size": 3904,
+      "off": 670180,
+      "flags": 2147484680,
+      "header": 184
+    },
+    "__TEXT,__objc_stubs": {
+      "addr": 674112,
+      "size": 54624,
+      "off": 674112,
+      "flags": 2147484672,
+      "header": 264
+    },
+    "__TEXT,__init_offsets": {
+      "addr": 728736,
+      "size": 120,
+      "off": 728736,
+      "flags": 22,
+      "header": 344
+    },
+    "__TEXT,__objc_methlist": {
+      "addr": 728856,
+      "size": 16164,
+      "off": 728856,
+      "flags": 0,
+      "header": 424
+    },
+    "__TEXT,__cstring": {
+      "addr": 745020,
+      "size": 29703,
+      "off": 745020,
+      "flags": 2,
+      "header": 504
+    },
+    "__TEXT,__const": {
+      "addr": 774736,
+      "size": 8328,
+      "off": 774736,
+      "flags": 0,
+      "header": 584
+    },
+    "__TEXT,__objc_classname": {
+      "addr": 783064,
+      "size": 1267,
+      "off": 783064,
+      "flags": 2,
+      "header": 664
+    },
+    "__TEXT,__objc_methname": {
+      "addr": 784331,
+      "size": 56253,
+      "off": 784331,
+      "flags": 2,
+      "header": 744
+    },
+    "__TEXT,__objc_methtype": {
+      "addr": 840584,
+      "size": 3239,
+      "off": 840584,
+      "flags": 2,
+      "header": 824
+    },
+    "__TEXT,__gcc_except_tab": {
+      "addr": 843824,
+      "size": 5380,
+      "off": 843824,
+      "flags": 0,
+      "header": 904
+    },
+    "__TEXT,__ustring": {
+      "addr": 849204,
+      "size": 12,
+      "off": 849204,
+      "flags": 0,
+      "header": 984
+    },
+    "__TEXT,__unwind_info": {
+      "addr": 849216,
+      "size": 6448,
+      "off": 849216,
+      "flags": 0,
+      "header": 1064
+    },
+    "__TEXT,__eh_frame": {
+      "addr": 855664,
+      "size": 160,
+      "off": 855664,
+      "flags": 1744830475,
+      "header": 1144
+    },
+    "__DATA_CONST,__auth_got": {
+      "addr": 868352,
+      "size": 1968,
+      "off": 868352,
+      "flags": 6,
+      "header": 1296
+    },
+    "__DATA_CONST,__got": {
+      "addr": 870320,
+      "size": 408,
+      "off": 870320,
+      "flags": 6,
+      "header": 1376
+    },
+    "__DATA_CONST,__auth_ptr": {
+      "addr": 870728,
+      "size": 16,
+      "off": 870728,
+      "flags": 0,
+      "header": 1456
+    },
+    "__DATA_CONST,__const": {
+      "addr": 870744,
+      "size": 12152,
+      "off": 870744,
+      "flags": 0,
+      "header": 1536
+    },
+    "__DATA_CONST,__cfstring": {
+      "addr": 882896,
+      "size": 27200,
+      "off": 882896,
+      "flags": 0,
+      "header": 1616
+    },
+    "__DATA_CONST,__objc_classlist": {
+      "addr": 910096,
+      "size": 416,
+      "off": 910096,
+      "flags": 268435456,
+      "header": 1696
+    },
+    "__DATA_CONST,__objc_protolist": {
+      "addr": 910512,
+      "size": 24,
+      "off": 910512,
+      "flags": 0,
+      "header": 1776
+    },
+    "__DATA_CONST,__objc_imageinfo": {
+      "addr": 910536,
+      "size": 8,
+      "off": 910536,
+      "flags": 0,
+      "header": 1856
+    },
+    "__DATA_CONST,__objc_arraydata": {
+      "addr": 910544,
+      "size": 2360,
+      "off": 910544,
+      "flags": 0,
+      "header": 1936
+    },
+    "__DATA_CONST,__objc_arrayobj": {
+      "addr": 912904,
+      "size": 1080,
+      "off": 912904,
+      "flags": 0,
+      "header": 2016
+    },
+    "__DATA_CONST,__objc_doubleobj": {
+      "addr": 913984,
+      "size": 1808,
+      "off": 913984,
+      "flags": 0,
+      "header": 2096
+    },
+    "__DATA_CONST,__objc_intobj": {
+      "addr": 915792,
+      "size": 264,
+      "off": 915792,
+      "flags": 0,
+      "header": 2176
+    },
+    "__DATA_CONST,__objc_dictobj": {
+      "addr": 916056,
+      "size": 160,
+      "off": 916056,
+      "flags": 0,
+      "header": 2256
+    },
+    "__DATA,__objc_const": {
+      "addr": 917504,
+      "size": 34712,
+      "off": 917504,
+      "flags": 0,
+      "header": 2408
+    },
+    "__DATA,__objc_selrefs": {
+      "addr": 952216,
+      "size": 15632,
+      "off": 952216,
+      "flags": 268435461,
+      "header": 2488
+    },
+    "__DATA,__objc_classrefs": {
+      "addr": 967848,
+      "size": 1184,
+      "off": 967848,
+      "flags": 268435456,
+      "header": 2568
+    },
+    "__DATA,__objc_superrefs": {
+      "addr": 969032,
+      "size": 256,
+      "off": 969032,
+      "flags": 268435456,
+      "header": 2648
+    },
+    "__DATA,__objc_ivar": {
+      "addr": 969288,
+      "size": 2056,
+      "off": 969288,
+      "flags": 0,
+      "header": 2728
+    },
+    "__DATA,__objc_data": {
+      "addr": 971344,
+      "size": 4160,
+      "off": 971344,
+      "flags": 0,
+      "header": 2808
+    },
+    "__DATA,__data": {
+      "addr": 975504,
+      "size": 1872,
+      "off": 975504,
+      "flags": 0,
+      "header": 2888
+    },
+    "__DATA,__thread_vars": {
+      "addr": 977376,
+      "size": 96,
+      "off": 977376,
+      "flags": 19,
+      "header": 2968
+    },
+    "__DATA,__thread_bss": {
+      "addr": 977472,
+      "size": 32,
+      "off": 0,
+      "flags": 18,
+      "header": 3048
+    },
+    "__DATA,__bss": {
+      "addr": 977504,
+      "size": 5896,
+      "off": 0,
+      "flags": 1,
+      "header": 3128
+    },
+    "__DATA,__common": {
+      "addr": 983400,
+      "size": 16,
+      "off": 0,
+      "flags": 1,
+      "header": 3208
+    }
+  },
+  "dependencies": [
+    "/usr/lib/libobjc.A.dylib",
+    "/System/Library/Frameworks/Foundation.framework/Foundation",
+    "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+    "/System/Library/Frameworks/UIKit.framework/UIKit",
+    "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+    "/System/Library/Frameworks/CoreText.framework/CoreText",
+    "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
+    "/System/Library/Frameworks/CoreMotion.framework/CoreMotion",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libSystem.B.dylib",
+    "@rpath/CydiaSubstrate.framework/CydiaSubstrate"
+  ],
+  "init_bounds": {
+    "0x4768": [
+      "0x4768",
+      "0x4c30"
+    ],
+    "0x852c": [
+      "0x852c",
+      "0x8990"
+    ],
+    "0xdce4": [
+      "0xdce4",
+      "0xdebc"
+    ],
+    "0xeca4": [
+      "0xeca4",
+      "0xecdc"
+    ],
+    "0xee14": [
+      "0xee14",
+      "0xef24"
+    ],
+    "0x10b64": [
+      "0x10b64",
+      "0x1143c"
+    ],
+    "0x14554": [
+      "0x14554",
+      "0x14708"
+    ],
+    "0x161d0": [
+      "0x161d0",
+      "0x1652c"
+    ],
+    "0x1c870": [
+      "0x1c870",
+      "0x1cd74"
+    ],
+    "0x27970": [
+      "0x27970",
+      "0x28468"
+    ],
+    "0x34adc": [
+      "0x34adc",
+      "0x34b5c"
+    ],
+    "0x35a74": [
+      "0x35a74",
+      "0x35dc0"
+    ],
+    "0x3b888": [
+      "0x3b888",
+      "0x3b91c"
+    ],
+    "0x3d650": [
+      "0x3d650",
+      "0x3d68c"
+    ],
+    "0x3df94": [
+      "0x3df94",
+      "0x3e074"
+    ],
+    "0x3f198": [
+      "0x3f198",
+      "0x3f598"
+    ],
+    "0x42134": [
+      "0x42134",
+      "0x42140"
+    ],
+    "0x42270": [
+      "0x42270",
+      "0x4242c"
+    ],
+    "0x44964": [
+      "0x44964",
+      "0x449e0"
+    ],
+    "0x44ca8": [
+      "0x44ca8",
+      "0x44cb4"
+    ],
+    "0x44ddc": [
+      "0x44ddc",
+      "0x44e60"
+    ],
+    "0x45764": [
+      "0x45764",
+      "0x4579c"
+    ],
+    "0x45874": [
+      "0x45874",
+      "0x45b88"
+    ],
+    "0x4a39c": [
+      "0x4a39c",
+      "0x4a74c"
+    ],
+    "0x54b98": [
+      "0x54b98",
+      "0x54d38"
+    ],
+    "0x5984c": [
+      "0x5984c",
+      "0x59a0c"
+    ],
+    "0x5c1a8": [
+      "0x5c1a8",
+      "0x5c5a0"
+    ],
+    "0x75b90": [
+      "0x75b90",
+      "0x76f68"
+    ],
+    "0x987c4": [
+      "0x987c4",
+      "0x98810"
+    ],
+    "0x98854": [
+      "0x98854",
+      "0x98978"
+    ]
+  }
+}

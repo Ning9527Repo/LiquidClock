@@ -1,0 +1,783 @@
+{
+  "schema_version": 1,
+  "scope": "uploaded-sample clock-only settings, not a renderer implementation",
+  "sample": {
+    "label": "LiquidAss 0.1.2t+r2",
+    "label_source": "task-provided; bundle version differs",
+    "prefs_bundle_short_version": "1.0.0",
+    "architecture": "arm64e",
+    "address_space": "unslid VA, not arm64 or runtime address",
+    "sha256": "be1f127297d2a0b8c1cdf0378425ecf7260ef2eccafec177b70051c58d241d3f",
+    "slice_sha256": "e10fd694fc4239451a6661e8b2ddf88e75cd301b23579fb912592c3d3f8bd522",
+    "slice_offset": 655360
+  },
+  "preference_domain": {
+    "value": "dylv.liquidassprefs",
+    "evidence": [
+      "0x79e78",
+      "0x7fc30",
+      "0x1c5e8",
+      "0x1c5f4"
+    ]
+  },
+  "reload_notification": {
+    "value": "dylv.liquidassprefs/Reload",
+    "kind": "Darwin",
+    "evidence": [
+      "0x45078",
+      "0x45080",
+      "0x450b4"
+    ],
+    "evidence_role": "observer registration; new controller posts this known receiver name"
+  },
+  "entry": {
+    "function": "_LGClockItems",
+    "address": "0x1ffbc",
+    "calls": [
+      "0x1d368",
+      "0x1f53c"
+    ],
+    "title": "Clock"
+  },
+  "sections": {
+    "clock": "Clock",
+    "date": "Date Label",
+    "date_subtitle": "Customize the lockscreen date text."
+  },
+  "settings": [
+    {
+      "key": "Clock.FPS",
+      "type": "number",
+      "control": "slider",
+      "default": null,
+      "default_expression": "UIScreen.mainScreen.maximumFramesPerSecond",
+      "default_encoding": "NSNumber numberWithDouble:",
+      "range": {
+        "min": 1.0,
+        "max": null,
+        "min_expression": null,
+        "max_expression": "UIScreen.mainScreen.maximumFramesPerSecond"
+      },
+      "options": null,
+      "decimals": 0,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "FPS Limit",
+      "subtitle": "Limits clock animation updates.",
+      "title_localization_key": "prefs.control.clock_fps_limit",
+      "subtitle_localization_key": "prefs.subtitle.clock_fps_limit",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1fff8",
+          "0x20008",
+          "0x2000c",
+          "0x20150",
+          "0x20160",
+          "0x2016c",
+          "0x20170",
+          "0x20174",
+          "0x20190"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Clock.Enabled",
+      "type": "boolean",
+      "control": "switch",
+      "default": true,
+      "default_expression": null,
+      "default_encoding": "NSNumber numberWithBool:",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Enabled",
+      "subtitle": "Turn this glass view on or off.",
+      "title_localization_key": "prefs.control.enabled",
+      "subtitle_localization_key": "prefs.subtitle.enabled",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d70c",
+          "0x1d7b8",
+          "0x1d7cc",
+          "0x1d7d4",
+          "0x1d2d4",
+          "0x1cbd8"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Clock.CustomScaleEnabled",
+      "type": "boolean",
+      "control": "switch",
+      "default": true,
+      "default_expression": null,
+      "default_encoding": "NSNumber numberWithBool:",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Force Custom Scale",
+      "subtitle": "Override adaptive scaling for this surface.",
+      "title_localization_key": "prefs.control.force_custom_scale",
+      "subtitle_localization_key": "prefs.subtitle.force_custom_scale",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d778",
+          "0x1d848",
+          "0x1d854",
+          "0x1d948",
+          "0x1d94c"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Clock.CustomScale",
+      "type": "number",
+      "control": "slider",
+      "default": 1.0,
+      "default_expression": null,
+      "default_encoding": "NSNumber numberWithDouble:",
+      "range": {
+        "min": 0.1,
+        "max": 1.5,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 2,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Force Custom Scale",
+      "subtitle": "Override adaptive scaling for this surface.",
+      "title_localization_key": "prefs.control.force_custom_scale",
+      "subtitle_localization_key": "prefs.subtitle.force_custom_scale",
+      "enabled_when": {
+        "key": "Clock.CustomScaleEnabled",
+        "default": true
+      },
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d78c",
+          "0x1d798",
+          "0x1d814",
+          "0x1d920",
+          "0x1d924",
+          "0x1d974",
+          "0x1d9b0",
+          "0x1d9e0"
+        ],
+        "range_object": {
+          "address": "0x819b0",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x81010",
+              "target": "0x81c50",
+              "value": 0.1
+            },
+            {
+              "slot": "0x81018",
+              "target": "0x81c60",
+              "value": 1.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "key": "Clock.BezelWidth",
+      "type": "number",
+      "control": "slider",
+      "default": 9.0,
+      "default_expression": null,
+      "default_encoding": "descriptor IEEE754 float32 -> double -> NSNumber numberWithDouble:",
+      "range": {
+        "min": 0.0,
+        "max": 80.0,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 1,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Bezel Width",
+      "subtitle": "Width of the refracting edge around the clock glyphs, in points.",
+      "title_localization_key": "prefs.control.bezel_width",
+      "subtitle_localization_key": "prefs.subtitle.bezel_width",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x79308",
+          "0x1daf4",
+          "0x1d058",
+          "0x274d0",
+          "0x277bc"
+        ],
+        "range_object": {
+          "address": "0x81920",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fb0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80fb8",
+              "target": "0x81c00",
+              "value": 80.0
+            }
+          ]
+        },
+        "descriptor_value_address": "0x79314"
+      }
+    },
+    {
+      "key": "Clock.GlassThickness",
+      "type": "number",
+      "control": "slider",
+      "default": 120.0,
+      "default_expression": null,
+      "default_encoding": "descriptor IEEE754 float32 -> double -> NSNumber numberWithDouble:",
+      "range": {
+        "min": 0.0,
+        "max": 500.0,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 1,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Glass Thickness",
+      "subtitle": "Depth of the glass volume, visually it does not change anything much.",
+      "title_localization_key": "prefs.control.glass_thickness",
+      "subtitle_localization_key": "prefs.subtitle.glass_thickness",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x79308",
+          "0x1dbe8",
+          "0x1d058",
+          "0x274d0",
+          "0x277bc"
+        ],
+        "range_object": {
+          "address": "0x81938",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fc0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80fc8",
+              "target": "0x81c10",
+              "value": 500.0
+            }
+          ]
+        },
+        "descriptor_value_address": "0x79318"
+      }
+    },
+    {
+      "key": "Clock.RefractionScale",
+      "type": "number",
+      "control": "slider",
+      "default": 1.399999976158142,
+      "default_expression": null,
+      "default_encoding": "descriptor IEEE754 float32 -> double -> NSNumber numberWithDouble:",
+      "range": {
+        "min": 0.0,
+        "max": 5.0,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 2,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Refraction",
+      "subtitle": "Backdrop bending through the glass view.",
+      "title_localization_key": "prefs.control.refraction",
+      "subtitle_localization_key": "prefs.subtitle.refraction",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x79308",
+          "0x1dd10",
+          "0x1d058",
+          "0x274d0",
+          "0x277bc"
+        ],
+        "range_object": {
+          "address": "0x81950",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fd0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80fd8",
+              "target": "0x81c20",
+              "value": 5.0
+            }
+          ]
+        },
+        "descriptor_value_address": "0x7931c"
+      }
+    },
+    {
+      "key": "Clock.RefractiveIndex",
+      "type": "number",
+      "control": "slider",
+      "default": 1.600000023841858,
+      "default_expression": null,
+      "default_encoding": "descriptor IEEE754 float32 -> double -> NSNumber numberWithDouble:",
+      "range": {
+        "min": 1.0,
+        "max": 5.0,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 2,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Refractive Index",
+      "subtitle": "Optical density of the glass effect.",
+      "title_localization_key": "prefs.control.refractive_index",
+      "subtitle_localization_key": "prefs.subtitle.refractive_index",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x79308",
+          "0x1de38",
+          "0x1d058",
+          "0x274d0",
+          "0x277bc"
+        ],
+        "range_object": {
+          "address": "0x81968",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fe0",
+              "target": "0x81c30",
+              "value": 1.0
+            },
+            {
+              "slot": "0x80fe8",
+              "target": "0x81c20",
+              "value": 5.0
+            }
+          ]
+        },
+        "descriptor_value_address": "0x79320"
+      }
+    },
+    {
+      "key": "Clock.DispersionEnabled",
+      "type": "integer",
+      "control": "switch",
+      "default": 0,
+      "default_expression": null,
+      "default_encoding": "NSNumber numberWithInt: (comparison result, NOT kCFBoolean)",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Chromatic Dispersion",
+      "subtitle": "Split refracted light into subtle red, green, and blue effects on this surface.",
+      "title_localization_key": "prefs.control.chromatic_dispersion",
+      "subtitle_localization_key": "prefs.subtitle.chromatic_dispersion",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d4c0",
+          "0x1dee4",
+          "0x1dfb0",
+          "0x1dfe0",
+          "0x1dfe4",
+          "0x1dfe8",
+          "0x1dfec",
+          "0x68e90"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Clock.DispersionStrength",
+      "type": "number",
+      "control": "slider",
+      "default": 0.0,
+      "default_expression": null,
+      "default_encoding": "NSNumber numberWithFloat:",
+      "range": {
+        "min": 1.0,
+        "max": 2.0,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 1,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Chromatic Dispersion",
+      "subtitle": "Split refracted light into subtle red, green, and blue effects on this surface.",
+      "title_localization_key": "prefs.control.chromatic_dispersion",
+      "subtitle_localization_key": "prefs.subtitle.chromatic_dispersion",
+      "enabled_when": {
+        "key": "Clock.DispersionEnabled",
+        "default": 0
+      },
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d4b0",
+          "0x1deb4",
+          "0x1dfb0",
+          "0x1dfb8",
+          "0x1e05c",
+          "0x27530",
+          "0x27574",
+          "0x27590",
+          "0x27598",
+          "0x275a0"
+        ],
+        "range_object": null,
+        "range_numbers": [
+          {
+            "address": "0x81c30",
+            "section": "__objc_doubleobj",
+            "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+            "hex": "c5000000e16a15c0000000000000f03f",
+            "type_encoding": "double",
+            "value": 1.0
+          },
+          {
+            "address": "0x81c80",
+            "section": "__objc_doubleobj",
+            "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+            "hex": "c5000000e16a15c00000000000000040",
+            "type_encoding": "double",
+            "value": 2.0
+          }
+        ],
+        "descriptor_value_address": "0x7932c"
+      }
+    },
+    {
+      "key": "Clock.Blur",
+      "type": "number",
+      "control": "slider",
+      "default": 6.0,
+      "default_expression": null,
+      "default_encoding": "descriptor IEEE754 float32 -> double -> NSNumber numberWithDouble:",
+      "range": {
+        "min": 0.0,
+        "max": 50.0,
+        "min_expression": null,
+        "max_expression": null
+      },
+      "options": null,
+      "decimals": 1,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Blur",
+      "subtitle": "Softness of the glass view.",
+      "title_localization_key": "prefs.control.blur",
+      "subtitle_localization_key": "prefs.subtitle.blur",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1e470",
+          "0x1e48c",
+          "0x1e4cc",
+          "0x1e500",
+          "0x1e540",
+          "0x1e544"
+        ],
+        "range_object": {
+          "address": "0x81998",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x81000",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x81008",
+              "target": "0x81c40",
+              "value": 50.0
+            }
+          ]
+        },
+        "descriptor_value_address": "0x79324"
+      }
+    },
+    {
+      "key": "Clock.LightTintColor",
+      "type": "string",
+      "control": "color",
+      "default": "#FFFFFF41",
+      "default_expression": null,
+      "default_encoding": "NSString from descriptor UTF8 string",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Light Tint",
+      "subtitle": "Color and opacity used while the device is in Light Mode.",
+      "title_localization_key": "prefs.control.light_tint_color",
+      "subtitle_localization_key": "prefs.subtitle.light_tint_color",
+      "enabled_when": null,
+      "availability": {
+        "os_major_min": null,
+        "os_major_max": 15
+      },
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d478",
+          "0x1d490",
+          "0x1e72c",
+          "0x1e76c",
+          "0x1e770",
+          "0x1e7a8",
+          "0x1e874"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Clock.DarkTintColor",
+      "type": "string",
+      "control": "color",
+      "default": "#FFFFFF41",
+      "default_expression": null,
+      "default_encoding": "NSString from descriptor UTF8 string",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": null,
+      "panel": "clock",
+      "title": "Dark Tint",
+      "subtitle": "Color and opacity used while the device is in Dark Mode.",
+      "title_localization_key": "prefs.control.dark_tint_color",
+      "subtitle_localization_key": "prefs.subtitle.dark_tint_color",
+      "enabled_when": null,
+      "availability": {
+        "os_major_min": null,
+        "os_major_max": 15
+      },
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x1d478",
+          "0x1d490",
+          "0x1e72c",
+          "0x1e76c",
+          "0x1e770",
+          "0x1e7a8",
+          "0x1e95c"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Lockscreen.Clock.DateFormat.Enabled",
+      "type": "boolean",
+      "control": "switch",
+      "default": true,
+      "default_expression": null,
+      "default_encoding": "NSNumber numberWithBool:",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": null,
+      "panel": "date",
+      "title": "Custom Date Format",
+      "subtitle": "Replace the lockscreen date with a custom date format.",
+      "title_localization_key": "prefs.control.date_format_enabled",
+      "subtitle_localization_key": "prefs.subtitle.date_format_enabled",
+      "enabled_when": null,
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x201e4",
+          "0x201f0",
+          "0x201f4",
+          "0x20228",
+          "0x20238"
+        ],
+        "range_object": null
+      }
+    },
+    {
+      "key": "Lockscreen.Clock.DateFormat.Format",
+      "type": "string",
+      "control": "text",
+      "default": "",
+      "default_expression": null,
+      "default_encoding": "NSString",
+      "range": null,
+      "options": null,
+      "decimals": null,
+      "step": null,
+      "placeholder": "EEE MMM d",
+      "panel": "date",
+      "title": "Format",
+      "subtitle": "Uses Unicode date pattern syntax, for example EEE MMM d.",
+      "title_localization_key": "prefs.control.date_format",
+      "subtitle_localization_key": "prefs.subtitle.date_format",
+      "enabled_when": {
+        "key": "Lockscreen.Clock.DateFormat.Enabled",
+        "default": true
+      },
+      "availability": null,
+      "evidence": {
+        "image": "LiquidAssPrefs",
+        "architecture": "arm64e",
+        "addresses": [
+          "0x202bc",
+          "0x202c4",
+          "0x20324",
+          "0x20328",
+          "0x2032c",
+          "0x20334",
+          "0x20340",
+          "0x20370",
+          "0x20378",
+          "0x2037c",
+          "0x23248",
+          "0x23260"
+        ],
+        "range_object": null
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "key": "Clock.SpecularMode",
+      "type": "string",
+      "control": "segmented",
+      "default": "glass",
+      "range": null,
+      "options": [
+        "none",
+        "border",
+        "glass"
+      ],
+      "legacy_key": "Clock.SpecularEnabled",
+      "legacy_default": null,
+      "reason": "generic builder creates it, _LGClockItems explicitly filters exact key before insertion",
+      "evidence": [
+        "0x1e170",
+        "0x1e27c",
+        "0x1e29c",
+        "0x1e2ac",
+        "0x1e2b4",
+        "0x1e3b8",
+        "0x20084",
+        "0x200c8",
+        "0x200d8",
+        "0x200e4"
+      ],
+      "default_proof": "descriptor specular float 1.0 > double 0.001; Clock != CoverSheet"
+    }
+  ],
+  "numeric_truth": {
+    "numbers_file": "evidence/prefs-constants.json",
+    "note": "Numeric object payloads decoded from bytes. ISA comments name classes, not values. Decimals is precision metadata, not proven slider quantization.",
+    "float32_defaults_exact": true,
+    "steps_proven": false
+  },
+  "unknowns": {
+    "concrete_device_maximum_frames_per_second": null,
+    "target_device_os_major": null,
+    "original_slider_quantization": null,
+    "independent_renderer_end_to_end": null,
+    "uikit_device_validation": null,
+    "private_preferences_framework_device_compatibility": null,
+    "empty_date_format_runtime_fallback": null
+  },
+  "native_page_adaptations": [
+    "Compound scale_override split into native switch and slider without adding persisted keys.",
+    "Color strings use native editable text fields, not the sample custom color picker.",
+    "Native controller resolves FPS on device and hides tint cells on OS major >15.",
+    "Controller writes only selected clock keys immediately and posts known Reload receiver; sample staged Apply/cancel is not reproduced.",
+    "Display decimals retained as metadata; no quantization or invented step.",
+    "No global master/renderer/motion/non-clock switches are exposed or reset."
+  ],
+  "localizations": {
+    "source": "uploaded bundle/Localizable.strings",
+    "sha256": "3fe16f84c441f47239925f18db994fc52a72b2ee8c59ef7cf11a4facfae0b00f"
+  }
+}

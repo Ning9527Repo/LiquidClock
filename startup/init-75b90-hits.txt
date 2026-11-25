@@ -1,0 +1,166 @@
+17:00075bcc bl        #0xa9920                                         ; _objc_msgSend
+21:00075bdc bl        #0xa5ca0                                         ; _objc_msgSend
+32:00075c08 add       x2, x2, #0x3b0                                   ; 0xdc3b0 | @'com.apple.MediaRemoteUI'
+34:00075c10 bl        #0xa8d60                                         ; _objc_msgSend
+49:00075c4c bl        #0xa4054                                         ; _MSHookMessageEx
+61:00075c7c bl        #0xa4054                                         ; _MSHookMessageEx
+63:00075c84 add       x2, x2, #0xb0                                    ; 0xd90b0 | @'com.apple.springboard'
+65:00075c8c bl        #0xa8d60                                         ; _objc_msgSend
+68:00075c98 add       x0, x0, #0x4e2                                   ; 0xbb4e2 | 'dylv.liquidass.clock.artwork-visible'
+89:00075cec add       x2, x2, #0x3d0                                   ; 0xdc3d0 | @'com.apple.PosterBoard'
+92:00075cf8 bl        #0xa8d60                                         ; _objc_msgSend
+102:00075d20 bl        #0xa8a20                                         ; _objc_msgSend
+106:00075d30 add       x0, x0, #0x421                                   ; 0xbb421 | 'dylv.liquidass.clock.widget-drag'
+112:00075d48 bl        #0xb1a00                                         ; _objc_msgSend
+121:00075d6c add       x0, x0, #0x507                                   ; 0xbb507 | 'dylv.liquidass.clock.widget-layout'
+131:00075d94 add       x0, x0, #0xcab                                   ; 0xbacab | 'dylv.liquidass.clock.widget-add'
+151:00075de4 bl        #0xa4054                                         ; _MSHookMessageEx
+154:00075df0 bl        #0xa4664                                         ; _objc_getClass
+164:00075e18 bl        #0xa4054                                         ; _MSHookMessageEx
+174:00075e40 bl        #0xa4054                                         ; _MSHookMessageEx
+184:00075e68 bl        #0xa4054                                         ; _MSHookMessageEx
+193:00075e8c bl        #0xa4054                                         ; _MSHookMessageEx
+204:00075eb8 bl        #0xa4054                                         ; _MSHookMessageEx
+207:00075ec4 bl        #0xa4664                                         ; _objc_getClass
+217:00075eec bl        #0xa4054                                         ; _MSHookMessageEx
+227:00075f14 bl        #0xa4054                                         ; _MSHookMessageEx
+230:00075f20 bl        #0xa4664                                         ; _objc_getClass
+238:00075f40 bl        #0xa4054                                         ; _MSHookMessageEx
+240:00075f48 bl        #0xa9920                                         ; _objc_msgSend
+244:00075f58 bl        #0xa8540                                         ; _objc_msgSend
+250:00075f70 bl        #0xaa280                                         ; _objc_msgSend
+262:00075fa0 bl        #0xaa280                                         ; _objc_msgSend
+267:00075fb4 add       x2, x2, #0x470                                   ; 0xdc470 | @'com.apple.posterkit.provider'
+268:00075fb8 bl        #0xa8d60                                         ; _objc_msgSend
+274:00075fd0 ldr       x0, [x8, #0x4a8]                                 ; 0xec4a8 | &_OBJC_CLASS_$_NSProcessInfo
+275:00075fd4 bl        #0xaada0                                         ; _objc_msgSend
+279:00075fe4 bl        #0xaadc0                                         ; _objc_msgSend
+285:00075ffc bl        #0xa6ac0                                         ; _objc_msgSend
+289:0007600c bl        #0xb0960                                         ; _objc_msgSend
+319:00076084 add       x0, x0, #0x490                                   ; 0xdc490 | @'[ClockInject] ctor bundle=%@ process=%@ os=%@ poster=%d provider=%d prominentTime=%@ prominentDisplay=%@ legacyDate=%@ subtitle=%@ vibrancy=%@'
+332:000760b8 add       x2, x2, #0xb0                                    ; 0xd90b0 | @'com.apple.springboard'
+334:000760c0 bl        #0xa8d60                                         ; _objc_msgSend
+345:000760ec bl        #0xa4664                                         ; _objc_getClass
+355:00076114 bl        #0xa4054                                         ; _MSHookMessageEx
+358:00076120 bl        #0xa4664                                         ; _objc_getClass
+367:00076144 bl        #0xa4054                                         ; _MSHookMessageEx
+378:00076170 bl        #0xa4054                                         ; _MSHookMessageEx
+389:0007619c bl        #0xa4054                                         ; _MSHookMessageEx
+400:000761c8 bl        #0xa4054                                         ; _MSHookMessageEx
+411:000761f4 bl        #0xa4054                                         ; _MSHookMessageEx
+414:00076200 bl        #0xa4664                                         ; _objc_getClass
+423:00076224 bl        #0xa4054                                         ; _MSHookMessageEx
+432:00076248 bl        #0xa4054                                         ; _MSHookMessageEx
+441:0007626c bl        #0xa4054                                         ; _MSHookMessageEx
+444:00076278 bl        #0xa4664                                         ; _objc_getClass
+452:00076298 bl        #0xa4054                                         ; _MSHookMessageEx
+455:000762a4 bl        #0xa4664                                         ; _objc_getClass
+464:000762c8 bl        #0xa4054                                         ; _MSHookMessageEx
+474:000762f0 bl        #0xa4054                                         ; _MSHookMessageEx
+477:000762fc bl        #0xa4664                                         ; _objc_getClass
+485:0007631c bl        #0xa4054                                         ; _MSHookMessageEx
+488:00076328 bl        #0xa4664                                         ; _objc_getClass
+497:0007634c bl        #0xa4054                                         ; _MSHookMessageEx
+506:00076370 bl        #0xa4054                                         ; _MSHookMessageEx
+509:0007637c bl        #0xa4664                                         ; _objc_getClass
+518:000763a0 bl        #0xa4054                                         ; _MSHookMessageEx
+527:000763c4 bl        #0xa4054                                         ; _MSHookMessageEx
+555:00076434 bl        #0xa6a20                                         ; _objc_msgSend
+576:00076488 bl        #0xaa280                                         ; _objc_msgSend
+610:00076510 bl        #0xa6a20                                         ; _objc_msgSend
+632:00076568 bl        #0xa4054                                         ; _MSHookMessageEx
+642:00076590 bl        #0xa4054                                         ; _MSHookMessageEx
+645:0007659c bl        #0xa4664                                         ; _objc_getClass
+654:000765c0 bl        #0xa4054                                         ; _MSHookMessageEx
+657:000765cc bl        #0xa4664                                         ; _objc_getClass
+667:000765f4 bl        #0xa4054                                         ; _MSHookMessageEx
+677:0007661c bl        #0xa4054                                         ; _MSHookMessageEx
+688:00076648 bl        #0xa4054                                         ; _MSHookMessageEx
+699:00076674 bl        #0xa4054                                         ; _MSHookMessageEx
+702:00076680 bl        #0xa4664                                         ; _objc_getClass
+712:000766a8 bl        #0xa4054                                         ; _MSHookMessageEx
+722:000766d0 bl        #0xa4054                                         ; _MSHookMessageEx
+725:000766dc bl        #0xa4664                                         ; _objc_getClass
+734:00076700 bl        #0xa4054                                         ; _MSHookMessageEx
+743:00076724 bl        #0xa4054                                         ; _MSHookMessageEx
+752:00076748 bl        #0xa4054                                         ; _MSHookMessageEx
+763:00076774 bl        #0xa4054                                         ; _MSHookMessageEx
+772:00076798 bl        #0xa4054                                         ; _MSHookMessageEx
+781:000767bc bl        #0xa4054                                         ; _MSHookMessageEx
+784:000767c8 bl        #0xa4664                                         ; _objc_getClass
+793:000767ec bl        #0xa4054                                         ; _MSHookMessageEx
+802:00076810 bl        #0xa4054                                         ; _MSHookMessageEx
+811:00076834 bl        #0xa4054                                         ; _MSHookMessageEx
+814:00076840 bl        #0xa4664                                         ; _objc_getClass
+824:00076868 bl        #0xa4054                                         ; _MSHookMessageEx
+834:00076890 bl        #0xa4054                                         ; _MSHookMessageEx
+837:0007689c bl        #0xa4664                                         ; _objc_getClass
+846:000768c0 bl        #0xa4054                                         ; _MSHookMessageEx
+857:000768ec bl        #0xa4054                                         ; _MSHookMessageEx
+860:000768f8 bl        #0xa4664                                         ; _objc_getClass
+869:0007691c bl        #0xa4054                                         ; _MSHookMessageEx
+878:00076940 bl        #0xa4054                                         ; _MSHookMessageEx
+880:00076948 add       x0, x0, #0x421                                   ; 0xbb421 | 'dylv.liquidass.clock.widget-drag'
+893:0007697c bl        #0xa9920                                         ; _objc_msgSend
+897:0007698c bl        #0xa5ca0                                         ; _objc_msgSend
+902:000769a0 add       x2, x2, #0xb0                                    ; 0xd90b0 | @'com.apple.springboard'
+903:000769a4 bl        #0xa8d60                                         ; _objc_msgSend
+911:000769c4 ldr       x0, [x8, #0x828]                                 ; 0xec828 | &_OBJC_CLASS_$_LGClockSavedDockCoordinator
+912:000769c8 bl        #0xa8f80                                         ; _objc_msgSend
+914:000769d0 bl        #0x74400                                         ; _LGClockSavedDockInstallHooks
+917:000769dc bl        #0xa4664                                         ; _objc_getClass
+920:000769e8 bl        #0xa8a20                                         ; _objc_msgSend
+924:000769f8 bl        #0xa4664                                         ; _objc_getClass
+927:00076a04 bl        #0xa8a20                                         ; _objc_msgSend
+929:00076a0c bl        #0x74e28                                         ; _LGClockSavedSavedDepthEffectInstallHooks
+932:00076a18 bl        #0xa4664                                         ; _objc_getClass
+936:00076a28 bl        #0xa8a20                                         ; _objc_msgSend
+940:00076a38 bl        #0xa4664                                         ; _objc_getClass
+948:00076a58 bl        #0xa4054                                         ; _MSHookMessageEx
+951:00076a64 bl        #0xa4664                                         ; _objc_getClass
+955:00076a74 bl        #0xa8a20                                         ; _objc_msgSend
+959:00076a84 bl        #0xa4664                                         ; _objc_getClass
+973:00076abc bl        #0xa4664                                         ; _objc_getClass
+983:00076ae4 bl        #0xa4054                                         ; _MSHookMessageEx
+993:00076b0c bl        #0xa4054                                         ; _MSHookMessageEx
+1001:00076b2c bl        #0xa4664                                         ; _objc_getClass
+1011:00076b54 bl        #0xa4054                                         ; _MSHookMessageEx
+1021:00076b7c bl        #0xa4054                                         ; _MSHookMessageEx
+1031:00076ba4 bl        #0xa4054                                         ; _MSHookMessageEx
+1034:00076bb0 bl        #0xa4664                                         ; _objc_getClass
+1043:00076bd4 bl        #0xa4054                                         ; _MSHookMessageEx
+1052:00076bf8 bl        #0xa4054                                         ; _MSHookMessageEx
+1055:00076c04 bl        #0xa4664                                         ; _objc_getClass
+1064:00076c28 bl        #0xa4054                                         ; _MSHookMessageEx
+1074:00076c50 bl        #0xa6d40                                         ; _objc_msgSend
+1079:00076c64 bl        #0xa9960                                         ; _objc_msgSend
+1090:00076c90 bl        #0xa4f40                                         ; _objc_msgSend
+1116:00076cf8 bl        #0xa9920                                         ; _objc_msgSend
+1120:00076d08 bl        #0xa5ca0                                         ; _objc_msgSend
+1125:00076d1c add       x2, x2, #0xdf0                                   ; 0xdcdf0 | @'com.apple.NanoUniverse.AegirProxyApp.AegirPoster'
+1126:00076d20 bl        #0xa8d60                                         ; _objc_msgSend
+1133:00076d3c bl        #0x754a0                                         ; _LGClockSavedAstronomyInstallHooks
+1136:00076d48 ldr       x0, [x8, #0x888]                                 ; 0xec888 | &_OBJC_CLASS_$_LGClockSavedPosterLayout
+1137:00076d4c bl        #0xa8f80                                         ; _objc_msgSend
+1139:00076d54 bl        #0x75348                                         ; _LGClockSavedLiquidAssPosterInstallHooks
+1142:00076d60 bl        #0x6e6bc                                         ; _LGClockSavedDockGeometryObserve
+1150:00076d80 bl        #0xa6d40                                         ; _objc_msgSend
+1158:00076da0 bl        #0xa9960                                         ; _objc_msgSend
+1168:00076dc8 bl        #0xa4f40                                         ; _objc_msgSend
+1183:00076e04 bl        #0xa4664                                         ; _objc_getClass
+1186:00076e10 bl        #0xa8a20                                         ; _objc_msgSend
+1190:00076e20 bl        #0xa4664                                         ; _objc_getClass
+1198:00076e40 bl        #0xa4054                                         ; _MSHookMessageEx
+1201:00076e4c bl        #0xa4664                                         ; _objc_getClass
+1205:00076e5c bl        #0xa8a20                                         ; _objc_msgSend
+1209:00076e6c bl        #0xa4664                                         ; _objc_getClass
+1218:00076e90 bl        #0xa4664                                         ; _objc_getClass
+1222:00076ea0 bl        #0xa8a20                                         ; _objc_msgSend
+1226:00076eb0 bl        #0xa4664                                         ; _objc_getClass
+1234:00076ed0 bl        #0xa4054                                         ; _MSHookMessageEx
+1237:00076edc bl        #0xa4664                                         ; _objc_getClass
+1242:00076ef0 bl        #0xa8a20                                         ; _objc_msgSend
+1246:00076f00 bl        #0xa4664                                         ; _objc_getClass
+1257:00076f2c bl        #0xa8a20                                         ; _objc_msgSend
+1261:00076f3c bl        #0xa4664                                         ; _objc_getClass
+1269:00076f5c bl        #0xa4054                                         ; _MSHookMessageEx

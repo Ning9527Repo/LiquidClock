@@ -1,0 +1,134 @@
+backboard arm64e VA 0x1586c..0x15a7c; fat slice offset 0x94000
+; __ZL17LGClockFieldValidPK18LGClockFieldHeader |  | __ZL17LGClockFieldValidPK18LGClockFieldHeader | 
+0001586c: 7f2303d5 pacibsp    
+00015870: ff8300d1 sub        sp, sp, #0x20
+00015874: fd7b01a9 stp        x29, x30, [sp, #0x10]
+00015878: fd430091 add        x29, sp, #0x10
+0001587c: e00700f9 str        x0, [sp, #8]
+00015880: e80740f9 ldr        x8, [sp, #8]
+00015884: 090140b9 ldr        w9, [x8]
+00015888: ca888852 mov        w10, #0x4446
+0001588c: ea88a972 movk       w10, #0x4c47, lsl #16
+00015890: 08008052 mov        w8, #0
+00015894: 29010a6b subs       w9, w9, w10
+00015898: e80700b9 str        w8, [sp, #4]
+0001589c: 610e0054 b.ne       #0x15a68
+000158a0: 01000014 b          #0x158a4 ; 
+000158a4: e80740f9 ldr        x8, [sp, #8]
+000158a8: 090540b9 ldr        w9, [x8, #4]
+000158ac: 08008052 mov        w8, #0
+000158b0: 29090071 subs       w9, w9, #2
+000158b4: e80700b9 str        w8, [sp, #4]
+000158b8: 810d0054 b.ne       #0x15a68
+000158bc: 01000014 b          #0x158c0 ; 
+000158c0: e80740f9 ldr        x8, [sp, #8]
+000158c4: 080940f9 ldr        x8, [x8, #0x10]
+000158c8: 09008052 mov        w9, #0
+000158cc: e90700b9 str        w9, [sp, #4]
+000158d0: c80c00b4 cbz        x8, #0x15a68
+000158d4: 01000014 b          #0x158d8 ; 
+000158d8: e80740f9 ldr        x8, [sp, #8]
+000158dc: 080d40f9 ldr        x8, [x8, #0x18]
+000158e0: 09008052 mov        w9, #0
+000158e4: e90700b9 str        w9, [sp, #4]
+000158e8: 080c00b4 cbz        x8, #0x15a68
+000158ec: 01000014 b          #0x158f0 ; 
+000158f0: e80740f9 ldr        x8, [sp, #8]
+000158f4: 082940b9 ldr        w8, [x8, #0x28]
+000158f8: 09008052 mov        w9, #0
+000158fc: e90700b9 str        w9, [sp, #4]
+00015900: 480b0034 cbz        w8, #0x15a68
+00015904: 01000014 b          #0x15908 ; 
+00015908: e80740f9 ldr        x8, [sp, #8]
+0001590c: 082d40b9 ldr        w8, [x8, #0x2c]
+00015910: 09008052 mov        w9, #0
+00015914: e90700b9 str        w9, [sp, #4]
+00015918: 880a0034 cbz        w8, #0x15a68
+0001591c: 01000014 b          #0x15920 ; 
+00015920: e80740f9 ldr        x8, [sp, #8]
+00015924: 092940b9 ldr        w9, [x8, #0x28]
+00015928: 08008052 mov        w8, #0
+0001592c: 29011071 subs       w9, w9, #0x400
+00015930: e80700b9 str        w8, [sp, #4]
+00015934: a8090054 b.hi       #0x15a68
+00015938: 01000014 b          #0x1593c ; 
+0001593c: e80740f9 ldr        x8, [sp, #8]
+00015940: 092d40b9 ldr        w9, [x8, #0x2c]
+00015944: 08008052 mov        w8, #0
+00015948: 29011071 subs       w9, w9, #0x400
+0001594c: e80700b9 str        w8, [sp, #4]
+00015950: c8080054 b.hi       #0x15a68
+00015954: 01000014 b          #0x15958 ; 
+00015958: e80740f9 ldr        x8, [sp, #8]
+0001595c: 082940b9 ldr        w8, [x8, #0x28]
+00015960: e90740f9 ldr        x9, [sp, #8]
+00015964: 292d40b9 ldr        w9, [x9, #0x2c]
+00015968: 087d099b mul        x8, x8, x9
+0001596c: 09f57ed3 lsl        x9, x8, #2
+00015970: 08008052 mov        w8, #0
+00015974: 290150f1 subs       x9, x9, #0x400, lsl #12
+00015978: e80700b9 str        w8, [sp, #4]
+0001597c: 68070054 b.hi       #0x15a68
+00015980: 01000014 b          #0x15984 ; 
+00015984: e80740f9 ldr        x8, [sp, #8]
+00015988: 003140bd ldr        s0, [x8, #0x30]
+0001598c: c3f3ff97 bl         #0x12898 ; __Z8isfiniteB6v15006IfENSt3__19enable_ifIXaasr3std13is_arithmeticIT_EE5valuesr3std14numeric_limitsIS2_EE12has_infinityEbE4typeES2_ |  | __Z8isfiniteB6v15006IfENSt3__19enable_ifIXaasr3std13is_arithmeticIT_EE5valuesr3std14numeric_limitsIS2_EE12has_infinityEbE4typeES2_ | 
+00015990: 08008052 mov        w8, #0
+00015994: e80700b9 str        w8, [sp, #4]
+00015998: 80060036 tbz        w0, #0, #0x15a68
+0001599c: 01000014 b          #0x159a0 ; 
+000159a0: e80740f9 ldr        x8, [sp, #8]
+000159a4: 003540bd ldr        s0, [x8, #0x34]
+000159a8: bcf3ff97 bl         #0x12898 ; __Z8isfiniteB6v15006IfENSt3__19enable_ifIXaasr3std13is_arithmeticIT_EE5valuesr3std14numeric_limitsIS2_EE12has_infinityEbE4typeES2_ |  | __Z8isfiniteB6v15006IfENSt3__19enable_ifIXaasr3std13is_arithmeticIT_EE5valuesr3std14numeric_limitsIS2_EE12has_infinityEbE4typeES2_ | 
+000159ac: 08008052 mov        w8, #0
+000159b0: e80700b9 str        w8, [sp, #4]
+000159b4: a0050036 tbz        w0, #0, #0x15a68
+000159b8: 01000014 b          #0x159bc ; 
+000159bc: e80740f9 ldr        x8, [sp, #8]
+000159c0: 003140bd ldr        s0, [x8, #0x30]
+000159c4: 08008052 mov        w8, #0
+000159c8: 0820201e fcmp       s0, #0.0
+000159cc: e80700b9 str        w8, [sp, #4]
+000159d0: cd040054 b.le       #0x15a68
+000159d4: 01000014 b          #0x159d8 ; 
+000159d8: e80740f9 ldr        x8, [sp, #8]
+000159dc: 003540bd ldr        s0, [x8, #0x34]
+000159e0: 08008052 mov        w8, #0
+000159e4: 0820201e fcmp       s0, #0.0
+000159e8: e80700b9 str        w8, [sp, #4]
+000159ec: ed030054 b.le       #0x15a68
+000159f0: 01000014 b          #0x159f4 ; 
+000159f4: e80740f9 ldr        x8, [sp, #8]
+000159f8: 093940b9 ldr        w9, [x8, #0x38]
+000159fc: 08008052 mov        w8, #0
+00015a00: 29050071 subs       w9, w9, #1
+00015a04: e80700b9 str        w8, [sp, #4]
+00015a08: 03030054 b.lo       #0x15a68
+00015a0c: 01000014 b          #0x15a10 ; 
+00015a10: e80740f9 ldr        x8, [sp, #8]
+00015a14: 093940b9 ldr        w9, [x8, #0x38]
+00015a18: 08008052 mov        w8, #0
+00015a1c: 29110071 subs       w9, w9, #4
+00015a20: e80700b9 str        w8, [sp, #4]
+00015a24: 28020054 b.hi       #0x15a68
+00015a28: 01000014 b          #0x15a2c ; 
+00015a2c: e80740f9 ldr        x8, [sp, #8]
+00015a30: 003140bd ldr        s0, [x8, #0x30]
+00015a34: a164020f movi       v1.2s, #0x45, lsl #24
+00015a38: 08008052 mov        w8, #0
+00015a3c: 0020211e fcmp       s0, s1
+00015a40: e80700b9 str        w8, [sp, #4]
+00015a44: 28010054 b.hi       #0x15a68
+00015a48: 01000014 b          #0x15a4c ; 
+00015a4c: e80740f9 ldr        x8, [sp, #8]
+00015a50: 003540bd ldr        s0, [x8, #0x34]
+00015a54: a164020f movi       v1.2s, #0x45, lsl #24
+00015a58: 0020211e fcmp       s0, s1
+00015a5c: e8879f1a cset       w8, ls
+00015a60: e80700b9 str        w8, [sp, #4]
+00015a64: 01000014 b          #0x15a68 ; 
+00015a68: e80740b9 ldr        w8, [sp, #4]
+00015a6c: 00010012 and        w0, w8, #1
+00015a70: fd7b41a9 ldp        x29, x30, [sp, #0x10]
+00015a74: ff830091 add        sp, sp, #0x20
+00015a78: ff0f5fd6 retab      

@@ -1,0 +1,2851 @@
+hooks 356
+[
+  {
+    "init": "0x4768",
+    "call": "0x48c4",
+    "class": "UIBezierPath",
+    "selector": "808739",
+    "replacement": "0x4c30",
+    "orig_imp_slot": "0xeeaa0"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x48ec",
+    "class": "UIBezierPath",
+    "selector": "808682",
+    "replacement": "0x4cc0",
+    "orig_imp_slot": "0xeeaa8"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4920",
+    "class": "_UIBatteryView",
+    "selector": "818719",
+    "replacement": "0x4d48",
+    "orig_imp_slot": "0xeeab0"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x494c",
+    "class": "_UIBatteryView",
+    "selector": "805812",
+    "replacement": "0x59c0",
+    "orig_imp_slot": "0xeeab8"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4978",
+    "class": "_UIBatteryView",
+    "selector": "805711",
+    "replacement": "0x5a3c",
+    "orig_imp_slot": "0xeeac0"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x49a4",
+    "class": "_UIBatteryView",
+    "selector": "805693",
+    "replacement": "0x5aa4",
+    "orig_imp_slot": "0xeeac8"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x49cc",
+    "class": "_UIBatteryView",
+    "selector": "822153",
+    "replacement": "0x5ae4",
+    "orig_imp_slot": "0xeead0"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x49f4",
+    "class": "_UIBatteryView",
+    "selector": "794290",
+    "replacement": "0x5ca4",
+    "orig_imp_slot": "0xeead8"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4a20",
+    "class": "_UIBatteryView",
+    "selector": "785875",
+    "replacement": "0x5d00",
+    "orig_imp_slot": "0xeeae0"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4a48",
+    "class": "_UIBatteryView",
+    "selector": "803539",
+    "replacement": "0x5d78",
+    "orig_imp_slot": "0xeeae8"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4a70",
+    "class": "_UIBatteryView",
+    "selector": "803299",
+    "replacement": "0x5df0",
+    "orig_imp_slot": "0xeeaf0"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4a98",
+    "class": "_UIBatteryView",
+    "selector": "801567",
+    "replacement": "0x5eec",
+    "orig_imp_slot": "0xeeaf8"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4ac0",
+    "class": "_UIBatteryView",
+    "selector": "800696",
+    "replacement": "0x5f6c",
+    "orig_imp_slot": "0xeeb00"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4b00",
+    "class": "_UIStaticBatteryView",
+    "selector": "805812",
+    "replacement": "0x6188",
+    "orig_imp_slot": "0xeeb08"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4b24",
+    "class": "_UIStaticBatteryView",
+    "selector": "805711",
+    "replacement": "0x6204",
+    "orig_imp_slot": "0xeeb10"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4b48",
+    "class": "_UIStaticBatteryView",
+    "selector": "805693",
+    "replacement": "0x626c",
+    "orig_imp_slot": "0xeeb18"
+  },
+  {
+    "init": "0x4768",
+    "call": "0x4b84",
+    "class": "STUIStatusBarStaticBatteryView",
+    "selector": "785875",
+    "replacement": "0x62ac",
+    "orig_imp_slot": "0xeeb20"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8584",
+    "class": "UIView",
+    "selector": "812773",
+    "replacement": "0x8990",
+    "orig_imp_slot": "0xeeb30"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x85b0",
+    "class": "UIView",
+    "selector": "818719",
+    "replacement": "0x89d0",
+    "orig_imp_slot": "0xeeb38"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x85d8",
+    "class": "UIView",
+    "selector": "825861",
+    "replacement": "0x8a10",
+    "orig_imp_slot": "0xeeb40"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x860c",
+    "class": "UILabel",
+    "selector": "837543",
+    "replacement": "0x8b34",
+    "orig_imp_slot": "0xeeb48"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8634",
+    "class": "UILabel",
+    "selector": "787319",
+    "replacement": "0x8bfc",
+    "orig_imp_slot": "0xeeb50"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x866c",
+    "class": "_UIInterfaceActionGroupHeaderScrollView",
+    "selector": "787198",
+    "replacement": "0x8cb4",
+    "orig_imp_slot": "0xeeb58"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8690",
+    "class": "_UIInterfaceActionGroupHeaderScrollView",
+    "selector": "818719",
+    "replacement": "0x8cf4",
+    "orig_imp_slot": "0xeeb60"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x86c4",
+    "class": "_UIInterfaceActionCustomViewRepresentationView",
+    "selector": "817682",
+    "replacement": "0x8d34",
+    "orig_imp_slot": "0xeeb68"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x86ec",
+    "class": "_UIInterfaceActionCustomViewRepresentationView",
+    "selector": "835652",
+    "replacement": "0x8da0",
+    "orig_imp_slot": "0xeeb70"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x87b0",
+    "class": "_UIInterfaceActionCustomViewRepresentationView",
+    "selector": "787198",
+    "replacement": "0x8fc4",
+    "orig_imp_slot": "0xeeb78"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x87d4",
+    "class": "_UIInterfaceActionCustomViewRepresentationView",
+    "selector": "818719",
+    "replacement": "0x91dc",
+    "orig_imp_slot": "0xeeb80"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8800",
+    "class": "_UIAlertControllerActionView",
+    "selector": "818719",
+    "replacement": "0x921c",
+    "orig_imp_slot": "0xeeb88"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8830",
+    "class": "_UIInterfaceActionVibrantSeparatorView",
+    "selector": "787198",
+    "replacement": "0x9284",
+    "orig_imp_slot": "0xeeb90"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8854",
+    "class": "_UIInterfaceActionVibrantSeparatorView",
+    "selector": "818719",
+    "replacement": "0x9308",
+    "orig_imp_slot": "0xeeb98"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x887c",
+    "class": "_UIInterfaceActionVibrantSeparatorView",
+    "selector": "828985",
+    "replacement": "0x938c",
+    "orig_imp_slot": "0xeeba0"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x88a4",
+    "class": "_UIInterfaceActionVibrantSeparatorView",
+    "selector": "825457",
+    "replacement": "0x9408",
+    "orig_imp_slot": "0xeeba8"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x88d8",
+    "class": "UIAlertController",
+    "selector": "839934",
+    "replacement": "0x948c",
+    "orig_imp_slot": "0xeebb0"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8900",
+    "class": "UIAlertController",
+    "selector": "839854",
+    "replacement": "0x9558",
+    "orig_imp_slot": "0xeebb8"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8928",
+    "class": "UIAlertController",
+    "selector": "839887",
+    "replacement": "0x95c8",
+    "orig_imp_slot": "0xeebc0"
+  },
+  {
+    "init": "0x852c",
+    "call": "0x8950",
+    "class": "UIAlertController",
+    "selector": "839869",
+    "replacement": "0x9674",
+    "orig_imp_slot": "0xeebc8"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xdd24",
+    "class": "SBIconImageView",
+    "selector": "787198",
+    "replacement": "0xdebc",
+    "orig_imp_slot": "0xeebd0"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xdd4c",
+    "class": "SBIconImageView",
+    "selector": "818719",
+    "replacement": "0xdefc",
+    "orig_imp_slot": "0xeebd8"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xdd80",
+    "class": "SBIconView",
+    "selector": "829015",
+    "replacement": "0xdf3c",
+    "orig_imp_slot": "0xeebe0"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xdda8",
+    "class": "SBIconView",
+    "selector": "794643",
+    "replacement": "0xdf7c",
+    "orig_imp_slot": "0xeebe8"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xddd0",
+    "class": "SBIconView",
+    "selector": "834413",
+    "replacement": "0xdfbc",
+    "orig_imp_slot": "0xeebf0"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xddf8",
+    "class": "SBIconView",
+    "selector": "827088",
+    "replacement": "0xdffc",
+    "orig_imp_slot": "0xeebf8"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xde20",
+    "class": "SBIconView",
+    "selector": "830718",
+    "replacement": "0xe09c",
+    "orig_imp_slot": "0xeec00"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xde48",
+    "class": "SBIconView",
+    "selector": "827814",
+    "replacement": "0xe13c",
+    "orig_imp_slot": "0xeec08"
+  },
+  {
+    "init": "0xdce4",
+    "call": "0xde70",
+    "class": "SBIconView",
+    "selector": "827802",
+    "replacement": "0xe17c",
+    "orig_imp_slot": "0xeec10"
+  },
+  {
+    "init": "0xee14",
+    "call": "0xee5c",
+    "class": "SBHLibraryCategoryPodBackgroundView",
+    "selector": "787198",
+    "replacement": "0xef24",
+    "orig_imp_slot": "0xeec38"
+  },
+  {
+    "init": "0xee14",
+    "call": "0xee88",
+    "class": "SBHLibraryCategoryPodBackgroundView",
+    "selector": "818719",
+    "replacement": "0xefa8",
+    "orig_imp_slot": "0xeec40"
+  },
+  {
+    "init": "0xee14",
+    "call": "0xeeb0",
+    "class": "SBHLibraryCategoryPodBackgroundView",
+    "selector": "828985",
+    "replacement": "0xefe8",
+    "orig_imp_slot": "0xeec48"
+  },
+  {
+    "init": "0xee14",
+    "call": "0xeee0",
+    "class": "SBHSearchTextField",
+    "selector": "787198",
+    "replacement": "0xf04c",
+    "orig_imp_slot": "0xeec50"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10c4c",
+    "class": "CALayer",
+    "selector": "806694",
+    "replacement": "0x11450",
+    "orig_imp_slot": "0xeec68"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10c80",
+    "class": "CATransaction",
+    "selector": "825513",
+    "replacement": "0x11514",
+    "orig_imp_slot": "0xeec70"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10cb4",
+    "class": "HNDRocker",
+    "selector": "806029",
+    "replacement": "0x11548",
+    "orig_imp_slot": "0xeec78"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10d48",
+    "class": "HNDRocker",
+    "selector": "802291",
+    "replacement": "0x11bd4",
+    "orig_imp_slot": "0xeec80"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10d70",
+    "class": "HNDRocker",
+    "selector": "802313",
+    "replacement": "0x11c14",
+    "orig_imp_slot": "0xeec88"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10d98",
+    "class": "HNDRocker",
+    "selector": "802245",
+    "replacement": "0x11c54",
+    "orig_imp_slot": "0xeec90"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10dc0",
+    "class": "HNDRocker",
+    "selector": "802332",
+    "replacement": "0x11c94",
+    "orig_imp_slot": "0xeec98"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10de8",
+    "class": "HNDRocker",
+    "selector": "802353",
+    "replacement": "0x11cd4",
+    "orig_imp_slot": "0xeeca0"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10e10",
+    "class": "HNDRocker",
+    "selector": "802268",
+    "replacement": "0x11d14",
+    "orig_imp_slot": "0xeeca8"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10e38",
+    "class": "HNDRocker",
+    "selector": "802221",
+    "replacement": "0x11d54",
+    "orig_imp_slot": "0xeecb0"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10e60",
+    "class": "HNDRocker",
+    "selector": "802201",
+    "replacement": "0x11d94",
+    "orig_imp_slot": "0xeecb8"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10e88",
+    "class": "HNDRocker",
+    "selector": "802374",
+    "replacement": "0x11dd4",
+    "orig_imp_slot": "0xeecc0"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10eb0",
+    "class": "HNDRocker",
+    "selector": "821975",
+    "replacement": "0x11e14",
+    "orig_imp_slot": "0xeecc8"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10ed8",
+    "class": "HNDRocker",
+    "selector": "828510",
+    "replacement": "0x11e54",
+    "orig_imp_slot": "0xeecd0"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10f00",
+    "class": "HNDRocker",
+    "selector": "802539",
+    "replacement": "0x11f88",
+    "orig_imp_slot": "0xeecd8"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10f28",
+    "class": "HNDRocker",
+    "selector": "787198",
+    "replacement": "0x12084",
+    "orig_imp_slot": "0xeece0"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10f50",
+    "class": "HNDRocker",
+    "selector": "818719",
+    "replacement": "0x12244",
+    "orig_imp_slot": "0xeece8"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10f78",
+    "class": "HNDRocker",
+    "selector": "828432",
+    "replacement": "0x123e0",
+    "orig_imp_slot": "0xeecf0"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10fa0",
+    "class": "HNDRocker",
+    "selector": "826082",
+    "replacement": "0x12494",
+    "orig_imp_slot": "0xeecf8"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10fc8",
+    "class": "HNDRocker",
+    "selector": "813768",
+    "replacement": "0x12548",
+    "orig_imp_slot": "0xeed00"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x10ff0",
+    "class": "HNDRocker",
+    "selector": "805887",
+    "replacement": "0x12614",
+    "orig_imp_slot": "0xeed08"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11018",
+    "class": "HNDRocker",
+    "selector": "815655",
+    "replacement": "0x126e0",
+    "orig_imp_slot": "0xeed10"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11040",
+    "class": "HNDRocker",
+    "selector": "815676",
+    "replacement": "0x127ec",
+    "orig_imp_slot": "0xeed18"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11068",
+    "class": "HNDRocker",
+    "selector": "815717",
+    "replacement": "0x128f8",
+    "orig_imp_slot": "0xeed20"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11090",
+    "class": "HNDRocker",
+    "selector": "792244",
+    "replacement": "0x12984",
+    "orig_imp_slot": "0xeed28"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x110b8",
+    "class": "HNDRocker",
+    "selector": "835566",
+    "replacement": "0x12a74",
+    "orig_imp_slot": "0xeed30"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x110e0",
+    "class": "HNDRocker",
+    "selector": "838092",
+    "replacement": "0x12b24",
+    "orig_imp_slot": "0xeed38"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11108",
+    "class": "HNDRocker",
+    "selector": "838048",
+    "replacement": "0x12e24",
+    "orig_imp_slot": "0xeed40"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11304",
+    "class": "HNDDisplayManager",
+    "selector": "835556",
+    "replacement": "0x13c80",
+    "orig_imp_slot": "0xeed48"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x1132c",
+    "class": "HNDDisplayManager",
+    "selector": "789312",
+    "replacement": "0x13cbc",
+    "orig_imp_slot": "0xeed50"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x11354",
+    "class": "HNDDisplayManager",
+    "selector": "830990",
+    "replacement": "0x13cf8",
+    "orig_imp_slot": "0xeed58"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x1137c",
+    "class": "HNDDisplayManager",
+    "selector": "804319",
+    "replacement": "0x13d88",
+    "orig_imp_slot": "0xeed60"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x113b0",
+    "class": "HNDRockerButton",
+    "selector": "794643",
+    "replacement": "0x13de0",
+    "orig_imp_slot": "0xeed68"
+  },
+  {
+    "init": "0x10b64",
+    "call": "0x113d8",
+    "class": "HNDRockerButton",
+    "selector": "821961",
+    "replacement": "0x13f14",
+    "orig_imp_slot": "0xeed70"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x14598",
+    "class": "MTMaterialView",
+    "selector": "787198",
+    "replacement": "0x14708",
+    "orig_imp_slot": "0xeed78"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x145c0",
+    "class": "MTMaterialView",
+    "selector": "818719",
+    "replacement": "0x14774",
+    "orig_imp_slot": "0xeed80"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x145f4",
+    "class": "UILabel",
+    "selector": "834053",
+    "replacement": "0x147b4",
+    "orig_imp_slot": "0xeed88"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x1461c",
+    "class": "UILabel",
+    "selector": "825654",
+    "replacement": "0x14858",
+    "orig_imp_slot": "0xeed90"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x14640",
+    "class": "UILabel",
+    "selector": "787198",
+    "replacement": "0x14900",
+    "orig_imp_slot": "0xeed98"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x14668",
+    "class": "UILabel",
+    "selector": "837995",
+    "replacement": "0x149d8",
+    "orig_imp_slot": "0xeeda0"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x1469c",
+    "class": "NCNotificationShortLookViewController",
+    "selector": "839909",
+    "replacement": "0x14ab0",
+    "orig_imp_slot": "0xeeda8"
+  },
+  {
+    "init": "0x14554",
+    "call": "0x146c4",
+    "class": "NCNotificationShortLookViewController",
+    "selector": "839887",
+    "replacement": "0x14af0",
+    "orig_imp_slot": "0xeedb0"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16218",
+    "class": "UIVisualEffectView",
+    "selector": "787198",
+    "replacement": "0x1652c",
+    "orig_imp_slot": "0xeedc0"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16244",
+    "class": "UIVisualEffectView",
+    "selector": "818719",
+    "replacement": "0x16670",
+    "orig_imp_slot": "0xeedc8"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16270",
+    "class": "UICollectionView",
+    "selector": "818719",
+    "replacement": "0x16728",
+    "orig_imp_slot": "0xeedd0"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x1629c",
+    "class": "_UIContextMenuContainerView",
+    "selector": "818719",
+    "replacement": "0x169c8",
+    "orig_imp_slot": "0xeedd8"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x162cc",
+    "class": "_UIContextMenuListView",
+    "selector": "787198",
+    "replacement": "0x16a38",
+    "orig_imp_slot": "0xeede0"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x162f4",
+    "class": "_UIContextMenuListView",
+    "selector": "812727",
+    "replacement": "0x16d00",
+    "orig_imp_slot": "0xeede8"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16318",
+    "class": "_UIContextMenuListView",
+    "selector": "818719",
+    "replacement": "0x16d80",
+    "orig_imp_slot": "0xeedf0"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16340",
+    "class": "_UIContextMenuListView",
+    "selector": "816141",
+    "replacement": "0x170b0",
+    "orig_imp_slot": "0xeedf8"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16368",
+    "class": "_UIContextMenuListView",
+    "selector": "838243",
+    "replacement": "0x171cc",
+    "orig_imp_slot": "0xeee00"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16398",
+    "class": "_UIContextMenuView",
+    "selector": "801213",
+    "replacement": "0x172c0",
+    "orig_imp_slot": "0xeee08"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x163cc",
+    "class": "_UIContextMenuCell",
+    "selector": "822439",
+    "replacement": "0x174b4",
+    "orig_imp_slot": "0xeee10"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x163f0",
+    "class": "_UIContextMenuCell",
+    "selector": "818719",
+    "replacement": "0x175e4",
+    "orig_imp_slot": "0xeee18"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16418",
+    "class": "_UIContextMenuCell",
+    "selector": "794643",
+    "replacement": "0x176ec",
+    "orig_imp_slot": "0xeee20"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16440",
+    "class": "_UIContextMenuCell",
+    "selector": "832903",
+    "replacement": "0x177d0",
+    "orig_imp_slot": "0xeee28"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x1646c",
+    "class": "_UIContextMenuCellContentView",
+    "selector": "818719",
+    "replacement": "0x178b0",
+    "orig_imp_slot": "0xeee30"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x164b0",
+    "class": "_UIContextMenuPlatformMetrics",
+    "selector": "824983",
+    "replacement": "0x17aac",
+    "orig_imp_slot": "0xeee38"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x164d8",
+    "class": "_UIContextMenuPlatformMetrics",
+    "selector": "818377",
+    "replacement": "0x17b10",
+    "orig_imp_slot": "0xeee40"
+  },
+  {
+    "init": "0x161d0",
+    "call": "0x16500",
+    "class": "_UIContextMenuPlatformMetrics",
+    "selector": "824997",
+    "replacement": "0x17b74",
+    "orig_imp_slot": "0xeee48"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c8bc",
+    "class": "CCUIContentModuleContainerView",
+    "selector": "818719",
+    "replacement": "0x1cd74",
+    "orig_imp_slot": "0xeee68"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c8e8",
+    "class": "CCUIContentModuleContainerView",
+    "selector": "787198",
+    "replacement": "0x1cdb4",
+    "orig_imp_slot": "0xeee70"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c914",
+    "class": "CCUIContentModuleContentContainerView",
+    "selector": "818719",
+    "replacement": "0x1cdf4",
+    "orig_imp_slot": "0xeee78"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c940",
+    "class": "CCUIContentModuleContentContainer",
+    "selector": "818719",
+    "replacement": "0x1ce34",
+    "orig_imp_slot": "0xeee80"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c970",
+    "class": "CCUIButtonModuleView",
+    "selector": "818719",
+    "replacement": "0x1ce74",
+    "orig_imp_slot": "0xeee88"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c994",
+    "class": "CCUIButtonModuleView",
+    "selector": "787198",
+    "replacement": "0x1ceb4",
+    "orig_imp_slot": "0xeee90"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c9c4",
+    "class": "CCUIContinuousSliderView",
+    "selector": "818719",
+    "replacement": "0x1cef4",
+    "orig_imp_slot": "0xeee98"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1c9e8",
+    "class": "CCUIContinuousSliderView",
+    "selector": "787198",
+    "replacement": "0x1cf34",
+    "orig_imp_slot": "0xeeea0"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1ca18",
+    "class": "MRUContinuousSliderView",
+    "selector": "818719",
+    "replacement": "0x1cf74",
+    "orig_imp_slot": "0xeeea8"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1ca3c",
+    "class": "MRUContinuousSliderView",
+    "selector": "787198",
+    "replacement": "0x1cfb4",
+    "orig_imp_slot": "0xeeeb0"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1ca70",
+    "class": "CCUIModularControlCenterOverlayViewController",
+    "selector": "789900",
+    "replacement": "0x1cff4",
+    "orig_imp_slot": "0xeeeb8"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1ca98",
+    "class": "CCUIModularControlCenterOverlayViewController",
+    "selector": "839854",
+    "replacement": "0x1d1ac",
+    "orig_imp_slot": "0xeeec0"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cac0",
+    "class": "CCUIModularControlCenterOverlayViewController",
+    "selector": "839934",
+    "replacement": "0x1d204",
+    "orig_imp_slot": "0xeeec8"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cae8",
+    "class": "CCUIModularControlCenterOverlayViewController",
+    "selector": "839887",
+    "replacement": "0x1d25c",
+    "orig_imp_slot": "0xeeed0"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cb20",
+    "class": "CAFilter",
+    "selector": "834814",
+    "replacement": "0x1d2b4",
+    "orig_imp_slot": "0xeeed8"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cb4c",
+    "class": "CAFilter",
+    "selector": "834831",
+    "replacement": "0x1d3ec",
+    "orig_imp_slot": "0xeeee0"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cb80",
+    "class": "CALayer",
+    "selector": "826989",
+    "replacement": "0x1d58c",
+    "orig_imp_slot": "0xeeee8"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cba8",
+    "class": "CALayer",
+    "selector": "828191",
+    "replacement": "0x1d618",
+    "orig_imp_slot": "0xeeef0"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cbcc",
+    "class": "CALayer",
+    "selector": "834814",
+    "replacement": "0x1d72c",
+    "orig_imp_slot": "0xeeef8"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cbf0",
+    "class": "CALayer",
+    "selector": "834831",
+    "replacement": "0x1d870",
+    "orig_imp_slot": "0xeef00"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cc18",
+    "class": "CALayer",
+    "selector": "806694",
+    "replacement": "0x1d9b0",
+    "orig_imp_slot": "0xeef08"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1ccec",
+    "class": "MRUControlCenterView",
+    "selector": "818719",
+    "replacement": "0x1dd08",
+    "orig_imp_slot": "0xeef20"
+  },
+  {
+    "init": "0x1c870",
+    "call": "0x1cd18",
+    "class": "MRUNowPlayingView",
+    "selector": "818719",
+    "replacement": "0x1dd48",
+    "orig_imp_slot": "0xeef28"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27a18",
+    "class": "_UINavigationBarTitleControl",
+    "selector": "818719",
+    "replacement": "0x2862c",
+    "orig_imp_slot": "0xeef60"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27a4c",
+    "class": "_UINavigationBarContentView",
+    "selector": "826261",
+    "replacement": "0x286e4",
+    "orig_imp_slot": "0xeef68"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27a70",
+    "class": "_UINavigationBarContentView",
+    "selector": "818719",
+    "replacement": "0x28750",
+    "orig_imp_slot": "0xeef70"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27aa0",
+    "class": "CALayer",
+    "selector": "830284",
+    "replacement": "0x28820",
+    "orig_imp_slot": "0xeef78"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27ad8",
+    "class": "UIViewControllerWrapperView",
+    "selector": "787198",
+    "replacement": "0x28898",
+    "orig_imp_slot": "0xeef80"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27afc",
+    "class": "UIViewControllerWrapperView",
+    "selector": "818719",
+    "replacement": "0x288d8",
+    "orig_imp_slot": "0xeef88"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27b2c",
+    "class": "UINavigationBar",
+    "selector": "787198",
+    "replacement": "0x28918",
+    "orig_imp_slot": "0xeef90"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27b50",
+    "class": "UINavigationBar",
+    "selector": "818719",
+    "replacement": "0x2895c",
+    "orig_imp_slot": "0xeef98"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27b84",
+    "class": "UIView",
+    "selector": "826082",
+    "replacement": "0x289a8",
+    "orig_imp_slot": "0xeefa0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27bac",
+    "class": "UIView",
+    "selector": "828432",
+    "replacement": "0x28a88",
+    "orig_imp_slot": "0xeefa8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27be0",
+    "class": "_UIButtonBarStackView",
+    "selector": "794156",
+    "replacement": "0x28b68",
+    "orig_imp_slot": "0xeefb0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27c04",
+    "class": "_UIButtonBarStackView",
+    "selector": "787198",
+    "replacement": "0x28df8",
+    "orig_imp_slot": "0xeefb8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27c28",
+    "class": "_UIButtonBarStackView",
+    "selector": "818719",
+    "replacement": "0x28e38",
+    "orig_imp_slot": "0xeefc0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27c5c",
+    "class": "_UIButtonBarButton",
+    "selector": "810284",
+    "replacement": "0x29098",
+    "orig_imp_slot": "0xeefc8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27c84",
+    "class": "_UIButtonBarButton",
+    "selector": "794643",
+    "replacement": "0x291dc",
+    "orig_imp_slot": "0xeefd0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27cac",
+    "class": "_UIButtonBarButton",
+    "selector": "825784",
+    "replacement": "0x292d0",
+    "orig_imp_slot": "0xeefd8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27cd0",
+    "class": "_UIButtonBarButton",
+    "selector": "787198",
+    "replacement": "0x2939c",
+    "orig_imp_slot": "0xeefe0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27cf4",
+    "class": "_UIButtonBarButton",
+    "selector": "818719",
+    "replacement": "0x293dc",
+    "orig_imp_slot": "0xeefe8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27d20",
+    "class": "_UIButtonBarButton",
+    "selector": "808518",
+    "replacement": "0x29460",
+    "orig_imp_slot": "0xeeff0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27d4c",
+    "class": "_UIButtonBarButton",
+    "selector": "810695",
+    "replacement": "0x295e0",
+    "orig_imp_slot": "0xeeff8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27d78",
+    "class": "_UIButtonBarButton",
+    "selector": "787357",
+    "replacement": "0x29750",
+    "orig_imp_slot": "0xef000"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27da4",
+    "class": "_UIButtonBarButton",
+    "selector": "809155",
+    "replacement": "0x297fc",
+    "orig_imp_slot": "0xef008"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27dd4",
+    "class": "_UITAMICAdaptorView",
+    "selector": "787198",
+    "replacement": "0x298a8",
+    "orig_imp_slot": "0xef010"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27df8",
+    "class": "_UITAMICAdaptorView",
+    "selector": "818719",
+    "replacement": "0x298e8",
+    "orig_imp_slot": "0xef018"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27e2c",
+    "class": "UIControl",
+    "selector": "827835",
+    "replacement": "0x2996c",
+    "orig_imp_slot": "0xef020"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27e5c",
+    "class": "UIButton",
+    "selector": "818719",
+    "replacement": "0x29a74",
+    "orig_imp_slot": "0xef028"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27e80",
+    "class": "UIButton",
+    "selector": "787198",
+    "replacement": "0x29c04",
+    "orig_imp_slot": "0xef030"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27eac",
+    "class": "UIButton",
+    "selector": "834246",
+    "replacement": "0x29d2c",
+    "orig_imp_slot": "0xef038"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27ed4",
+    "class": "UIButton",
+    "selector": "834279",
+    "replacement": "0x29dd4",
+    "orig_imp_slot": "0xef040"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27efc",
+    "class": "UIButton",
+    "selector": "825673",
+    "replacement": "0x29e98",
+    "orig_imp_slot": "0xef048"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27f20",
+    "class": "UIButton",
+    "selector": "808518",
+    "replacement": "0x29f3c",
+    "orig_imp_slot": "0xef050"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27f44",
+    "class": "UIButton",
+    "selector": "810695",
+    "replacement": "0x29fe0",
+    "orig_imp_slot": "0xef058"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27f68",
+    "class": "UIButton",
+    "selector": "787357",
+    "replacement": "0x2a07c",
+    "orig_imp_slot": "0xef060"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27f8c",
+    "class": "UIButton",
+    "selector": "809155",
+    "replacement": "0x2a114",
+    "orig_imp_slot": "0xef068"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27fb8",
+    "class": "UIImageView",
+    "selector": "834246",
+    "replacement": "0x2a1ac",
+    "orig_imp_slot": "0xef070"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x27fe4",
+    "class": "_UIModernBarButton",
+    "selector": "818719",
+    "replacement": "0x2a294",
+    "orig_imp_slot": "0xef078"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28018",
+    "class": "UIButtonLabel",
+    "selector": "825654",
+    "replacement": "0x2a3dc",
+    "orig_imp_slot": "0xef080"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28040",
+    "class": "UIButtonLabel",
+    "selector": "805385",
+    "replacement": "0x2a478",
+    "orig_imp_slot": "0xef088"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28068",
+    "class": "UIButtonLabel",
+    "selector": "805959",
+    "replacement": "0x2a4d4",
+    "orig_imp_slot": "0xef090"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x280d8",
+    "class": "UISwitchModernVisualElement",
+    "selector": "812773",
+    "replacement": "0x2a5ec",
+    "orig_imp_slot": "0xef0a0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x280fc",
+    "class": "UISwitchModernVisualElement",
+    "selector": "787198",
+    "replacement": "0x2a644",
+    "orig_imp_slot": "0xef0a8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28120",
+    "class": "UISwitchModernVisualElement",
+    "selector": "818719",
+    "replacement": "0x2a69c",
+    "orig_imp_slot": "0xef0b0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28148",
+    "class": "UISwitchModernVisualElement",
+    "selector": "825457",
+    "replacement": "0x2a6f4",
+    "orig_imp_slot": "0xef0b8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28178",
+    "class": "UISwitch",
+    "selector": "787198",
+    "replacement": "0x2a778",
+    "orig_imp_slot": "0xef0c0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x2819c",
+    "class": "UISwitch",
+    "selector": "818719",
+    "replacement": "0x2a7d0",
+    "orig_imp_slot": "0xef0c8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x281c4",
+    "class": "UISwitch",
+    "selector": "788899",
+    "replacement": "0x2a828",
+    "orig_imp_slot": "0xef0d0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x281f4",
+    "class": "_UISlideriOSVisualElement",
+    "selector": "787198",
+    "replacement": "0x2a8d4",
+    "orig_imp_slot": "0xef0d8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28218",
+    "class": "_UISlideriOSVisualElement",
+    "selector": "818719",
+    "replacement": "0x2a9b0",
+    "orig_imp_slot": "0xef0e0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28248",
+    "class": "UISegmentedControl",
+    "selector": "787198",
+    "replacement": "0x2aa68",
+    "orig_imp_slot": "0xef0e8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x2826c",
+    "class": "UISegmentedControl",
+    "selector": "818719",
+    "replacement": "0x2aac0",
+    "orig_imp_slot": "0xef0f0"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28294",
+    "class": "UISegmentedControl",
+    "selector": "832969",
+    "replacement": "0x2ab18",
+    "orig_imp_slot": "0xef0f8"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x282c4",
+    "class": "UISlider",
+    "selector": "787198",
+    "replacement": "0x2ab70",
+    "orig_imp_slot": "0xef100"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x282e8",
+    "class": "UISlider",
+    "selector": "818719",
+    "replacement": "0x2ac08",
+    "orig_imp_slot": "0xef108"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28310",
+    "class": "UISlider",
+    "selector": "834795",
+    "replacement": "0x2ac7c",
+    "orig_imp_slot": "0xef110"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28338",
+    "class": "UISlider",
+    "selector": "830636",
+    "replacement": "0x2ad30",
+    "orig_imp_slot": "0xef118"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28360",
+    "class": "UISlider",
+    "selector": "830438",
+    "replacement": "0x2ada4",
+    "orig_imp_slot": "0xef120"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x28384",
+    "class": "UISlider",
+    "selector": "827835",
+    "replacement": "0x2ae18",
+    "orig_imp_slot": "0xef128"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x283ac",
+    "class": "UISlider",
+    "selector": "830610",
+    "replacement": "0x2ae8c",
+    "orig_imp_slot": "0xef130"
+  },
+  {
+    "init": "0x27970",
+    "call": "0x283d4",
+    "class": "UISlider",
+    "selector": "830412",
+    "replacement": "0x2af00",
+    "orig_imp_slot": "0xef138"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35ab4",
+    "class": "SBCoverSheetPanelBackgroundContainerView",
+    "selector": "787198",
+    "replacement": "0x35dc0",
+    "orig_imp_slot": "0xef180"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35adc",
+    "class": "SBCoverSheetPanelBackgroundContainerView",
+    "selector": "818719",
+    "replacement": "0x35ec8",
+    "orig_imp_slot": "0xef188"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35b10",
+    "class": "PBUIPosterWallpaperRemoteViewController",
+    "selector": "839909",
+    "replacement": "0x35f08",
+    "orig_imp_slot": "0xef190"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35b38",
+    "class": "PBUIPosterWallpaperRemoteViewController",
+    "selector": "789900",
+    "replacement": "0x35f64",
+    "orig_imp_slot": "0xef198"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35b6c",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "802761",
+    "replacement": "0x35fc0",
+    "orig_imp_slot": "0xef1a0"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35b94",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811880",
+    "replacement": "0x36018",
+    "orig_imp_slot": "0xef1a8"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35bbc",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811821",
+    "replacement": "0x36058",
+    "orig_imp_slot": "0xef1b0"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35be4",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "803614",
+    "replacement": "0x360c8",
+    "orig_imp_slot": "0xef1b8"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35c0c",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811630",
+    "replacement": "0x36138",
+    "orig_imp_slot": "0xef1c0"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35c34",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811530",
+    "replacement": "0x364f0",
+    "orig_imp_slot": "0xef1c8"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35c5c",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811351",
+    "replacement": "0x36b58",
+    "orig_imp_slot": "0xef1d0"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35c84",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811239",
+    "replacement": "0x36c70",
+    "orig_imp_slot": "0xef1d8"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35cac",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811772",
+    "replacement": "0x36d84",
+    "orig_imp_slot": "0xef1e0"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35cd4",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811710",
+    "replacement": "0x36e34",
+    "orig_imp_slot": "0xef1e8"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35cfc",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "840423",
+    "replacement": "0x36ee4",
+    "orig_imp_slot": "0xef1f0"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35d24",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "811472",
+    "replacement": "0x36f44",
+    "orig_imp_slot": "0xef1f8"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35d4c",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "791726",
+    "replacement": "0x372c8",
+    "orig_imp_slot": "0xef200"
+  },
+  {
+    "init": "0x35a74",
+    "call": "0x35d74",
+    "class": "SBCoverSheetPresentationManager",
+    "selector": "804597",
+    "replacement": "0x37398",
+    "orig_imp_slot": "0xef208"
+  },
+  {
+    "init": "0x3b888",
+    "call": "0x3b8d8",
+    "class": "UIView",
+    "selector": "787198",
+    "replacement": "0x3bd84",
+    "orig_imp_slot": "0xef338"
+  },
+  {
+    "init": "0x3df94",
+    "call": "0x3dfd4",
+    "class": "MTMaterialView",
+    "selector": "787198",
+    "replacement": "0x3e074",
+    "orig_imp_slot": "0xef380"
+  },
+  {
+    "init": "0x3df94",
+    "call": "0x3dffc",
+    "class": "MTMaterialView",
+    "selector": "818719",
+    "replacement": "0x3e1bc",
+    "orig_imp_slot": "0xef388"
+  },
+  {
+    "init": "0x3df94",
+    "call": "0x3e030",
+    "class": "SBFolderIconImageView",
+    "selector": "822529",
+    "replacement": "0x3e230",
+    "orig_imp_slot": "0xef390"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f1e8",
+    "class": "UIKBBackdropView",
+    "selector": "787198",
+    "replacement": "0x3f598",
+    "orig_imp_slot": "0xef3d8"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f214",
+    "class": "UIKBBackdropView",
+    "selector": "818719",
+    "replacement": "0x3f640",
+    "orig_imp_slot": "0xef3e0"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f23c",
+    "class": "UIKBBackdropView",
+    "selector": "828432",
+    "replacement": "0x3f680",
+    "orig_imp_slot": "0xef3e8"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f264",
+    "class": "UIKBBackdropView",
+    "selector": "826082",
+    "replacement": "0x3f6c0",
+    "orig_imp_slot": "0xef3f0"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f290",
+    "class": "UIKBBackdropView",
+    "selector": "828985",
+    "replacement": "0x3f700",
+    "orig_imp_slot": "0xef3f8"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f2b8",
+    "class": "UIKBBackdropView",
+    "selector": "825457",
+    "replacement": "0x3f870",
+    "orig_imp_slot": "0xef400"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f2e8",
+    "class": "UIKBVisualEffectView",
+    "selector": "787198",
+    "replacement": "0x3f8e0",
+    "orig_imp_slot": "0xef408"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f30c",
+    "class": "UIKBVisualEffectView",
+    "selector": "818719",
+    "replacement": "0x3f930",
+    "orig_imp_slot": "0xef410"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f330",
+    "class": "UIKBVisualEffectView",
+    "selector": "828985",
+    "replacement": "0x3f970",
+    "orig_imp_slot": "0xef418"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f360",
+    "class": "UIKBRenderer",
+    "selector": "823904",
+    "replacement": "0x3fa64",
+    "orig_imp_slot": "0xef420"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f39c",
+    "class": "UIKeyboard",
+    "selector": "818719",
+    "replacement": "0x3fc4c",
+    "orig_imp_slot": "0xef428"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f3c4",
+    "class": "UIKeyboard",
+    "selector": "835607",
+    "replacement": "0x3fc7c",
+    "orig_imp_slot": "0xef430"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f3ec",
+    "class": "UIKeyboard",
+    "selector": "817682",
+    "replacement": "0x3fce0",
+    "orig_imp_slot": "0xef438"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f418",
+    "class": "UIKeyboardLayoutStar",
+    "selector": "818719",
+    "replacement": "0x3fd44",
+    "orig_imp_slot": "0xef440"
+  },
+  {
+    "init": "0x3f198",
+    "call": "0x3f448",
+    "class": "UIKBTextStyle",
+    "selector": "814254",
+    "replacement": "0x3fd88",
+    "orig_imp_slot": "0xef448"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x422b8",
+    "class": "MTMaterialView",
+    "selector": "787198",
+    "replacement": "0x4242c",
+    "orig_imp_slot": "0xef4a0"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x422e4",
+    "class": "MTMaterialView",
+    "selector": "818719",
+    "replacement": "0x42498",
+    "orig_imp_slot": "0xef4a8"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x42314",
+    "class": "UIView",
+    "selector": "825457",
+    "replacement": "0x424d8",
+    "orig_imp_slot": "0xef4b0"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x42344",
+    "class": "SBPasscodeNumberPadButton",
+    "selector": "787198",
+    "replacement": "0x42574",
+    "orig_imp_slot": "0xef4b8"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x42368",
+    "class": "SBPasscodeNumberPadButton",
+    "selector": "818719",
+    "replacement": "0x425e8",
+    "orig_imp_slot": "0xef4c0"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x42390",
+    "class": "SBPasscodeNumberPadButton",
+    "selector": "794643",
+    "replacement": "0x42628",
+    "orig_imp_slot": "0xef4c8"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x423c0",
+    "class": "CSPasscodeBackgroundView",
+    "selector": "787198",
+    "replacement": "0x42670",
+    "orig_imp_slot": "0xef4d0"
+  },
+  {
+    "init": "0x42270",
+    "call": "0x423e4",
+    "class": "CSPasscodeBackgroundView",
+    "selector": "818719",
+    "replacement": "0x426b4",
+    "orig_imp_slot": "0xef4d8"
+  },
+  {
+    "init": "0x44964",
+    "call": "0x449b4",
+    "class": "SBRingerPillView",
+    "selector": "818719",
+    "replacement": "0x449e0",
+    "orig_imp_slot": "0xef4f0"
+  },
+  {
+    "init": "0x44ddc",
+    "call": "0x44e1c",
+    "class": "UIVisualEffectView",
+    "selector": "787198",
+    "replacement": "0x44e60",
+    "orig_imp_slot": "0xef4f8"
+  },
+  {
+    "init": "0x45874",
+    "call": "0x45918",
+    "class": "SPUIHeaderBlurView",
+    "selector": "787198",
+    "replacement": "0x45b88",
+    "orig_imp_slot": "0xef510"
+  },
+  {
+    "init": "0x45874",
+    "call": "0x45944",
+    "class": "SPUIHeaderBlurView",
+    "selector": "818719",
+    "replacement": "0x45bc8",
+    "orig_imp_slot": "0xef518"
+  },
+  {
+    "init": "0x45874",
+    "call": "0x4596c",
+    "class": "SPUIHeaderBlurView",
+    "selector": "828985",
+    "replacement": "0x45c08",
+    "orig_imp_slot": "0xef520"
+  },
+  {
+    "init": "0x45874",
+    "call": "0x4599c",
+    "class": "SPUITextField",
+    "selector": "787198",
+    "replacement": "0x45c6c",
+    "orig_imp_slot": "0xef528"
+  },
+  {
+    "init": "0x45874",
+    "call": "0x459c0",
+    "class": "SPUITextField",
+    "selector": "818719",
+    "replacement": "0x45cac",
+    "orig_imp_slot": "0xef530"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a3e0",
+    "class": "UITabBar",
+    "selector": "816205",
+    "replacement": "0x4a74c",
+    "orig_imp_slot": "0xef548"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a408",
+    "class": "UITabBar",
+    "selector": "822177",
+    "replacement": "0x4a9c8",
+    "orig_imp_slot": "0xef550"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a430",
+    "class": "UITabBar",
+    "selector": "787198",
+    "replacement": "0x4aa6c",
+    "orig_imp_slot": "0xef558"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a45c",
+    "class": "UITabBar",
+    "selector": "818719",
+    "replacement": "0x4aaec",
+    "orig_imp_slot": "0xef560"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a488",
+    "class": "UITabBar",
+    "selector": "828432",
+    "replacement": "0x4ad40",
+    "orig_imp_slot": "0xef568"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a4b0",
+    "class": "UITabBar",
+    "selector": "835652",
+    "replacement": "0x4aed0",
+    "orig_imp_slot": "0xef570"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a4d8",
+    "class": "UITabBar",
+    "selector": "829451",
+    "replacement": "0x4afc4",
+    "orig_imp_slot": "0xef578"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a500",
+    "class": "UITabBar",
+    "selector": "832952",
+    "replacement": "0x4b00c",
+    "orig_imp_slot": "0xef580"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a528",
+    "class": "UITabBar",
+    "selector": "837995",
+    "replacement": "0x4b128",
+    "orig_imp_slot": "0xef588"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a55c",
+    "class": "UITabBarController",
+    "selector": "834983",
+    "replacement": "0x4b1f0",
+    "orig_imp_slot": "0xef590"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a584",
+    "class": "UITabBarController",
+    "selector": "832934",
+    "replacement": "0x4b37c",
+    "orig_imp_slot": "0xef598"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a5ac",
+    "class": "UITabBarController",
+    "selector": "832994",
+    "replacement": "0x4b4f4",
+    "orig_imp_slot": "0xef5a0"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a5d4",
+    "class": "UITabBarController",
+    "selector": "839854",
+    "replacement": "0x4b684",
+    "orig_imp_slot": "0xef5a8"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a5fc",
+    "class": "UITabBarController",
+    "selector": "837243",
+    "replacement": "0x4b87c",
+    "orig_imp_slot": "0xef5b0"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a62c",
+    "class": "UITabBarButton",
+    "selector": "828432",
+    "replacement": "0x4bca4",
+    "orig_imp_slot": "0xef5b8"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a650",
+    "class": "UITabBarButton",
+    "selector": "818719",
+    "replacement": "0x4c4cc",
+    "orig_imp_slot": "0xef5c0"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a678",
+    "class": "UITabBarButton",
+    "selector": "808518",
+    "replacement": "0x4c554",
+    "orig_imp_slot": "0xef5c8"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a6a0",
+    "class": "UITabBarButton",
+    "selector": "810695",
+    "replacement": "0x4d254",
+    "orig_imp_slot": "0xef5d0"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a6c8",
+    "class": "UITabBarButton",
+    "selector": "787357",
+    "replacement": "0x4d778",
+    "orig_imp_slot": "0xef5d8"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a6f0",
+    "class": "UITabBarButton",
+    "selector": "809155",
+    "replacement": "0x4f544",
+    "orig_imp_slot": "0xef5e0"
+  },
+  {
+    "init": "0x4a39c",
+    "call": "0x4a71c",
+    "class": "PXCuratedLibraryZoomLevelControl",
+    "selector": "818719",
+    "replacement": "0x4f5a4",
+    "orig_imp_slot": "0xef5e8"
+  },
+  {
+    "init": "0x5984c",
+    "call": "0x598e8",
+    "class": "SBElasticSliderView",
+    "selector": "787198",
+    "replacement": "0x59a0c",
+    "orig_imp_slot": "0xef670"
+  },
+  {
+    "init": "0x5984c",
+    "call": "0x59910",
+    "class": "SBElasticSliderView",
+    "selector": "818719",
+    "replacement": "0x59a88",
+    "orig_imp_slot": "0xef678"
+  },
+  {
+    "init": "0x5984c",
+    "call": "0x59974",
+    "class": "SBElasticSliderMaterialWrapperView",
+    "selector": "816840",
+    "replacement": "0x59b08",
+    "orig_imp_slot": "0xef688"
+  },
+  {
+    "init": "0x5984c",
+    "call": "0x5999c",
+    "class": "SBElasticSliderMaterialWrapperView",
+    "selector": "817189",
+    "replacement": "0x59b44",
+    "orig_imp_slot": "0xef690"
+  },
+  {
+    "init": "0x5984c",
+    "call": "0x599c4",
+    "class": "SBElasticSliderMaterialWrapperView",
+    "selector": "818719",
+    "replacement": "0x59b80",
+    "orig_imp_slot": "0xef698"
+  },
+  {
+    "init": "0x5984c",
+    "call": "0x599ec",
+    "class": "SBElasticSliderMaterialWrapperView",
+    "selector": "804569",
+    "replacement": "0x59bc0",
+    "orig_imp_slot": "0xef6a0"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c1f4",
+    "class": "MTMaterialView",
+    "selector": "787198",
+    "replacement": "0x5c5a0",
+    "orig_imp_slot": "0xef6b8"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c220",
+    "class": "MTMaterialView",
+    "selector": "818719",
+    "replacement": "0x5c650",
+    "orig_imp_slot": "0xef6c0"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c248",
+    "class": "MTMaterialView",
+    "selector": "828985",
+    "replacement": "0x5c6cc",
+    "orig_imp_slot": "0xef6c8"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c280",
+    "class": "CHUISAvocadoHostViewController",
+    "selector": "805659",
+    "replacement": "0x5c760",
+    "orig_imp_slot": "0xef6d0"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c2a8",
+    "class": "CHUISAvocadoHostViewController",
+    "selector": "824809",
+    "replacement": "0x5c804",
+    "orig_imp_slot": "0xef6d8"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c2d8",
+    "class": "CHUISWidgetHostViewController",
+    "selector": "805659",
+    "replacement": "0x5c8a8",
+    "orig_imp_slot": "0xef6e0"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c300",
+    "class": "CHUISWidgetHostViewController",
+    "selector": "786483",
+    "replacement": "0x5c94c",
+    "orig_imp_slot": "0xef6e8"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c328",
+    "class": "CHUISWidgetHostViewController",
+    "selector": "805916",
+    "replacement": "0x5c9f0",
+    "orig_imp_slot": "0xef6f0"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c350",
+    "class": "CHUISWidgetHostViewController",
+    "selector": "804784",
+    "replacement": "0x5ca94",
+    "orig_imp_slot": "0xef6f8"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c380",
+    "class": "BSUIScrollView",
+    "selector": "787198",
+    "replacement": "0x5cb5c",
+    "orig_imp_slot": "0xef700"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c3a4",
+    "class": "BSUIScrollView",
+    "selector": "818719",
+    "replacement": "0x5cbf8",
+    "orig_imp_slot": "0xef708"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c468",
+    "class": "WGWidgetPlatterView",
+    "selector": "787198",
+    "replacement": "0x5cc58",
+    "orig_imp_slot": "0xef720"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c48c",
+    "class": "WGWidgetPlatterView",
+    "selector": "818719",
+    "replacement": "0x5cca8",
+    "orig_imp_slot": "0xef728"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c518",
+    "class": "CHUISWidgetHostViewControllerView",
+    "selector": "787198",
+    "replacement": "0x5d788",
+    "orig_imp_slot": "0xef740"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c53c",
+    "class": "CHUISWidgetHostViewControllerView",
+    "selector": "818719",
+    "replacement": "0x5d7d8",
+    "orig_imp_slot": "0xef748"
+  },
+  {
+    "init": "0x5c1a8",
+    "call": "0x5c568",
+    "class": "SBIconListView",
+    "selector": "818719",
+    "replacement": "0x5d818",
+    "orig_imp_slot": "0xef750"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75c4c",
+    "class": "*\u0001",
+    "selector": "825622",
+    "replacement": "0x76ff8",
+    "orig_imp_slot": "0xef890"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75c7c",
+    "class": "*\u0001",
+    "selector": "?",
+    "replacement": "0x77038",
+    "orig_imp_slot": "0xef898"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75de4",
+    "class": "*\u0001",
+    "selector": "812484",
+    "replacement": "0x77a90",
+    "orig_imp_slot": "0xef8b8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75e18",
+    "class": "PREditingSceneViewController",
+    "selector": "828337",
+    "replacement": "0x77b04",
+    "orig_imp_slot": "0xef8c0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75e40",
+    "class": "PREditingSceneViewController",
+    "selector": "803680",
+    "replacement": "0x77ba4",
+    "orig_imp_slot": "0xef8c8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75e68",
+    "class": "PREditingSceneViewController",
+    "selector": "804676",
+    "replacement": "0x77c38",
+    "orig_imp_slot": "0xef8d0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75e8c",
+    "class": "PREditingSceneViewController",
+    "selector": "804715",
+    "replacement": "0x77cb0",
+    "orig_imp_slot": "0xef8d8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75eb8",
+    "class": "PREditingSceneViewController",
+    "selector": "839887",
+    "replacement": "0x77d3c",
+    "orig_imp_slot": "0xef8e0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75eec",
+    "class": "PRGraphicComplicationContainerViewController",
+    "selector": "828276",
+    "replacement": "0x77d8c",
+    "orig_imp_slot": "0xef8e8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75f14",
+    "class": "PRGraphicComplicationContainerViewController",
+    "selector": "805156",
+    "replacement": "0x78094",
+    "orig_imp_slot": "0xef8f0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x75f40",
+    "class": "PRComplicationContainerViewController",
+    "selector": "839887",
+    "replacement": "0x78208",
+    "orig_imp_slot": "0xef8f8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76114",
+    "class": "CSProminentSubtitleDateView",
+    "selector": "818719",
+    "replacement": "0x78358",
+    "orig_imp_slot": "0xef908"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76144",
+    "class": "CSProminentTimeView",
+    "selector": "818719",
+    "replacement": "0x78398",
+    "orig_imp_slot": "0xef910"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76170",
+    "class": "CSProminentTimeView",
+    "selector": "825457",
+    "replacement": "0x783ec",
+    "orig_imp_slot": "0xef918"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x7619c",
+    "class": "CSProminentTimeView",
+    "selector": "828985",
+    "replacement": "0x784a0",
+    "orig_imp_slot": "0xef920"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x761c8",
+    "class": "CSProminentTimeView",
+    "selector": "787198",
+    "replacement": "0x78554",
+    "orig_imp_slot": "0xef928"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x761f4",
+    "class": "CSProminentTimeView",
+    "selector": "827188",
+    "replacement": "0x78594",
+    "orig_imp_slot": "0xef930"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76224",
+    "class": "SBFLockScreenDateView",
+    "selector": "787198",
+    "replacement": "0x785d4",
+    "orig_imp_slot": "0xef938"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76248",
+    "class": "SBFLockScreenDateView",
+    "selector": "818719",
+    "replacement": "0x78624",
+    "orig_imp_slot": "0xef940"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x7626c",
+    "class": "SBFLockScreenDateView",
+    "selector": "827188",
+    "replacement": "0x78674",
+    "orig_imp_slot": "0xef948"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76298",
+    "class": "SBFLockScreenDateSubtitleDateView",
+    "selector": "818719",
+    "replacement": "0x786cc",
+    "orig_imp_slot": "0xef950"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x762c8",
+    "class": "NCNotificationListView",
+    "selector": "818719",
+    "replacement": "0x78730",
+    "orig_imp_slot": "0xef958"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x762f0",
+    "class": "NCNotificationListView",
+    "selector": "826717",
+    "replacement": "0x78784",
+    "orig_imp_slot": "0xef960"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x7631c",
+    "class": "CSScrollView",
+    "selector": "818719",
+    "replacement": "0x787b4",
+    "orig_imp_slot": "0xef968"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x7634c",
+    "class": "NCNotificationListHeaderTitleView",
+    "selector": "787198",
+    "replacement": "0x78804",
+    "orig_imp_slot": "0xef970"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76370",
+    "class": "NCNotificationListHeaderTitleView",
+    "selector": "818719",
+    "replacement": "0x78834",
+    "orig_imp_slot": "0xef978"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x763a0",
+    "class": "NCNotificationListSectionRevealHintView",
+    "selector": "787198",
+    "replacement": "0x78864",
+    "orig_imp_slot": "0xef980"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x763c4",
+    "class": "NCNotificationListSectionRevealHintView",
+    "selector": "818719",
+    "replacement": "0x78894",
+    "orig_imp_slot": "0xef988"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76568",
+    "class": "*\u0001",
+    "selector": "839887",
+    "replacement": "0x78ae8",
+    "orig_imp_slot": "0xef990"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76590",
+    "class": "*\u0001",
+    "selector": "812527",
+    "replacement": "0x78bd4",
+    "orig_imp_slot": "0xef998"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x765c0",
+    "class": "BSUIVibrancyView",
+    "selector": "826609",
+    "replacement": "0x78da8",
+    "orig_imp_slot": "0xef9a0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x765f4",
+    "class": "UILabel",
+    "selector": "834053",
+    "replacement": "0x78e70",
+    "orig_imp_slot": "0xef9a8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x7661c",
+    "class": "UILabel",
+    "selector": "825654",
+    "replacement": "0x78fa0",
+    "orig_imp_slot": "0xef9b0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76648",
+    "class": "UILabel",
+    "selector": "828432",
+    "replacement": "0x790d0",
+    "orig_imp_slot": "0xef9b8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76674",
+    "class": "UILabel",
+    "selector": "826219",
+    "replacement": "0x79180",
+    "orig_imp_slot": "0xef9c0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x766a8",
+    "class": "PRMutablePosterConfiguration",
+    "selector": "836356",
+    "replacement": "0x79214",
+    "orig_imp_slot": "0xef9c8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x766d0",
+    "class": "PRMutablePosterConfiguration",
+    "selector": "836323",
+    "replacement": "0x79430",
+    "orig_imp_slot": "0xef9d0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76700",
+    "class": "PREditingReticleView",
+    "selector": "?",
+    "replacement": "0x795b0",
+    "orig_imp_slot": "0xef9d8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76724",
+    "class": "PREditingReticleView",
+    "selector": "?",
+    "replacement": "0x79620",
+    "orig_imp_slot": "0xef9e0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76748",
+    "class": "PREditingReticleView",
+    "selector": "828432",
+    "replacement": "0x79688",
+    "orig_imp_slot": "0xef9e8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76774",
+    "class": "PREditingReticleView",
+    "selector": "826082",
+    "replacement": "0x79740",
+    "orig_imp_slot": "0xef9f0"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76798",
+    "class": "PREditingReticleView",
+    "selector": "826219",
+    "replacement": "0x797f0",
+    "orig_imp_slot": "0xef9f8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x767bc",
+    "class": "PREditingReticleView",
+    "selector": "818719",
+    "replacement": "0x79898",
+    "orig_imp_slot": "0xefa00"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x767ec",
+    "class": "BSUIVibrancyEffectView",
+    "selector": "828432",
+    "replacement": "0x799e8",
+    "orig_imp_slot": "0xefa08"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76810",
+    "class": "BSUIVibrancyEffectView",
+    "selector": "826082",
+    "replacement": "0x79af0",
+    "orig_imp_slot": "0xefa10"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76834",
+    "class": "BSUIVibrancyEffectView",
+    "selector": "826219",
+    "replacement": "0x79bd8",
+    "orig_imp_slot": "0xefa18"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76868",
+    "class": "PREditorRootViewController",
+    "selector": "831958",
+    "replacement": "0x79c80",
+    "orig_imp_slot": "0xefa20"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76890",
+    "class": "PREditorRootViewController",
+    "selector": "828306",
+    "replacement": "0x79d14",
+    "orig_imp_slot": "0xefa28"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x768c0",
+    "class": "PREditorCombinedRootViewController",
+    "selector": "839887",
+    "replacement": "0x79da8",
+    "orig_imp_slot": "0xefa30"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x768ec",
+    "class": "PREditorCombinedRootViewController",
+    "selector": "839070",
+    "replacement": "0x79dec",
+    "orig_imp_slot": "0xefa38"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x7691c",
+    "class": "PREditorSeparatedRootViewController",
+    "selector": "839887",
+    "replacement": "0x79e30",
+    "orig_imp_slot": "0xefa40"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76940",
+    "class": "PREditorSeparatedRootViewController",
+    "selector": "839070",
+    "replacement": "0x79e74",
+    "orig_imp_slot": "0xefa48"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76a58",
+    "class": "PBUIPosterViewController",
+    "selector": "824754",
+    "replacement": "0x75164",
+    "orig_imp_slot": "0xef830"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76ae4",
+    "class": "PBUIPosterViewController",
+    "selector": "839909",
+    "replacement": "0x7a18c",
+    "orig_imp_slot": "0xefa50"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76b0c",
+    "class": "PBUIPosterViewController",
+    "selector": "838386",
+    "replacement": "0x7a1ec",
+    "orig_imp_slot": "0xefa58"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76b54",
+    "class": "CSCombinedListViewController",
+    "selector": "824851",
+    "replacement": "0x7a334",
+    "orig_imp_slot": "0xefa60"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76b7c",
+    "class": "CSCombinedListViewController",
+    "selector": "802171",
+    "replacement": "0x7a41c",
+    "orig_imp_slot": "0xefa68"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76ba4",
+    "class": "CSCombinedListViewController",
+    "selector": "839887",
+    "replacement": "0x7a480",
+    "orig_imp_slot": "0xefa70"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76bd4",
+    "class": "SBCoverSheetWindow",
+    "selector": "828985",
+    "replacement": "0x7a4f4",
+    "orig_imp_slot": "0xefa78"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76bf8",
+    "class": "SBCoverSheetWindow",
+    "selector": "CLASS_RESULT:PREditingReticleView",
+    "replacement": "0x7a580",
+    "orig_imp_slot": "0xefa80"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76c28",
+    "class": "NCNotificationListView",
+    "selector": "810567",
+    "replacement": "0x7a5f0",
+    "orig_imp_slot": "0xefa88"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76e40",
+    "class": "NCNotificationStructuredListView",
+    "selector": "818719",
+    "replacement": "0x74b40",
+    "orig_imp_slot": "0xef7f8"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76ed0",
+    "class": "CSWidgetGridViewController",
+    "selector": "826529",
+    "replacement": "0x74cc8",
+    "orig_imp_slot": "0xef808"
+  },
+  {
+    "init": "0x75b90",
+    "call": "0x76f5c",
+    "class": "CSCombinedListViewController",
+    "selector": "820791",
+    "replacement": "0x74d58",
+    "orig_imp_slot": "0xef810"
+  },
+  {
+    "init": "0x98854",
+    "call": "0x98894",
+    "class": "MTMaterialView",
+    "selector": "787198",
+    "replacement": "0x98978",
+    "orig_imp_slot": "0xefc10"
+  },
+  {
+    "init": "0x98854",
+    "call": "0x988bc",
+    "class": "MTMaterialView",
+    "selector": "818719",
+    "replacement": "0x989b8",
+    "orig_imp_slot": "0xefc18"
+  },
+  {
+    "init": "0x98854",
+    "call": "0x988e4",
+    "class": "MTMaterialView",
+    "selector": "828985",
+    "replacement": "0x989f8",
+    "orig_imp_slot": "0xefc20"
+  },
+  {
+    "init": "0x98854",
+    "call": "0x9890c",
+    "class": "MTMaterialView",
+    "selector": "828432",
+    "replacement": "0x98a58",
+    "orig_imp_slot": "0xefc28"
+  },
+  {
+    "init": "0x98854",
+    "call": "0x98934",
+    "class": "MTMaterialView",
+    "selector": "826082",
+    "replacement": "0x98aa0",
+    "orig_imp_slot": "0xefc30"
+  }
+]

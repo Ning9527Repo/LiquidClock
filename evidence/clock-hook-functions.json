@@ -1,0 +1,2633 @@
+{
+  "sample": "e9f579c00b768376dd807c79c1796ee3bbce93d852e97b8f0354511208278a99",
+  "arch": "arm64e",
+  "binary_sha256": "ab85ba3d9fee2e695789a50df90eadcb837a86d0864061b6215a1cf281dd7a66",
+  "evidence_only": true,
+  "hooks": [
+    {
+      "init": "0x75b90",
+      "call": "0x75eec",
+      "class": "PRGraphicComplicationContainerViewController",
+      "selector": "828276",
+      "replacement": "0x77d8c",
+      "orig_imp_slot": "0xef8e8",
+      "selector_name": "setFocused:animationSettings:",
+      "function_start": "0x77d8c",
+      "function_end": "0x78094",
+      "size": 776,
+      "sha256": "647947f5d0ae680971f72da5de2a7dd81f5908d951cc26495a35828b8da0c446",
+      "prologue": [
+        {
+          "va": "0x77d8c",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x77d90",
+          "mnemonic": "sub",
+          "op": "sp, sp, #0xa0"
+        },
+        {
+          "va": "0x77d94",
+          "mnemonic": "stp",
+          "op": "d11, d10, [sp, #0x40]"
+        },
+        {
+          "va": "0x77d98",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #0x50]"
+        },
+        {
+          "va": "0x77d9c",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #0x60]"
+        },
+        {
+          "va": "0x77da0",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x70]"
+        },
+        {
+          "va": "0x77da4",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x80]"
+        },
+        {
+          "va": "0x77da8",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x90]"
+        },
+        {
+          "va": "0x77dac",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x90"
+        },
+        {
+          "va": "0x77db0",
+          "mnemonic": "mov",
+          "op": "x21, x2"
+        },
+        {
+          "va": "0x77db4",
+          "mnemonic": "mov",
+          "op": "x20, x0"
+        },
+        {
+          "va": "0x77db8",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x75f14",
+      "class": "PRGraphicComplicationContainerViewController",
+      "selector": "805156",
+      "replacement": "0x78094",
+      "orig_imp_slot": "0xef8f0",
+      "selector_name": "_tapGestureRecognized:",
+      "function_start": "0x78094",
+      "function_end": "0x78208",
+      "size": 372,
+      "sha256": "e306e32184cf85292d9719941bc4bd742d825841474a26d730671047613a3ddd",
+      "prologue": [
+        {
+          "va": "0x78094",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x78098",
+          "mnemonic": "sub",
+          "op": "sp, sp, #0x70"
+        },
+        {
+          "va": "0x7809c",
+          "mnemonic": "stp",
+          "op": "d11, d10, [sp, #0x10]"
+        },
+        {
+          "va": "0x780a0",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #0x20]"
+        },
+        {
+          "va": "0x780a4",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #0x30]"
+        },
+        {
+          "va": "0x780a8",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x40]"
+        },
+        {
+          "va": "0x780ac",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x50]"
+        },
+        {
+          "va": "0x780b0",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x60]"
+        },
+        {
+          "va": "0x780b4",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x60"
+        },
+        {
+          "va": "0x780b8",
+          "mnemonic": "mov",
+          "op": "x20, x1"
+        },
+        {
+          "va": "0x780bc",
+          "mnemonic": "mov",
+          "op": "x21, x0"
+        },
+        {
+          "va": "0x780c0",
+          "mnemonic": "mov",
+          "op": "x0, x2"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x75f40",
+      "class": "PRComplicationContainerViewController",
+      "selector": "839887",
+      "replacement": "0x78208",
+      "orig_imp_slot": "0xef8f8",
+      "selector_name": "viewDidLayoutSubviews",
+      "function_start": "0x78208",
+      "function_end": "0x78358",
+      "size": 336,
+      "sha256": "040fdb7ec554604cbdc53df35000155371640a5d9dfe859e32b4d5b13833f1b9",
+      "prologue": [
+        {
+          "va": "0x78208",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7820c",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #-0x40]!"
+        },
+        {
+          "va": "0x78210",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x10]"
+        },
+        {
+          "va": "0x78214",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "va": "0x78218",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "va": "0x7821c",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x30"
+        },
+        {
+          "va": "0x78220",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x78224",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x78228",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x8f8]"
+        },
+        {
+          "va": "0x7822c",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x78230",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x78234",
+          "mnemonic": "bl",
+          "op": "#0xa4704"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76114",
+      "class": "CSProminentSubtitleDateView",
+      "selector": "818719",
+      "replacement": "0x78358",
+      "orig_imp_slot": "0xef908",
+      "selector_name": "layoutSubviews",
+      "function_start": "0x78358",
+      "function_end": "0x78398",
+      "size": 64,
+      "sha256": "6829c502110dc2fa9e7cdaa83f86c370897301363eeee2e0d8ebf8e200993b9d",
+      "prologue": [
+        {
+          "va": "0x78358",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7835c",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x78360",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x78364",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x78368",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x7836c",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x78370",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x908]"
+        },
+        {
+          "va": "0x78374",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x78378",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x7837c",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x78380",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        },
+        {
+          "va": "0x78384",
+          "mnemonic": "autibsp",
+          "op": ""
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76144",
+      "class": "CSProminentTimeView",
+      "selector": "818719",
+      "replacement": "0x78398",
+      "orig_imp_slot": "0xef910",
+      "selector_name": "layoutSubviews",
+      "function_start": "0x78398",
+      "function_end": "0x783ec",
+      "size": 84,
+      "sha256": "66d470f4d84f0c257336b93a95189a18bdc5242e49dba3281b944f8865533875",
+      "prologue": [
+        {
+          "va": "0x78398",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7839c",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x783a0",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x783a4",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x783a8",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x783ac",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x783b0",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x910]"
+        },
+        {
+          "va": "0x783b4",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x783b8",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x783bc",
+          "mnemonic": "ldrb",
+          "op": "w8, [x8, #0x8a0]"
+        },
+        {
+          "va": "0x783c0",
+          "mnemonic": "cmp",
+          "op": "w8, #1"
+        },
+        {
+          "va": "0x783c4",
+          "mnemonic": "b.ne",
+          "op": "#0x783d0"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76170",
+      "class": "CSProminentTimeView",
+      "selector": "825457",
+      "replacement": "0x783ec",
+      "orig_imp_slot": "0xef918",
+      "selector_name": "setAlpha:",
+      "function_start": "0x783ec",
+      "function_end": "0x784a0",
+      "size": 180,
+      "sha256": "01065ba20c8aa762c107baf5654d97eb2df5696d2d06767153a38e4e611c1622",
+      "prologue": [
+        {
+          "va": "0x783ec",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x783f0",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #-0x30]!"
+        },
+        {
+          "va": "0x783f4",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x10]"
+        },
+        {
+          "va": "0x783f8",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x20]"
+        },
+        {
+          "va": "0x783fc",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x20"
+        },
+        {
+          "va": "0x78400",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x78404",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x78408",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x918]"
+        },
+        {
+          "va": "0x7840c",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x78410",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x78414",
+          "mnemonic": "bl",
+          "op": "#0xa4704"
+        },
+        {
+          "va": "0x78418",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x7619c",
+      "class": "CSProminentTimeView",
+      "selector": "828985",
+      "replacement": "0x784a0",
+      "orig_imp_slot": "0xef920",
+      "selector_name": "setHidden:",
+      "function_start": "0x784a0",
+      "function_end": "0x78554",
+      "size": 180,
+      "sha256": "3b5a7c0389bc491db8ae0850616b94ad7b441399c4c41f8e6e87c9850288e70e",
+      "prologue": [
+        {
+          "va": "0x784a0",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x784a4",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #-0x30]!"
+        },
+        {
+          "va": "0x784a8",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x10]"
+        },
+        {
+          "va": "0x784ac",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x20]"
+        },
+        {
+          "va": "0x784b0",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x20"
+        },
+        {
+          "va": "0x784b4",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x784b8",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x784bc",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x920]"
+        },
+        {
+          "va": "0x784c0",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x784c4",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x784c8",
+          "mnemonic": "bl",
+          "op": "#0xa4704"
+        },
+        {
+          "va": "0x784cc",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x761c8",
+      "class": "CSProminentTimeView",
+      "selector": "787198",
+      "replacement": "0x78554",
+      "orig_imp_slot": "0xef928",
+      "selector_name": "didMoveToWindow",
+      "function_start": "0x78554",
+      "function_end": "0x78594",
+      "size": 64,
+      "sha256": "3771f3b3f5e3ea7a50bf70d466b3d0df541479b62b384ae2088e161a4331bac3",
+      "prologue": [
+        {
+          "va": "0x78554",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x78558",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7855c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x78560",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x78564",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x78568",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7856c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x928]"
+        },
+        {
+          "va": "0x78570",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x78574",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x78578",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x7857c",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        },
+        {
+          "va": "0x78580",
+          "mnemonic": "autibsp",
+          "op": ""
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x761f4",
+      "class": "CSProminentTimeView",
+      "selector": "827188",
+      "replacement": "0x78594",
+      "orig_imp_slot": "0xef930",
+      "selector_name": "setDate:",
+      "function_start": "0x78594",
+      "function_end": "0x785d4",
+      "size": 64,
+      "sha256": "b3f0780257239a0d2f97995ab51fecc1c9c2c676286a44c9b30c8d090e91219b",
+      "prologue": [
+        {
+          "va": "0x78594",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x78598",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7859c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x785a0",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x785a4",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x785a8",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x785ac",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x930]"
+        },
+        {
+          "va": "0x785b0",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x785b4",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x785b8",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x785bc",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        },
+        {
+          "va": "0x785c0",
+          "mnemonic": "autibsp",
+          "op": ""
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76224",
+      "class": "SBFLockScreenDateView",
+      "selector": "787198",
+      "replacement": "0x785d4",
+      "orig_imp_slot": "0xef938",
+      "selector_name": "didMoveToWindow",
+      "function_start": "0x785d4",
+      "function_end": "0x78624",
+      "size": 80,
+      "sha256": "1ee4bdf5915941418babcd7e42be0d46ee8987f4662c8f49e6cc3e7e142b57a3",
+      "prologue": [
+        {
+          "va": "0x785d4",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x785d8",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x785dc",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x785e0",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x785e4",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x785e8",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x785ec",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x938]"
+        },
+        {
+          "va": "0x785f0",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x785f4",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x785f8",
+          "mnemonic": "bl",
+          "op": "#0x7b714"
+        },
+        {
+          "va": "0x785fc",
+          "mnemonic": "cbz",
+          "op": "w0, #0x78608"
+        },
+        {
+          "va": "0x78600",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76248",
+      "class": "SBFLockScreenDateView",
+      "selector": "818719",
+      "replacement": "0x78624",
+      "orig_imp_slot": "0xef940",
+      "selector_name": "layoutSubviews",
+      "function_start": "0x78624",
+      "function_end": "0x78674",
+      "size": 80,
+      "sha256": "37dfb970f25302c4cb5825addf6bc2b9b336756ba6ae2f14bac62f5b01b19324",
+      "prologue": [
+        {
+          "va": "0x78624",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x78628",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7862c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x78630",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x78634",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x78638",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7863c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x940]"
+        },
+        {
+          "va": "0x78640",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x78644",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x78648",
+          "mnemonic": "bl",
+          "op": "#0x7b714"
+        },
+        {
+          "va": "0x7864c",
+          "mnemonic": "cbz",
+          "op": "w0, #0x78658"
+        },
+        {
+          "va": "0x78650",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x7626c",
+      "class": "SBFLockScreenDateView",
+      "selector": "827188",
+      "replacement": "0x78674",
+      "orig_imp_slot": "0xef948",
+      "selector_name": "setDate:",
+      "function_start": "0x78674",
+      "function_end": "0x786cc",
+      "size": 88,
+      "sha256": "5bfff44f3ef1492afa86e863fcff66221ac3c12110d731d6c21a8b3802c36bdf",
+      "prologue": [
+        {
+          "va": "0x78674",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x78678",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7867c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x78680",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x78684",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x78688",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7868c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x948]"
+        },
+        {
+          "va": "0x78690",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x78694",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x78698",
+          "mnemonic": "bl",
+          "op": "#0x7b714"
+        },
+        {
+          "va": "0x7869c",
+          "mnemonic": "cbz",
+          "op": "w0, #0x786c0"
+        },
+        {
+          "va": "0x786a0",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76298",
+      "class": "SBFLockScreenDateSubtitleDateView",
+      "selector": "818719",
+      "replacement": "0x786cc",
+      "orig_imp_slot": "0xef950",
+      "selector_name": "layoutSubviews",
+      "function_start": "0x786cc",
+      "function_end": "0x78730",
+      "size": 100,
+      "sha256": "3ebbf0813074d611517248352912f1b84707571e0b09c98302c431a23b882dac",
+      "prologue": [
+        {
+          "va": "0x786cc",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x786d0",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x786d4",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x786d8",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x786dc",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x786e0",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x786e4",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x950]"
+        },
+        {
+          "va": "0x786e8",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x786ec",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x786f0",
+          "mnemonic": "bl",
+          "op": "#0xb0760"
+        },
+        {
+          "va": "0x786f4",
+          "mnemonic": "mov",
+          "op": "x29, x29"
+        },
+        {
+          "va": "0x786f8",
+          "mnemonic": "bl",
+          "op": "#0xa4734"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x766a8",
+      "class": "PRMutablePosterConfiguration",
+      "selector": "836356",
+      "replacement": "0x79214",
+      "orig_imp_slot": "0xef9c8",
+      "selector_name": "storeUserInfo:error:",
+      "function_start": "0x79214",
+      "function_end": "0x79430",
+      "size": 540,
+      "sha256": "685188b6a929758f5860b969d1b05543020408e978137a2e800a98dbcb86c826",
+      "prologue": [
+        {
+          "va": "0x79214",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79218",
+          "mnemonic": "stp",
+          "op": "x28, x27, [sp, #-0x60]!"
+        },
+        {
+          "va": "0x7921c",
+          "mnemonic": "stp",
+          "op": "x26, x25, [sp, #0x10]"
+        },
+        {
+          "va": "0x79220",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #0x20]"
+        },
+        {
+          "va": "0x79224",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x30]"
+        },
+        {
+          "va": "0x79228",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x40]"
+        },
+        {
+          "va": "0x7922c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x50]"
+        },
+        {
+          "va": "0x79230",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x50"
+        },
+        {
+          "va": "0x79234",
+          "mnemonic": "mov",
+          "op": "x21, x3"
+        },
+        {
+          "va": "0x79238",
+          "mnemonic": "mov",
+          "op": "x23, x1"
+        },
+        {
+          "va": "0x7923c",
+          "mnemonic": "mov",
+          "op": "x24, x0"
+        },
+        {
+          "va": "0x79240",
+          "mnemonic": "mov",
+          "op": "x0, x2"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x766d0",
+      "class": "PRMutablePosterConfiguration",
+      "selector": "836323",
+      "replacement": "0x79430",
+      "orig_imp_slot": "0xef9d0",
+      "selector_name": "storeConfiguredProperties:error:",
+      "function_start": "0x79430",
+      "function_end": "0x795b0",
+      "size": 384,
+      "sha256": "1be9694bb161d2c44a1820a593e1d6d587e69444e4777357cefc086d5be88590",
+      "prologue": [
+        {
+          "va": "0x79430",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79434",
+          "mnemonic": "sub",
+          "op": "sp, sp, #0x50"
+        },
+        {
+          "va": "0x79438",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #0x10]"
+        },
+        {
+          "va": "0x7943c",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x20]"
+        },
+        {
+          "va": "0x79440",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x30]"
+        },
+        {
+          "va": "0x79444",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x40]"
+        },
+        {
+          "va": "0x79448",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x40"
+        },
+        {
+          "va": "0x7944c",
+          "mnemonic": "mov",
+          "op": "x20, x3"
+        },
+        {
+          "va": "0x79450",
+          "mnemonic": "mov",
+          "op": "x21, x0"
+        },
+        {
+          "va": "0x79454",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79458",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x9d0]"
+        },
+        {
+          "va": "0x7945c",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76700",
+      "class": "PREditingReticleView",
+      "selector": "?",
+      "replacement": "0x795b0",
+      "orig_imp_slot": "0xef9d8",
+      "selector_name": "?",
+      "function_start": "0x795b0",
+      "function_end": "0x79620",
+      "size": 112,
+      "sha256": "654622c3fe128c6f449e3ca81a0d47e01c3ad63f209e3d8bb96d506f75f50422",
+      "prologue": [
+        {
+          "va": "0x795b0",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x795b4",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #-0x30]!"
+        },
+        {
+          "va": "0x795b8",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x10]"
+        },
+        {
+          "va": "0x795bc",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x20]"
+        },
+        {
+          "va": "0x795c0",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x20"
+        },
+        {
+          "va": "0x795c4",
+          "mnemonic": "fmov",
+          "op": "d8, d0"
+        },
+        {
+          "va": "0x795c8",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x795cc",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x795d0",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x9d8]"
+        },
+        {
+          "va": "0x795d4",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x795d8",
+          "mnemonic": "adrp",
+          "op": "x8, #0xee000"
+        },
+        {
+          "va": "0x795dc",
+          "mnemonic": "ldr",
+          "op": "x1, [x8, #0x8f8]"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76724",
+      "class": "PREditingReticleView",
+      "selector": "?",
+      "replacement": "0x79620",
+      "orig_imp_slot": "0xef9e0",
+      "selector_name": "?",
+      "function_start": "0x79620",
+      "function_end": "0x79688",
+      "size": 104,
+      "sha256": "6a911f057931ecf3e697e3b2125c46385d43c1284ad20f5d1ee4dfc1feee7bcb",
+      "prologue": [
+        {
+          "va": "0x79620",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79624",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x79628",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x7962c",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x79630",
+          "mnemonic": "mov",
+          "op": "x19, x2"
+        },
+        {
+          "va": "0x79634",
+          "mnemonic": "mov",
+          "op": "x20, x0"
+        },
+        {
+          "va": "0x79638",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7963c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x9e0]"
+        },
+        {
+          "va": "0x79640",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79644",
+          "mnemonic": "adrp",
+          "op": "x8, #0xee000"
+        },
+        {
+          "va": "0x79648",
+          "mnemonic": "ldr",
+          "op": "x1, [x8, #0x8f8]"
+        },
+        {
+          "va": "0x7964c",
+          "mnemonic": "mov",
+          "op": "x0, x20"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76748",
+      "class": "PREditingReticleView",
+      "selector": "828432",
+      "replacement": "0x79688",
+      "orig_imp_slot": "0xef9e8",
+      "selector_name": "setFrame:",
+      "function_start": "0x79688",
+      "function_end": "0x79740",
+      "size": 184,
+      "sha256": "1cb3b167a20848312c702eed0edca2964737474c187bf619caaae7233e7a1c42",
+      "prologue": [
+        {
+          "va": "0x79688",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7968c",
+          "mnemonic": "stp",
+          "op": "d11, d10, [sp, #-0x50]!"
+        },
+        {
+          "va": "0x79690",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #0x10]"
+        },
+        {
+          "va": "0x79694",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x20]"
+        },
+        {
+          "va": "0x79698",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x30]"
+        },
+        {
+          "va": "0x7969c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x40]"
+        },
+        {
+          "va": "0x796a0",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x40"
+        },
+        {
+          "va": "0x796a4",
+          "mnemonic": "fmov",
+          "op": "d8, d3"
+        },
+        {
+          "va": "0x796a8",
+          "mnemonic": "fmov",
+          "op": "d9, d2"
+        },
+        {
+          "va": "0x796ac",
+          "mnemonic": "fmov",
+          "op": "d10, d1"
+        },
+        {
+          "va": "0x796b0",
+          "mnemonic": "fmov",
+          "op": "d11, d0"
+        },
+        {
+          "va": "0x796b4",
+          "mnemonic": "mov",
+          "op": "x19, x1"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76774",
+      "class": "PREditingReticleView",
+      "selector": "826082",
+      "replacement": "0x79740",
+      "orig_imp_slot": "0xef9f0",
+      "selector_name": "setBounds:",
+      "function_start": "0x79740",
+      "function_end": "0x797f0",
+      "size": 176,
+      "sha256": "ccb62b994099a617cd1aa9ad0918b40e3fa9c072b4d2b1d5f39997f8b585881e",
+      "prologue": [
+        {
+          "va": "0x79740",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79744",
+          "mnemonic": "stp",
+          "op": "d11, d10, [sp, #-0x50]!"
+        },
+        {
+          "va": "0x79748",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #0x10]"
+        },
+        {
+          "va": "0x7974c",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x20]"
+        },
+        {
+          "va": "0x79750",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x30]"
+        },
+        {
+          "va": "0x79754",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x40]"
+        },
+        {
+          "va": "0x79758",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x40"
+        },
+        {
+          "va": "0x7975c",
+          "mnemonic": "fmov",
+          "op": "d10, d3"
+        },
+        {
+          "va": "0x79760",
+          "mnemonic": "fmov",
+          "op": "d11, d2"
+        },
+        {
+          "va": "0x79764",
+          "mnemonic": "fmov",
+          "op": "d8, d1"
+        },
+        {
+          "va": "0x79768",
+          "mnemonic": "fmov",
+          "op": "d9, d0"
+        },
+        {
+          "va": "0x7976c",
+          "mnemonic": "mov",
+          "op": "x19, x1"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76798",
+      "class": "PREditingReticleView",
+      "selector": "826219",
+      "replacement": "0x797f0",
+      "orig_imp_slot": "0xef9f8",
+      "selector_name": "setCenter:",
+      "function_start": "0x797f0",
+      "function_end": "0x79898",
+      "size": 168,
+      "sha256": "98da5fab1aeb17ed6d11750f931ac262b795f917bfa87b253bccab131c6bc2da",
+      "prologue": [
+        {
+          "va": "0x797f0",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x797f4",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #-0x40]!"
+        },
+        {
+          "va": "0x797f8",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x10]"
+        },
+        {
+          "va": "0x797fc",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "va": "0x79800",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "va": "0x79804",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x30"
+        },
+        {
+          "va": "0x79808",
+          "mnemonic": "fmov",
+          "op": "d9, d1"
+        },
+        {
+          "va": "0x7980c",
+          "mnemonic": "fmov",
+          "op": "d8, d0"
+        },
+        {
+          "va": "0x79810",
+          "mnemonic": "mov",
+          "op": "x19, x1"
+        },
+        {
+          "va": "0x79814",
+          "mnemonic": "mov",
+          "op": "x20, x0"
+        },
+        {
+          "va": "0x79818",
+          "mnemonic": "adrp",
+          "op": "x8, #0xee000"
+        },
+        {
+          "va": "0x7981c",
+          "mnemonic": "ldr",
+          "op": "x1, [x8, #0x8f0]"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x767bc",
+      "class": "PREditingReticleView",
+      "selector": "818719",
+      "replacement": "0x79898",
+      "orig_imp_slot": "0xefa00",
+      "selector_name": "layoutSubviews",
+      "function_start": "0x79898",
+      "function_end": "0x799e8",
+      "size": 336,
+      "sha256": "15a5ae9379d99c159ea448e8c894bfb5dbfdce36a52a786e7745164a5fd16614",
+      "prologue": [
+        {
+          "va": "0x79898",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7989c",
+          "mnemonic": "sub",
+          "op": "sp, sp, #0x120"
+        },
+        {
+          "va": "0x798a0",
+          "mnemonic": "stp",
+          "op": "x28, x27, [sp, #0xd0]"
+        },
+        {
+          "va": "0x798a4",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #0xe0]"
+        },
+        {
+          "va": "0x798a8",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0xf0]"
+        },
+        {
+          "va": "0x798ac",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x100]"
+        },
+        {
+          "va": "0x798b0",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x110]"
+        },
+        {
+          "va": "0x798b4",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x110"
+        },
+        {
+          "va": "0x798b8",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x798bc",
+          "mnemonic": "adrp",
+          "op": "x8, #0xd4000"
+        },
+        {
+          "va": "0x798c0",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x938]"
+        },
+        {
+          "va": "0x798c4",
+          "mnemonic": "ldr",
+          "op": "x8, [x8]"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76868",
+      "class": "PREditorRootViewController",
+      "selector": "831958",
+      "replacement": "0x79c80",
+      "orig_imp_slot": "0xefa20",
+      "selector_name": "setPresentingModalViewController:",
+      "function_start": "0x79c80",
+      "function_end": "0x79d14",
+      "size": 148,
+      "sha256": "12d731f1828aba5b7a42f4d9b3dc5f0e2ab9dafcc9d2de8687458234ec9ca3ed",
+      "prologue": [
+        {
+          "va": "0x79c80",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79c84",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #-0x30]!"
+        },
+        {
+          "va": "0x79c88",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x10]"
+        },
+        {
+          "va": "0x79c8c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x20]"
+        },
+        {
+          "va": "0x79c90",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x20"
+        },
+        {
+          "va": "0x79c94",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x79c98",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79c9c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa20]"
+        },
+        {
+          "va": "0x79ca0",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79ca4",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x79ca8",
+          "mnemonic": "bl",
+          "op": "#0xb1920"
+        },
+        {
+          "va": "0x79cac",
+          "mnemonic": "mov",
+          "op": "x29, x29"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76890",
+      "class": "PREditorRootViewController",
+      "selector": "828306",
+      "replacement": "0x79d14",
+      "orig_imp_slot": "0xefa28",
+      "selector_name": "setFocusedComplicationElement:",
+      "function_start": "0x79d14",
+      "function_end": "0x79da8",
+      "size": 148,
+      "sha256": "36c451fa401b0c7a7d95976148371c9c414f68b86eebe74af7db320a701677e4",
+      "prologue": [
+        {
+          "va": "0x79d14",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79d18",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #-0x30]!"
+        },
+        {
+          "va": "0x79d1c",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x10]"
+        },
+        {
+          "va": "0x79d20",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x20]"
+        },
+        {
+          "va": "0x79d24",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x20"
+        },
+        {
+          "va": "0x79d28",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x79d2c",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79d30",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa28]"
+        },
+        {
+          "va": "0x79d34",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79d38",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x79d3c",
+          "mnemonic": "bl",
+          "op": "#0xb1920"
+        },
+        {
+          "va": "0x79d40",
+          "mnemonic": "mov",
+          "op": "x29, x29"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x768c0",
+      "class": "PREditorCombinedRootViewController",
+      "selector": "839887",
+      "replacement": "0x79da8",
+      "orig_imp_slot": "0xefa30",
+      "selector_name": "viewDidLayoutSubviews",
+      "function_start": "0x79da8",
+      "function_end": "0x79dec",
+      "size": 68,
+      "sha256": "400f6bc1a975bf0432a80c22bc74e4f709cda6db1f185ca0178e2bf3bb4522c5",
+      "prologue": [
+        {
+          "va": "0x79da8",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79dac",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x79db0",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79db4",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x79db8",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x79dbc",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79dc0",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa30]"
+        },
+        {
+          "va": "0x79dc4",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79dc8",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x79dcc",
+          "mnemonic": "bl",
+          "op": "#0x60224"
+        },
+        {
+          "va": "0x79dd0",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79dd4",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x768ec",
+      "class": "PREditorCombinedRootViewController",
+      "selector": "839070",
+      "replacement": "0x79dec",
+      "orig_imp_slot": "0xefa38",
+      "selector_name": "updateReticlesIfNeeded",
+      "function_start": "0x79dec",
+      "function_end": "0x79e30",
+      "size": 68,
+      "sha256": "1c3be111828c406c8c39690ed34461ca91d0040a2238b5d4fd7912417a20681b",
+      "prologue": [
+        {
+          "va": "0x79dec",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79df0",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x79df4",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79df8",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x79dfc",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x79e00",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79e04",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa38]"
+        },
+        {
+          "va": "0x79e08",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79e0c",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x79e10",
+          "mnemonic": "bl",
+          "op": "#0x60224"
+        },
+        {
+          "va": "0x79e14",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79e18",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x7691c",
+      "class": "PREditorSeparatedRootViewController",
+      "selector": "839887",
+      "replacement": "0x79e30",
+      "orig_imp_slot": "0xefa40",
+      "selector_name": "viewDidLayoutSubviews",
+      "function_start": "0x79e30",
+      "function_end": "0x79e74",
+      "size": 68,
+      "sha256": "af48395db0838a5ac0d7141802c6c293a5e47712738457b4d8b17e26dac2af07",
+      "prologue": [
+        {
+          "va": "0x79e30",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79e34",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x79e38",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79e3c",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x79e40",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x79e44",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79e48",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa40]"
+        },
+        {
+          "va": "0x79e4c",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79e50",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x79e54",
+          "mnemonic": "bl",
+          "op": "#0x60224"
+        },
+        {
+          "va": "0x79e58",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79e5c",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76940",
+      "class": "PREditorSeparatedRootViewController",
+      "selector": "839070",
+      "replacement": "0x79e74",
+      "orig_imp_slot": "0xefa48",
+      "selector_name": "updateReticlesIfNeeded",
+      "function_start": "0x79e74",
+      "function_end": "0x79eb8",
+      "size": 68,
+      "sha256": "07ca923d3103a70415c2087f1a4433780405217691c07d1cf18542d4dd8c452d",
+      "prologue": [
+        {
+          "va": "0x79e74",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x79e78",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x79e7c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79e80",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x79e84",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x79e88",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x79e8c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa48]"
+        },
+        {
+          "va": "0x79e90",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x79e94",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x79e98",
+          "mnemonic": "bl",
+          "op": "#0x60224"
+        },
+        {
+          "va": "0x79e9c",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x79ea0",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76a58",
+      "class": "PBUIPosterViewController",
+      "selector": "824754",
+      "replacement": "0x75164",
+      "orig_imp_slot": "0xef830",
+      "selector_name": "scene:willUpdateSettings:withTransitionContext:",
+      "function_start": "0x75164",
+      "function_end": "0x75240",
+      "size": 220,
+      "sha256": "54f01e9cbd8d5c1aaa8d19d3f9e7459ce687b841bb736cb0a865be8a2e61885f",
+      "prologue": [
+        {
+          "va": "0x75164",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x75168",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #-0x40]!"
+        },
+        {
+          "va": "0x7516c",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x10]"
+        },
+        {
+          "va": "0x75170",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "va": "0x75174",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "va": "0x75178",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x30"
+        },
+        {
+          "va": "0x7517c",
+          "mnemonic": "mov",
+          "op": "x21, x4"
+        },
+        {
+          "va": "0x75180",
+          "mnemonic": "mov",
+          "op": "x20, x3"
+        },
+        {
+          "va": "0x75184",
+          "mnemonic": "mov",
+          "op": "x22, x1"
+        },
+        {
+          "va": "0x75188",
+          "mnemonic": "mov",
+          "op": "x23, x0"
+        },
+        {
+          "va": "0x7518c",
+          "mnemonic": "mov",
+          "op": "x0, x2"
+        },
+        {
+          "va": "0x75190",
+          "mnemonic": "bl",
+          "op": "#0xa4704"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76ae4",
+      "class": "PBUIPosterViewController",
+      "selector": "839909",
+      "replacement": "0x7a18c",
+      "orig_imp_slot": "0xefa50",
+      "selector_name": "viewDidLoad",
+      "function_start": "0x7a18c",
+      "function_end": "0x7a1ec",
+      "size": 96,
+      "sha256": "9518c742a7ce90cdf76d180011189a2c04fb6b114e8559546cd6864f1f62e13f",
+      "prologue": [
+        {
+          "va": "0x7a18c",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7a190",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7a194",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x7a198",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x7a19c",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x7a1a0",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7a1a4",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa50]"
+        },
+        {
+          "va": "0x7a1a8",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x7a1ac",
+          "mnemonic": "adrp",
+          "op": "x1, #0xbb000"
+        },
+        {
+          "va": "0x7a1b0",
+          "mnemonic": "add",
+          "op": "x1, x1, #0x3af"
+        },
+        {
+          "va": "0x7a1b4",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x7a1b8",
+          "mnemonic": "bl",
+          "op": "#0x633b0"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76b0c",
+      "class": "PBUIPosterViewController",
+      "selector": "838386",
+      "replacement": "0x7a1ec",
+      "orig_imp_slot": "0xefa58",
+      "selector_name": "updateConfiguration:",
+      "function_start": "0x7a1ec",
+      "function_end": "0x7a24c",
+      "size": 96,
+      "sha256": "a72c33a97a72b11f16dfb114aac61cbf7bdc552aabd733b369ca0435cfed665a",
+      "prologue": [
+        {
+          "va": "0x7a1ec",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7a1f0",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7a1f4",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x7a1f8",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x7a1fc",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x7a200",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7a204",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa58]"
+        },
+        {
+          "va": "0x7a208",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x7a20c",
+          "mnemonic": "adrp",
+          "op": "x1, #0xbb000"
+        },
+        {
+          "va": "0x7a210",
+          "mnemonic": "add",
+          "op": "x1, x1, #0x3af"
+        },
+        {
+          "va": "0x7a214",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x7a218",
+          "mnemonic": "bl",
+          "op": "#0x633b0"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76b54",
+      "class": "CSCombinedListViewController",
+      "selector": "824851",
+      "replacement": "0x7a334",
+      "orig_imp_slot": "0xefa60",
+      "selector_name": "scrollViewDidScroll:",
+      "function_start": "0x7a334",
+      "function_end": "0x7a41c",
+      "size": 232,
+      "sha256": "36a00f1e445ba263eaf8080657013e1f7c1b911a4518692bd8f1cedd2ca753eb",
+      "prologue": [
+        {
+          "va": "0x7a334",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7a338",
+          "mnemonic": "stp",
+          "op": "x24, x23, [sp, #-0x40]!"
+        },
+        {
+          "va": "0x7a33c",
+          "mnemonic": "stp",
+          "op": "x22, x21, [sp, #0x10]"
+        },
+        {
+          "va": "0x7a340",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "va": "0x7a344",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "va": "0x7a348",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x30"
+        },
+        {
+          "va": "0x7a34c",
+          "mnemonic": "mov",
+          "op": "x20, x1"
+        },
+        {
+          "va": "0x7a350",
+          "mnemonic": "mov",
+          "op": "x21, x0"
+        },
+        {
+          "va": "0x7a354",
+          "mnemonic": "mov",
+          "op": "x0, x2"
+        },
+        {
+          "va": "0x7a358",
+          "mnemonic": "bl",
+          "op": "#0xa4704"
+        },
+        {
+          "va": "0x7a35c",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x7a360",
+          "mnemonic": "adrp",
+          "op": "x23, #0xef000"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76b7c",
+      "class": "CSCombinedListViewController",
+      "selector": "802171",
+      "replacement": "0x7a41c",
+      "orig_imp_slot": "0xefa68",
+      "selector_name": "_listViewDefaultContentInsets",
+      "function_start": "0x7a41c",
+      "function_end": "0x7a480",
+      "size": 100,
+      "sha256": "a35da991a9ecbfa55112c770359bd9b0e71cd0f8a29ef4028fc6f8100fedf4dd",
+      "prologue": [
+        {
+          "va": "0x7a41c",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7a420",
+          "mnemonic": "stp",
+          "op": "d11, d10, [sp, #-0x40]!"
+        },
+        {
+          "va": "0x7a424",
+          "mnemonic": "stp",
+          "op": "d9, d8, [sp, #0x10]"
+        },
+        {
+          "va": "0x7a428",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #0x20]"
+        },
+        {
+          "va": "0x7a42c",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x30]"
+        },
+        {
+          "va": "0x7a430",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x30"
+        },
+        {
+          "va": "0x7a434",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x7a438",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7a43c",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa68]"
+        },
+        {
+          "va": "0x7a440",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x7a444",
+          "mnemonic": "fmov",
+          "op": "d8, d0"
+        },
+        {
+          "va": "0x7a448",
+          "mnemonic": "fmov",
+          "op": "d9, d1"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76ba4",
+      "class": "CSCombinedListViewController",
+      "selector": "839887",
+      "replacement": "0x7a480",
+      "orig_imp_slot": "0xefa70",
+      "selector_name": "viewDidLayoutSubviews",
+      "function_start": "0x7a480",
+      "function_end": "0x7a4f4",
+      "size": 116,
+      "sha256": "b35eed4adcfb7ebdcefbe08a1392ca846f9c7436f3b11ae556995c997435e036",
+      "prologue": [
+        {
+          "va": "0x7a480",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x7a484",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x7a488",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x7a48c",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x7a490",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x7a494",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x7a498",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0xa70]"
+        },
+        {
+          "va": "0x7a49c",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x7a4a0",
+          "mnemonic": "adrp",
+          "op": "x0, #0xef000"
+        },
+        {
+          "va": "0x7a4a4",
+          "mnemonic": "add",
+          "op": "x0, x0, #0x770"
+        },
+        {
+          "va": "0x7a4a8",
+          "mnemonic": "bl",
+          "op": "#0xa4684"
+        },
+        {
+          "va": "0x7a4ac",
+          "mnemonic": "mov",
+          "op": "x20, x0"
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76ed0",
+      "class": "CSWidgetGridViewController",
+      "selector": "826529",
+      "replacement": "0x74cc8",
+      "orig_imp_slot": "0xef808",
+      "selector_name": "setComplicationDescriptors:iconLayout:",
+      "function_start": "0x74cc8",
+      "function_end": "0x74d08",
+      "size": 64,
+      "sha256": "5da9ff7e3609b4007cf1cee45bf1f9c3d2b4e1c5902950b08b7aa5dd2e3f00e0",
+      "prologue": [
+        {
+          "va": "0x74cc8",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x74ccc",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #-0x10]!"
+        },
+        {
+          "va": "0x74cd0",
+          "mnemonic": "mov",
+          "op": "x29, sp"
+        },
+        {
+          "va": "0x74cd4",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x74cd8",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x808]"
+        },
+        {
+          "va": "0x74cdc",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x74ce0",
+          "mnemonic": "adrp",
+          "op": "x0, #0xd4000"
+        },
+        {
+          "va": "0x74ce4",
+          "mnemonic": "ldr",
+          "op": "x0, [x0, #0x940]"
+        },
+        {
+          "va": "0x74ce8",
+          "mnemonic": "adrp",
+          "op": "x1, #0xd5000"
+        },
+        {
+          "va": "0x74cec",
+          "mnemonic": "add",
+          "op": "x1, x1, #0xcd8"
+        },
+        {
+          "va": "0x74cf0",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp], #0x10"
+        },
+        {
+          "va": "0x74cf4",
+          "mnemonic": "autibsp",
+          "op": ""
+        }
+      ]
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76f5c",
+      "class": "CSCombinedListViewController",
+      "selector": "820791",
+      "replacement": "0x74d58",
+      "orig_imp_slot": "0xef810",
+      "selector_name": "notificationStructuredListViewControllerRequestsEdgeInsetsForOverlayFooterView:",
+      "function_start": "0x74d58",
+      "function_end": "0x74d98",
+      "size": 64,
+      "sha256": "5e0fad7dc5ce39899945f662f6d10c23ae150e3204cea0def42dc18235f0fd8c",
+      "prologue": [
+        {
+          "va": "0x74d58",
+          "mnemonic": "pacibsp",
+          "op": ""
+        },
+        {
+          "va": "0x74d5c",
+          "mnemonic": "stp",
+          "op": "x20, x19, [sp, #-0x20]!"
+        },
+        {
+          "va": "0x74d60",
+          "mnemonic": "stp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x74d64",
+          "mnemonic": "add",
+          "op": "x29, sp, #0x10"
+        },
+        {
+          "va": "0x74d68",
+          "mnemonic": "mov",
+          "op": "x19, x0"
+        },
+        {
+          "va": "0x74d6c",
+          "mnemonic": "adrp",
+          "op": "x8, #0xef000"
+        },
+        {
+          "va": "0x74d70",
+          "mnemonic": "ldr",
+          "op": "x8, [x8, #0x810]"
+        },
+        {
+          "va": "0x74d74",
+          "mnemonic": "blraaz",
+          "op": "x8"
+        },
+        {
+          "va": "0x74d78",
+          "mnemonic": "mov",
+          "op": "x0, x19"
+        },
+        {
+          "va": "0x74d7c",
+          "mnemonic": "ldp",
+          "op": "x29, x30, [sp, #0x10]"
+        },
+        {
+          "va": "0x74d80",
+          "mnemonic": "ldp",
+          "op": "x20, x19, [sp], #0x20"
+        },
+        {
+          "va": "0x74d84",
+          "mnemonic": "autibsp",
+          "op": ""
+        }
+      ]
+    }
+  ]
+}

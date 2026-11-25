@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "scope": "Linux host only; not iOS or GPU",
+  "results": [
+    {
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-O2",
+        "abi/test_abi.c",
+        "-o",
+        "/tmp/clock-abi-host-jc8i1gi1/test_abi"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/clock-abi-host-jc8i1gi1/test_abi"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-O2",
+        "abi/test_reader_edges.c",
+        "-o",
+        "/tmp/clock-abi-host-jc8i1gi1/test_reader_edges"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/clock-abi-host-jc8i1gi1/test_reader_edges"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/clang",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-O2",
+        "field/test_reader.c",
+        "field/clock_field_reader.c",
+        "-o",
+        "/tmp/clock-abi-host-jc8i1gi1/test_reader"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/clock-abi-host-jc8i1gi1/test_reader"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "field/test_clock_field_protocol.py"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.010s\n\nOK\n"
+    }
+  ]
+}

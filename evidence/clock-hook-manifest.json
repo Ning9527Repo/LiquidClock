@@ -1,0 +1,323 @@
+{
+  "sample": "e9f579c00b768376dd807c79c1796ee3bbce93d852e97b8f0354511208278a99",
+  "arch": "arm64e",
+  "source_init": "0x75b90",
+  "scope": "clock display/editor/poster only; excludes unrelated hooks",
+  "hooks": [
+    {
+      "init": "0x75b90",
+      "call": "0x75eec",
+      "class": "PRGraphicComplicationContainerViewController",
+      "selector": "828276",
+      "replacement": "0x77d8c",
+      "orig_imp_slot": "0xef8e8",
+      "selector_name": "setFocused:animationSettings:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x75f14",
+      "class": "PRGraphicComplicationContainerViewController",
+      "selector": "805156",
+      "replacement": "0x78094",
+      "orig_imp_slot": "0xef8f0",
+      "selector_name": "_tapGestureRecognized:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x75f40",
+      "class": "PRComplicationContainerViewController",
+      "selector": "839887",
+      "replacement": "0x78208",
+      "orig_imp_slot": "0xef8f8",
+      "selector_name": "viewDidLayoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76114",
+      "class": "CSProminentSubtitleDateView",
+      "selector": "818719",
+      "replacement": "0x78358",
+      "orig_imp_slot": "0xef908",
+      "selector_name": "layoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76144",
+      "class": "CSProminentTimeView",
+      "selector": "818719",
+      "replacement": "0x78398",
+      "orig_imp_slot": "0xef910",
+      "selector_name": "layoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76170",
+      "class": "CSProminentTimeView",
+      "selector": "825457",
+      "replacement": "0x783ec",
+      "orig_imp_slot": "0xef918",
+      "selector_name": "setAlpha:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x7619c",
+      "class": "CSProminentTimeView",
+      "selector": "828985",
+      "replacement": "0x784a0",
+      "orig_imp_slot": "0xef920",
+      "selector_name": "setHidden:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x761c8",
+      "class": "CSProminentTimeView",
+      "selector": "787198",
+      "replacement": "0x78554",
+      "orig_imp_slot": "0xef928",
+      "selector_name": "didMoveToWindow"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x761f4",
+      "class": "CSProminentTimeView",
+      "selector": "827188",
+      "replacement": "0x78594",
+      "orig_imp_slot": "0xef930",
+      "selector_name": "setDate:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76224",
+      "class": "SBFLockScreenDateView",
+      "selector": "787198",
+      "replacement": "0x785d4",
+      "orig_imp_slot": "0xef938",
+      "selector_name": "didMoveToWindow"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76248",
+      "class": "SBFLockScreenDateView",
+      "selector": "818719",
+      "replacement": "0x78624",
+      "orig_imp_slot": "0xef940",
+      "selector_name": "layoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x7626c",
+      "class": "SBFLockScreenDateView",
+      "selector": "827188",
+      "replacement": "0x78674",
+      "orig_imp_slot": "0xef948",
+      "selector_name": "setDate:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76298",
+      "class": "SBFLockScreenDateSubtitleDateView",
+      "selector": "818719",
+      "replacement": "0x786cc",
+      "orig_imp_slot": "0xef950",
+      "selector_name": "layoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x766a8",
+      "class": "PRMutablePosterConfiguration",
+      "selector": "836356",
+      "replacement": "0x79214",
+      "orig_imp_slot": "0xef9c8",
+      "selector_name": "storeUserInfo:error:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x766d0",
+      "class": "PRMutablePosterConfiguration",
+      "selector": "836323",
+      "replacement": "0x79430",
+      "orig_imp_slot": "0xef9d0",
+      "selector_name": "storeConfiguredProperties:error:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76700",
+      "class": "PREditingReticleView",
+      "selector": "?",
+      "replacement": "0x795b0",
+      "orig_imp_slot": "0xef9d8",
+      "selector_name": "?"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76724",
+      "class": "PREditingReticleView",
+      "selector": "?",
+      "replacement": "0x79620",
+      "orig_imp_slot": "0xef9e0",
+      "selector_name": "?"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76748",
+      "class": "PREditingReticleView",
+      "selector": "828432",
+      "replacement": "0x79688",
+      "orig_imp_slot": "0xef9e8",
+      "selector_name": "setFrame:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76774",
+      "class": "PREditingReticleView",
+      "selector": "826082",
+      "replacement": "0x79740",
+      "orig_imp_slot": "0xef9f0",
+      "selector_name": "setBounds:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76798",
+      "class": "PREditingReticleView",
+      "selector": "826219",
+      "replacement": "0x797f0",
+      "orig_imp_slot": "0xef9f8",
+      "selector_name": "setCenter:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x767bc",
+      "class": "PREditingReticleView",
+      "selector": "818719",
+      "replacement": "0x79898",
+      "orig_imp_slot": "0xefa00",
+      "selector_name": "layoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76868",
+      "class": "PREditorRootViewController",
+      "selector": "831958",
+      "replacement": "0x79c80",
+      "orig_imp_slot": "0xefa20",
+      "selector_name": "setPresentingModalViewController:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76890",
+      "class": "PREditorRootViewController",
+      "selector": "828306",
+      "replacement": "0x79d14",
+      "orig_imp_slot": "0xefa28",
+      "selector_name": "setFocusedComplicationElement:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x768c0",
+      "class": "PREditorCombinedRootViewController",
+      "selector": "839887",
+      "replacement": "0x79da8",
+      "orig_imp_slot": "0xefa30",
+      "selector_name": "viewDidLayoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x768ec",
+      "class": "PREditorCombinedRootViewController",
+      "selector": "839070",
+      "replacement": "0x79dec",
+      "orig_imp_slot": "0xefa38",
+      "selector_name": "updateReticlesIfNeeded"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x7691c",
+      "class": "PREditorSeparatedRootViewController",
+      "selector": "839887",
+      "replacement": "0x79e30",
+      "orig_imp_slot": "0xefa40",
+      "selector_name": "viewDidLayoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76940",
+      "class": "PREditorSeparatedRootViewController",
+      "selector": "839070",
+      "replacement": "0x79e74",
+      "orig_imp_slot": "0xefa48",
+      "selector_name": "updateReticlesIfNeeded"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76a58",
+      "class": "PBUIPosterViewController",
+      "selector": "824754",
+      "replacement": "0x75164",
+      "orig_imp_slot": "0xef830",
+      "selector_name": "scene:willUpdateSettings:withTransitionContext:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76ae4",
+      "class": "PBUIPosterViewController",
+      "selector": "839909",
+      "replacement": "0x7a18c",
+      "orig_imp_slot": "0xefa50",
+      "selector_name": "viewDidLoad"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76b0c",
+      "class": "PBUIPosterViewController",
+      "selector": "838386",
+      "replacement": "0x7a1ec",
+      "orig_imp_slot": "0xefa58",
+      "selector_name": "updateConfiguration:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76b54",
+      "class": "CSCombinedListViewController",
+      "selector": "824851",
+      "replacement": "0x7a334",
+      "orig_imp_slot": "0xefa60",
+      "selector_name": "scrollViewDidScroll:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76b7c",
+      "class": "CSCombinedListViewController",
+      "selector": "802171",
+      "replacement": "0x7a41c",
+      "orig_imp_slot": "0xefa68",
+      "selector_name": "_listViewDefaultContentInsets"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76ba4",
+      "class": "CSCombinedListViewController",
+      "selector": "839887",
+      "replacement": "0x7a480",
+      "orig_imp_slot": "0xefa70",
+      "selector_name": "viewDidLayoutSubviews"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76ed0",
+      "class": "CSWidgetGridViewController",
+      "selector": "826529",
+      "replacement": "0x74cc8",
+      "orig_imp_slot": "0xef808",
+      "selector_name": "setComplicationDescriptors:iconLayout:"
+    },
+    {
+      "init": "0x75b90",
+      "call": "0x76f5c",
+      "class": "CSCombinedListViewController",
+      "selector": "820791",
+      "replacement": "0x74d58",
+      "orig_imp_slot": "0xef810",
+      "selector_name": "notificationStructuredListViewControllerRequestsEdgeInsetsForOverlayFooterView:"
+    }
+  ]
+}

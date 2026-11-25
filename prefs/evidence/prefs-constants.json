@@ -1,0 +1,723 @@
+{
+  "range_dictionary": {
+    "address": "0x81648",
+    "entries": [
+      {
+        "key_address": "0x7dd50",
+        "key": "@'BezelWidth'",
+        "array": {
+          "address": "0x81920",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fb0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80fb8",
+              "target": "0x81c00",
+              "value": 80.0
+            }
+          ]
+        }
+      },
+      {
+        "key_address": "0x7de90",
+        "key": "@'Blur'",
+        "array": {
+          "address": "0x81998",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x81000",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x81008",
+              "target": "0x81c40",
+              "value": 50.0
+            }
+          ]
+        }
+      },
+      {
+        "key_address": "0x7dcd0",
+        "key": "@'CustomScale'",
+        "array": {
+          "address": "0x819b0",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x81010",
+              "target": "0x81c50",
+              "value": 0.1
+            },
+            {
+              "slot": "0x81018",
+              "target": "0x81c60",
+              "value": 1.5
+            }
+          ]
+        }
+      },
+      {
+        "key_address": "0x7ddb0",
+        "key": "@'GlassThickness'",
+        "array": {
+          "address": "0x81938",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fc0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80fc8",
+              "target": "0x81c10",
+              "value": 500.0
+            }
+          ]
+        }
+      },
+      {
+        "key_address": "0x7ddd0",
+        "key": "@'RefractionScale'",
+        "array": {
+          "address": "0x81950",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fd0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80fd8",
+              "target": "0x81c20",
+              "value": 5.0
+            }
+          ]
+        }
+      },
+      {
+        "key_address": "0x7ddf0",
+        "key": "@'RefractiveIndex'",
+        "array": {
+          "address": "0x81968",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80fe0",
+              "target": "0x81c30",
+              "value": 1.0
+            },
+            {
+              "slot": "0x80fe8",
+              "target": "0x81c20",
+              "value": 5.0
+            }
+          ]
+        }
+      },
+      {
+        "key_address": "0x7de70",
+        "key": "@'SpecularOpacity'",
+        "array": {
+          "address": "0x81980",
+          "count": 2,
+          "items": [
+            {
+              "slot": "0x80ff0",
+              "target": "0x81bf0",
+              "value": 0.0
+            },
+            {
+              "slot": "0x80ff8",
+              "target": "0x81c30",
+              "value": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "dispersion_clock_range": [
+    {
+      "address": "0x81c30",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000f03f",
+      "type_encoding": "double",
+      "value": 1.0
+    },
+    {
+      "address": "0x81c80",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000000040",
+      "type_encoding": "double",
+      "value": 2.0
+    }
+  ],
+  "architecture": "arm64e",
+  "address_space": "unslid virtual address",
+  "whole_sha256": "be1f127297d2a0b8c1cdf0378425ecf7260ef2eccafec177b70051c58d241d3f",
+  "slice_sha256": "e10fd694fc4239451a6661e8b2ddf88e75cd301b23579fb912592c3d3f8bd522",
+  "slice_offset": 655360,
+  "descriptor": [
+    {
+      "address": "0x79308",
+      "name": "Clock",
+      "hex": "505206000000280000000000000010410000f0423333b33fcdcccc3f0000c0400000803f000000001669060000000800166906000000080020690600000008002c69060000000800",
+      "floats_at_08_through_24": [
+        0.0,
+        9.0,
+        120.0,
+        1.399999976158142,
+        1.600000023841858,
+        6.0,
+        1.0,
+        0.0
+      ],
+      "light_tint": "#FFFFFF41",
+      "dark_tint": "#FFFFFF41"
+    },
+    {
+      "address": "0x79350",
+      "name": "Clock",
+      "hex": "505206000000280000000000000010410000f0423333b33fcdcccc3f0000c0400000803f00000000166906000000080016690600000008001a640600000008004969060000000800",
+      "floats_at_08_through_24": [
+        0.0,
+        9.0,
+        120.0,
+        1.399999976158142,
+        1.600000023841858,
+        6.0,
+        1.0,
+        0.0
+      ],
+      "light_tint": "#FFFFFF41",
+      "dark_tint": "#FFFFFF41"
+    }
+  ],
+  "numbers": [
+    {
+      "address": "0x81bc0",
+      "section": "__objc_intobj",
+      "isa": "_OBJC_CLASS_$_NSConstantIntegerNumber",
+      "hex": "c4000000e16a0dc08c640600000010000200000000000000",
+      "type_encoding": "i",
+      "value": 2
+    },
+    {
+      "address": "0x81bd8",
+      "section": "__objc_intobj",
+      "isa": "_OBJC_CLASS_$_NSConstantIntegerNumber",
+      "hex": "c4000000e16a0dc08c640600000010000100000000000000",
+      "type_encoding": "i",
+      "value": 1
+    },
+    {
+      "address": "0x81bf0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000000000",
+      "type_encoding": "double",
+      "value": 0.0
+    },
+    {
+      "address": "0x81c00",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000005440",
+      "type_encoding": "double",
+      "value": 80.0
+    },
+    {
+      "address": "0x81c10",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000407f40",
+      "type_encoding": "double",
+      "value": 500.0
+    },
+    {
+      "address": "0x81c20",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000001440",
+      "type_encoding": "double",
+      "value": 5.0
+    },
+    {
+      "address": "0x81c30",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000f03f",
+      "type_encoding": "double",
+      "value": 1.0
+    },
+    {
+      "address": "0x81c40",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000004940",
+      "type_encoding": "double",
+      "value": 50.0
+    },
+    {
+      "address": "0x81c50",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c09a9999999999b93f",
+      "type_encoding": "double",
+      "value": 0.1
+    },
+    {
+      "address": "0x81c60",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000f83f",
+      "type_encoding": "double",
+      "value": 1.5
+    },
+    {
+      "address": "0x81c70",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000002440",
+      "type_encoding": "double",
+      "value": 10.0
+    },
+    {
+      "address": "0x81c80",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000000040",
+      "type_encoding": "double",
+      "value": 2.0
+    },
+    {
+      "address": "0x81c90",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000000000",
+      "type_encoding": "double",
+      "value": 0.0
+    },
+    {
+      "address": "0x81ca0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0b81e85eb51b8be3f",
+      "type_encoding": "double",
+      "value": 0.12
+    },
+    {
+      "address": "0x81cb0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0c3f5285c8fc2d53f",
+      "type_encoding": "double",
+      "value": 0.34
+    },
+    {
+      "address": "0x81cc0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c01f85eb51b81ee53f",
+      "type_encoding": "double",
+      "value": 0.66
+    },
+    {
+      "address": "0x81cd0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0295c8fc2f528ec3f",
+      "type_encoding": "double",
+      "value": 0.88
+    },
+    {
+      "address": "0x81ce0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000f03f",
+      "type_encoding": "double",
+      "value": 1.0
+    },
+    {
+      "address": "0x81cf0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0333333333333c33f",
+      "type_encoding": "double",
+      "value": 0.15
+    },
+    {
+      "address": "0x81d00",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0333333333333d33f",
+      "type_encoding": "double",
+      "value": 0.3
+    },
+    {
+      "address": "0x81d10",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0666666666666e63f",
+      "type_encoding": "double",
+      "value": 0.7
+    },
+    {
+      "address": "0x81d20",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0333333333333eb3f",
+      "type_encoding": "double",
+      "value": 0.85
+    },
+    {
+      "address": "0x81d30",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c07b14ae47e17ab43f",
+      "type_encoding": "double",
+      "value": 0.08
+    },
+    {
+      "address": "0x81d40",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c07b14ae47e17ac43f",
+      "type_encoding": "double",
+      "value": 0.16
+    },
+    {
+      "address": "0x81d50",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0b81e85eb51b8ce3f",
+      "type_encoding": "double",
+      "value": 0.24
+    },
+    {
+      "address": "0x81d60",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c07b14ae47e17ad43f",
+      "type_encoding": "double",
+      "value": 0.32
+    },
+    {
+      "address": "0x81d70",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c09a9999999999d93f",
+      "type_encoding": "double",
+      "value": 0.4
+    },
+    {
+      "address": "0x81d80",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0713d0ad7a370dd3f",
+      "type_encoding": "double",
+      "value": 0.46
+    },
+    {
+      "address": "0x81d90",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000e03f",
+      "type_encoding": "double",
+      "value": 0.5
+    },
+    {
+      "address": "0x81da0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c048e17a14ae47e13f",
+      "type_encoding": "double",
+      "value": 0.54
+    },
+    {
+      "address": "0x81db0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0333333333333e33f",
+      "type_encoding": "double",
+      "value": 0.6
+    },
+    {
+      "address": "0x81dc0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0c3f5285c8fc2e53f",
+      "type_encoding": "double",
+      "value": 0.68
+    },
+    {
+      "address": "0x81dd0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c052b81e85eb51e83f",
+      "type_encoding": "double",
+      "value": 0.76
+    },
+    {
+      "address": "0x81de0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0e17a14ae47e1ea3f",
+      "type_encoding": "double",
+      "value": 0.84
+    },
+    {
+      "address": "0x81df0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0713d0ad7a370ed3f",
+      "type_encoding": "double",
+      "value": 0.92
+    },
+    {
+      "address": "0x81e00",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c07b14ae47e17a943f",
+      "type_encoding": "double",
+      "value": 0.02
+    },
+    {
+      "address": "0x81e10",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c07b14ae47e17aa43f",
+      "type_encoding": "double",
+      "value": 0.04
+    },
+    {
+      "address": "0x81e20",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0b81e85eb51b8ae3f",
+      "type_encoding": "double",
+      "value": 0.06
+    },
+    {
+      "address": "0x81e30",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c09a9999999999b93f",
+      "type_encoding": "double",
+      "value": 0.1
+    },
+    {
+      "address": "0x81e40",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0ec51b81e85ebc13f",
+      "type_encoding": "double",
+      "value": 0.14
+    },
+    {
+      "address": "0x81e50",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c085eb51b81e85eb3f",
+      "type_encoding": "double",
+      "value": 0.86
+    },
+    {
+      "address": "0x81e60",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0cdccccccccccec3f",
+      "type_encoding": "double",
+      "value": 0.9
+    },
+    {
+      "address": "0x81e70",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c014ae47e17a14ee3f",
+      "type_encoding": "double",
+      "value": 0.94
+    },
+    {
+      "address": "0x81e80",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0b81e85eb51b8ee3f",
+      "type_encoding": "double",
+      "value": 0.96
+    },
+    {
+      "address": "0x81e90",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c05c8fc2f5285cef3f",
+      "type_encoding": "double",
+      "value": 0.98
+    },
+    {
+      "address": "0x81ea0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c09a9999999999c93f",
+      "type_encoding": "double",
+      "value": 0.2
+    },
+    {
+      "address": "0x81eb0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0ec51b81e85ebd13f",
+      "type_encoding": "double",
+      "value": 0.28
+    },
+    {
+      "address": "0x81ec0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00ad7a3703d0ae73f",
+      "type_encoding": "double",
+      "value": 0.72
+    },
+    {
+      "address": "0x81ed0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c09a9999999999e93f",
+      "type_encoding": "double",
+      "value": 0.8
+    },
+    {
+      "address": "0x81ee0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000f83f",
+      "type_encoding": "double",
+      "value": 1.5
+    },
+    {
+      "address": "0x81ef0",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000000840",
+      "type_encoding": "double",
+      "value": 3.0
+    },
+    {
+      "address": "0x81f00",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000001440",
+      "type_encoding": "double",
+      "value": 5.0
+    },
+    {
+      "address": "0x81f10",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000002040",
+      "type_encoding": "double",
+      "value": 8.0
+    },
+    {
+      "address": "0x81f20",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000002840",
+      "type_encoding": "double",
+      "value": 12.0
+    },
+    {
+      "address": "0x81f30",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c00000000000000000",
+      "type_encoding": "double",
+      "value": 0.0
+    },
+    {
+      "address": "0x81f40",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0cdccccccccccdc3f",
+      "type_encoding": "double",
+      "value": 0.45
+    },
+    {
+      "address": "0x81f50",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0000000000000f03f",
+      "type_encoding": "double",
+      "value": 1.0
+    },
+    {
+      "address": "0x81f60",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0666666666666d63f",
+      "type_encoding": "double",
+      "value": 0.35
+    },
+    {
+      "address": "0x81f70",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c0cdcccccccccce43f",
+      "type_encoding": "double",
+      "value": 0.65
+    },
+    {
+      "address": "0x81f80",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a15c09a9999999999a93f",
+      "type_encoding": "double",
+      "value": 0.05
+    },
+    {
+      "address": "0x81f90",
+      "section": "__objc_doubleobj",
+      "isa": "_OBJC_CLASS_$_NSConstantDoubleNumber",
+      "hex": "c5000000e16a05c0333333333333c33f",
+      "type_encoding": "double",
+      "value": 0.15
+    }
+  ],
+  "raw_constants": {
+    "0x68d90": {
+      "hex": "000000c200000000",
+      "f32": -32.0,
+      "f64": 1.6080749353e-314
+    },
+    "0x68e68": {
+      "hex": "0000000000804340",
+      "f32": 0.0,
+      "f64": 39.0
+    },
+    "0x68e70": {
+      "hex": "fca9f1d24d62503f",
+      "f32": -518969491456.0,
+      "f64": 0.001
+    },
+    "0x68e90": {
+      "hex": "6f12833a00000000",
+      "f32": 0.0010000000474974513,
+      "f64": 4.85008663e-315
+    }
+  },
+  "domain": {
+    "slot": "0x79e78",
+    "target": "0x7fc30",
+    "value": "@'dylv.liquidassprefs'"
+  }
+}

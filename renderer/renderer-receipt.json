@@ -1,0 +1,19 @@
+{
+  "sample_sha256": "ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e",
+  "arch": "arm64e",
+  "extracted_strings": [
+    {
+      "file": "embedded-00.metal",
+      "va": "0x2b493",
+      "slice_offset": 177299,
+      "whole_file_offset": 783507,
+      "sha256": "07b51d83c07c370509b05192d30617cd0667ccded67f953ecd168a047f12d23e",
+      "bytes": 21215,
+      "entrypoints": [
+        "liquidGlassVertex",
+        "liquidGlassFragment"
+      ]
+    }
+  ],
+  "execution": "none"
+}

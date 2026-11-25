@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "BLOCKED",
+  "phase": "five-minute-baseline",
+  "evidence_only": true,
+  "address_kind": "arm64e unslid VA",
+  "main_sha256": "ab85ba3d9fee2e695789a50df90eadcb837a86d0864061b6215a1cf281dd7a66",
+  "backboard_sha256": "ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e",
+  "main_init_count": 30,
+  "main_init_offsets": ["0x4768", "0x852c", "0xdce4", "0xeca4", "0xee14", "0x10b64", "0x14554", "0x161d0", "0x1c870", "0x27970", "0x34adc", "0x35a74", "0x3b888", "0x3d650", "0x3df94", "0x3f198", "0x42134", "0x42270", "0x44964", "0x44ca8", "0x44ddc", "0x45764", "0x45874", "0x4a39c", "0x54b98", "0x5984c", "0x5c1a8", "0x75b90", "0x987c4", "0x98854"],
+  "clock_manifest": {"source_init": "0x75b90", "hook_count": 35, "coverage": "candidate subset, not a complete startup inventory"},
+  "safe_original_main_minus_other_ctors": false,
+  "isolation_proven": false,
+  "blockers": ["retained ctor transitive behavior not isolated", "Objective-C load/class registration pending binary verification", "backboard actual initialization pending verification", "dependencies and dynamic side effects not isolated"],
+  "operations": {"sample_modified": false, "sample_executed": false, "built": false, "installed": false, "injected": false, "remote_write": false}
+}

@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "sample_version": "0.1.2t+r2",
+  "arch": "arm64e",
+  "address_space": "unslid slice VA",
+  "samples": {
+    "main": {
+      "sha256": "ab85ba3d9fee2e695789a50df90eadcb837a86d0864061b6215a1cf281dd7a66",
+      "slice_sha256": "f4c49bb1faccc253cad3c804a2f80a509cbf6e26d1669669b68a47f52b7a93a2",
+      "slice_offset": "0xfc000",
+      "subtype": "0x80000002"
+    },
+    "backboard": {
+      "sha256": "ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e",
+      "slice_sha256": "054e6e5d86a795e685e75aac7cef851e7cffbc33265920d5da1ca770aeb81766",
+      "slice_offset": "0x94000",
+      "subtype": "0x80000002"
+    }
+  },
+  "field": {
+    "status": "confirmed_static",
+    "magic_numeric": "0x4c474446",
+    "magic_le_hex": "4644474c",
+    "version": 2,
+    "header_bytes": 64,
+    "slot_bytes": 4194368,
+    "fields": [
+      {
+        "name": "magic",
+        "offset": 0,
+        "type": "u32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "version",
+        "offset": 4,
+        "type": "u32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "sequence",
+        "offset": 8,
+        "type": "u64",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "token_10",
+        "offset": 16,
+        "type": "u64",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "mach_absolute_time",
+        "offset": 24,
+        "type": "u64",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "reserved_20",
+        "offset": 32,
+        "type": "u64",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "width",
+        "offset": 40,
+        "type": "u32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "height",
+        "offset": 44,
+        "type": "u32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "points_width",
+        "offset": 48,
+        "type": "f32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "points_height",
+        "offset": 52,
+        "type": "f32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "kind",
+        "offset": 56,
+        "type": "u32",
+        "status": "confirmed_layout"
+      },
+      {
+        "name": "reserved_3c",
+        "offset": 60,
+        "type": "u32",
+        "status": "unknown_semantics"
+      }
+    ],
+    "payload": {
+      "type": "float32_le_sdf",
+      "offset": 64,
+      "rowbytes": "width*4",
+      "max_bytes": 4194304
+    },
+    "validation_va": "backboard:0x1586c..0x15a78",
+    "producer_va": "main:0x8b77c..0x8b828",
+    "reader_va": "backboard:0x120cc..0x122a8"
+  },
+  "metal": {
+    "status": "confirmed_static_not_runtime",
+    "uniform_bytes": 192,
+    "uniform_alignment": 16,
+    "uniform_fields": [
+      {
+        "name": "resolution",
+        "offset": 0,
+        "float_count": 2
+      },
+      {
+        "name": "outputResolution",
+        "offset": 8,
+        "float_count": 2
+      },
+      {
+        "name": "screenResolution",
+        "offset": 16,
+        "float_count": 2
+      },
+      {
+        "name": "cardOrigin",
+        "offset": 24,
+        "float_count": 2
+      },
+      {
+        "name": "wallpaperResolution",
+        "offset": 32,
+        "float_count": 2
+      },
+      {
+        "name": "lensOrigin",
+        "offset": 40,
+        "float_count": 2
+      },
+      {
+        "name": "radius",
+        "offset": 48,
+        "float_count": 1
+      },
+      {
+        "name": "bezelWidth",
+        "offset": 52,
+        "float_count": 1
+      },
+      {
+        "name": "glassThickness",
+        "offset": 56,
+        "float_count": 1
+      },
+      {
+        "name": "refractionScale",
+        "offset": 60,
+        "float_count": 1
+      },
+      {
+        "name": "refractiveIndex",
+        "offset": 64,
+        "float_count": 1
+      },
+      {
+        "name": "wallpaperOrigin",
+        "offset": 72,
+        "float_count": 2
+      },
+      {
+        "name": "samplingTransformX",
+        "offset": 80,
+        "float_count": 2
+      },
+      {
+        "name": "samplingTransformY",
+        "offset": 88,
+        "float_count": 2
+      },
+      {
+        "name": "samplingTransformOffset",
+        "offset": 96,
+        "float_count": 2
+      },
+      {
+        "name": "samplingOrientation",
+        "offset": 104,
+        "float_count": 1
+      },
+      {
+        "name": "backdropZoom",
+        "offset": 108,
+        "float_count": 1
+      },
+      {
+        "name": "shapeScale",
+        "offset": 112,
+        "float_count": 1
+      },
+      {
+        "name": "shapeOrigin",
+        "offset": 120,
+        "float_count": 2
+      },
+      {
+        "name": "shapeSize",
+        "offset": 128,
+        "float_count": 2
+      },
+      {
+        "name": "useGlyphMask",
+        "offset": 136,
+        "float_count": 1
+      },
+      {
+        "name": "dispersionStrength",
+        "offset": 140,
+        "float_count": 1
+      },
+      {
+        "name": "tintColor",
+        "offset": 144,
+        "float_count": 4
+      },
+      {
+        "name": "validMaxUV",
+        "offset": 160,
+        "float_count": 2
+      },
+      {
+        "name": "clockOrientation",
+        "offset": 168,
+        "float_count": 1
+      },
+      {
+        "name": "coverSideRefraction",
+        "offset": 172,
+        "float_count": 1
+      },
+      {
+        "name": "captureAligned",
+        "offset": 176,
+        "float_count": 1
+      }
+    ],
+    "padding_ranges": [
+      [
+        68,
+        72
+      ],
+      [
+        116,
+        120
+      ],
+      [
+        180,
+        192
+      ]
+    ],
+    "fragment_buffer_index": 0,
+    "backdrop_texture_index": 0,
+    "field_texture_index": 1,
+    "field_texture_nil_fallback": "backdrop",
+    "pixel_format": 25,
+    "pixel_format_name": "R16Float",
+    "rowbytes": "width*2",
+    "mipmap_level": 0,
+    "mipmapped": false,
+    "usage": 1,
+    "storage_mode": 0,
+    "upload_va": "backboard:0xe968..0xe980",
+    "texture_bind_va": "backboard:0xe910..0xe964",
+    "texture_create_upload_va": "backboard:0x12348..0x12450"
+  },
+  "unknown": [
+    "reserved_20 units/source (CAS-max use confirmed at backboard:0xea50..0xeaa8)",
+    "reserved_3c semantics",
+    "kind 1..4 named meanings",
+    "producer post-odd store ordering and lifetime contract",
+    "complete per-frame uniform CPU value sources",
+    "iOS/GPU/live standalone integration"
+  ],
+  "validation": {
+    "host_tests": "see host-test-results.json",
+    "ios_build": false,
+    "device_runtime": false
+  }
+}

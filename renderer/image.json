@@ -1,0 +1,192 @@
+{
+  "path": "/tmp/liquidass-extract/var/jb/Library/MobileSubstrate/DynamicLibraries/LiquidAssBackboardd.dylib",
+  "sha256": "ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e",
+  "slice_offset": 606208,
+  "slice_sha256": "054e6e5d86a795e685e75aac7cef851e7cffbc33265920d5da1ca770aeb81766",
+  "subtype": "0x80000002",
+  "init_offsets": [
+    "0x7554",
+    "0x276bc",
+    "0x27704"
+  ],
+  "functions": 1286,
+  "sections": {
+    "__TEXT,__text": {
+      "addr": 16384,
+      "size": 146844,
+      "off": 16384,
+      "flags": 2147484672,
+      "header": 104
+    },
+    "__TEXT,__auth_stubs": {
+      "addr": 163228,
+      "size": 3088,
+      "off": 163228,
+      "flags": 2147484680,
+      "header": 184
+    },
+    "__TEXT,__objc_stubs": {
+      "addr": 166336,
+      "size": 1920,
+      "off": 166336,
+      "flags": 2147484672,
+      "header": 264
+    },
+    "__TEXT,__init_offsets": {
+      "addr": 168256,
+      "size": 12,
+      "off": 168256,
+      "flags": 22,
+      "header": 344
+    },
+    "__TEXT,__cstring": {
+      "addr": 168268,
+      "size": 33519,
+      "off": 168268,
+      "flags": 2,
+      "header": 424
+    },
+    "__TEXT,__const": {
+      "addr": 201792,
+      "size": 25,
+      "off": 201792,
+      "flags": 0,
+      "header": 504
+    },
+    "__TEXT,__gcc_except_tab": {
+      "addr": 201820,
+      "size": 1480,
+      "off": 201820,
+      "flags": 0,
+      "header": 584
+    },
+    "__TEXT,__objc_classname": {
+      "addr": 203300,
+      "size": 1,
+      "off": 203300,
+      "flags": 2,
+      "header": 664
+    },
+    "__TEXT,__objc_methname": {
+      "addr": 203301,
+      "size": 1265,
+      "off": 203301,
+      "flags": 2,
+      "header": 744
+    },
+    "__TEXT,__unwind_info": {
+      "addr": 204568,
+      "size": 3560,
+      "off": 204568,
+      "flags": 0,
+      "header": 824
+    },
+    "__DATA_CONST,__auth_got": {
+      "addr": 212992,
+      "size": 1560,
+      "off": 212992,
+      "flags": 6,
+      "header": 976
+    },
+    "__DATA_CONST,__got": {
+      "addr": 214552,
+      "size": 80,
+      "off": 214552,
+      "flags": 6,
+      "header": 1056
+    },
+    "__DATA_CONST,__const": {
+      "addr": 214632,
+      "size": 5192,
+      "off": 214632,
+      "flags": 0,
+      "header": 1136
+    },
+    "__DATA_CONST,__cfstring": {
+      "addr": 219824,
+      "size": 1728,
+      "off": 219824,
+      "flags": 0,
+      "header": 1216
+    },
+    "__DATA_CONST,__objc_imageinfo": {
+      "addr": 221552,
+      "size": 8,
+      "off": 221552,
+      "flags": 0,
+      "header": 1296
+    },
+    "__DATA_CONST,__objc_arraydata": {
+      "addr": 221560,
+      "size": 96,
+      "off": 221560,
+      "flags": 0,
+      "header": 1376
+    },
+    "__DATA_CONST,__objc_arrayobj": {
+      "addr": 221656,
+      "size": 96,
+      "off": 221656,
+      "flags": 0,
+      "header": 1456
+    },
+    "__DATA,__objc_selrefs": {
+      "addr": 229376,
+      "size": 480,
+      "off": 229376,
+      "flags": 268435461,
+      "header": 1608
+    },
+    "__DATA,__objc_classrefs": {
+      "addr": 229856,
+      "size": 96,
+      "off": 229856,
+      "flags": 268435456,
+      "header": 1688
+    },
+    "__DATA,__data": {
+      "addr": 229952,
+      "size": 64,
+      "off": 229952,
+      "flags": 0,
+      "header": 1768
+    },
+    "__DATA,__thread_vars": {
+      "addr": 230016,
+      "size": 96,
+      "off": 230016,
+      "flags": 19,
+      "header": 1848
+    },
+    "__DATA,__thread_bss": {
+      "addr": 230112,
+      "size": 176,
+      "off": 0,
+      "flags": 18,
+      "header": 1928
+    },
+    "__DATA,__bss": {
+      "addr": 230288,
+      "size": 8696,
+      "off": 0,
+      "flags": 1,
+      "header": 2008
+    },
+    "__DATA,__common": {
+      "addr": 238984,
+      "size": 1,
+      "off": 0,
+      "flags": 1,
+      "header": 2088
+    }
+  },
+  "dependencies": [
+    "/usr/lib/libobjc.A.dylib",
+    "/System/Library/Frameworks/Foundation.framework/Foundation",
+    "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
+    "/System/Library/Frameworks/Metal.framework/Metal",
+    "/System/Library/Frameworks/QuartzCore.framework/QuartzCore",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libSystem.B.dylib"
+  ]
+}
