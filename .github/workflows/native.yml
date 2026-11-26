@@ -1,6 +1,8 @@
 name: Native clock build
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [native-build]
 permissions:
   contents: read
 jobs:
@@ -23,10 +25,8 @@ jobs:
         run: python3 tools/package_native.py --arch arm64e --input build/arm64e --output build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
       - name: Validate package structure and metadata
         run: |
-          dpkg-deb -I build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
-          dpkg-deb -I build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
-          dpkg-deb -c build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
-          dpkg-deb -c build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
+          python3 tools/verify_package.py --arch arm64 build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
+          python3 tools/verify_package.py --arch arm64e build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
       - uses: actions/upload-artifact@v4
         with:
           name: liquidclock-native-${{ github.sha }}
