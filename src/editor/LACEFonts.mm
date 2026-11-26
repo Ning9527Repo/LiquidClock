@@ -1,7 +1,19 @@
 #import "LACEInternal.h"
 #import <CoreText/CTFontManagerErrors.h>
+#import <CommonCrypto/CommonDigest.h>
 static NSDictionary *gCompactAttributes, *gNumericAttributes;
-static BOOL LoadFont(NSURL *url, NSString *expectedName, BOOL numeric, NSDictionary **attributes, NSError **error) {
+static BOOL LoadFont(NSURL *url, NSString *expectedName, NSString *expectedHash, BOOL numeric, NSDictionary **attributes, NSError **error) {
+    NSNumber *length=nil;
+    if(![url getResourceValue:&length forKey:NSURLFileSizeKey error:error])return NO;
+    if(!length||length.unsignedLongLongValue>8*1024*1024) {
+        if(error)*error=LACEError(30,@"Uploaded font exceeds the 8 MiB limit");return NO;
+    }
+    NSData *data=[NSData dataWithContentsOfURL:url options:0 error:error];if(!data)return NO;
+    if(data.length>8*1024*1024){if(error)*error=LACEError(30,@"Uploaded font changed size during read");return NO;}
+    unsigned char digest[CC_SHA256_DIGEST_LENGTH];CC_SHA256(data.bytes,(CC_LONG)data.length,digest);
+    NSMutableString *hash=[NSMutableString stringWithCapacity:64];
+    for(unsigned char byte:digest)[hash appendFormat:@"%02x",byte];
+    if(![hash isEqualToString:expectedHash]) {if(error)*error=LACEError(37,@"Uploaded font SHA-256 differs from supplied package");return NO;}
     NSArray *descriptors=CFBridgingRelease(CTFontManagerCreateFontDescriptorsFromURL((__bridge CFURLRef)url));
     if(descriptors.count!=1){if(error)*error=LACEError(30,[NSString stringWithFormat:@"Missing or invalid uploaded font: %@",url.lastPathComponent]);return NO;}
     CTFontDescriptorRef descriptor=(__bridge CTFontDescriptorRef)descriptors.firstObject;
@@ -10,22 +22,24 @@ static BOOL LoadFont(NSURL *url, NSString *expectedName, BOOL numeric, NSDiction
     NSString *name=CFBridgingRelease(CTFontCopyPostScriptName(font));
     NSArray *axes=CFBridgingRelease(CTFontCopyVariationAxes(font));CFRelease(font);
     if(![name isEqualToString:expectedName]){if(error)*error=LACEError(32,@"Uploaded font PostScript name differs from local package evidence");return NO;}
-    if(numeric) {
-        // Actual OTF fvar tags; UI weight lower bound is 100, NOT fvar's 1.
-        NSDictionary *expected=@{@(0x48474854):@[@100,@100,@500], // HGHT
-            @(0x77647468):@[@60,@100,@100], // wdth
-            @(0x77676874):@[@1,@400,@1000], // wght
-            @(0x534f4654):@[@0,@70,@100]}; // SOFT
-        if(axes.count!=expected.count){if(error)*error=LACEError(33,@"Numeric font axis count mismatch");return NO;}
-        for(NSDictionary *axis in axes) {
-            NSArray *e=expected[axis[(__bridge NSString *)kCTFontVariationAxisIdentifierKey]];
-            if(!e||![axis[(__bridge NSString *)kCTFontVariationAxisMinimumValueKey] isEqualToNumber:e[0]]||
-                ![axis[(__bridge NSString *)kCTFontVariationAxisDefaultValueKey] isEqualToNumber:e[1]]||
-                ![axis[(__bridge NSString *)kCTFontVariationAxisMaximumValueKey] isEqualToNumber:e[2]]) {
-                if(error)*error=LACEError(34,@"Numeric font axis bounds differ from uploaded package");return NO;
-            }
+    if(axes.count!=(numeric?lace::NumericAxes.size():0)) {
+        if(error)*error=LACEError(33,@"Uploaded font axis count mismatch");return NO;
+    }
+    std::array<lace::Axis,4> actual{};NSUInteger index=0;
+    for(NSDictionary *axis in axes) {
+        id tag=axis[(__bridge NSString *)kCTFontVariationAxisIdentifierKey];
+        id low=axis[(__bridge NSString *)kCTFontVariationAxisMinimumValueKey];
+        id def=axis[(__bridge NSString *)kCTFontVariationAxisDefaultValueKey];
+        id high=axis[(__bridge NSString *)kCTFontVariationAxisMaximumValueKey];
+        if(![tag isKindOfClass:NSNumber.class]||![low isKindOfClass:NSNumber.class]||
+            ![def isKindOfClass:NSNumber.class]||![high isKindOfClass:NSNumber.class]) {
+            if(error)*error=LACEError(34,@"Invalid uploaded font axis metadata");return NO;
         }
-    } else if(axes.count) {if(error)*error=LACEError(35,@"Compact font unexpectedly has variation axes");return NO;}
+        actual[index++]={[tag unsignedIntValue],[low doubleValue],[def doubleValue],[high doubleValue]};
+    }
+    if(!lace::validAxes(actual.data(),axes.count,numeric)) {
+        if(error)*error=LACEError(34,@"Font axis identities/bounds differ from uploaded package");return NO;
+    }
     CFErrorRef registrationError=nullptr;
     bool registered=CTFontManagerRegisterFontsForURL((__bridge CFURLRef)url,kCTFontManagerScopeProcess,&registrationError);
     BOOL already=registrationError&&CFErrorGetCode(registrationError)==kCTFontManagerErrorAlreadyRegistered;
@@ -35,8 +49,8 @@ static BOOL LoadFont(NSURL *url, NSString *expectedName, BOOL numeric, NSDiction
 }
 bool LACEValidateFonts(NSURL *directory, NSError **error) {
     NSDictionary *compact=nil,*numeric=nil;
-    if(!LoadFont([directory URLByAppendingPathComponent:@"SF-Compact-Display-Regular.otf"],@"SFCompactDisplay-Regular",NO,&compact,error))return false;
-    if(!LoadFont([directory URLByAppendingPathComponent:@"SFAdaptiveSoftNumeric-VF.otf"],@"SFAdaptiveSoftNumeric-hg100wd",YES,&numeric,error))return false;
+    if(!LoadFont([directory URLByAppendingPathComponent:@(lace::CompactFile)],@(lace::CompactName),@(lace::CompactSHA256),NO,&compact,error))return false;
+    if(!LoadFont([directory URLByAppendingPathComponent:@(lace::NumericFile)],@(lace::NumericName),@(lace::NumericSHA256),YES,&numeric,error))return false;
     gCompactAttributes=compact;gNumericAttributes=numeric;return true;
 }
 UIFont *LACEFont(lace::State state, CGFloat size) {

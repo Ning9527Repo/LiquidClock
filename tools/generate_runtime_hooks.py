@@ -66,10 +66,7 @@ for i,sel in enumerate(('storeUserInfo:error:','storeConfiguredProperties:error:
 out.append('''}
 __attribute__((constructor)) static void LACClockConstructor(void) {
     @autoreleasepool {
-        NSString *bundle=NSBundle.mainBundle.bundleIdentifier;
-        NSString *process=NSProcessInfo.processInfo.processName;
-        if(![bundle isEqual:@"com.apple.springboard"] && ![bundle isEqual:@"com.apple.PosterBoard"] &&
-           ![process isEqual:@"SpringBoard"] && ![process isEqual:@"PosterBoard"])return;
+        if(!LACIsClockHostProcess())return;
         dispatch_async(dispatch_get_main_queue(),^{
             LACClockRuntimeStart(); LACInstall();
             [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidBecomeActiveNotification

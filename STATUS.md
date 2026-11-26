@@ -1,44 +1,47 @@
-# Sample-reconstruction checkpoint
+# LiquidClock Status
 
-This directory is a **local, static reconstruction workspace**, not an installable release yet.
+This is a source reconstruction for the clock-only portion of the supplied LiquidAss package. It is **not yet an installable or device-validated release**.
 
-## Locked sample
+## Sample boundary
 
-- Package: `dylv.liquidass` `0.1.2t+r2`
-- Input SHA-256: `e9f579c00b768376dd807c79c1796ee3bbce93d852e97b8f0354511208278a99`
-- Target slice for address evidence: arm64e, subtype `0x80000002`
-- No sample was executed, loaded, injected, or installed.
+- Sample: `dylv.liquidass` `0.1.2t+r2`, SHA-256 `e9f579c00b768376dd807c79c1796ee3bbce93d852e97b8f0354511208278a99`.
+- Address evidence targets the arm64e slice (`cpusubtype 0x80000002`).
+- The sample was only inspected statically. It was never executed, loaded, installed, or injected.
+- Device identified for eventual validation: iOS 17.2.1 (21C66).
+- Source repository: `Ning9527Repo/LiquidClock`, branch `main`.
 
-## Concrete work completed here
+## Implemented source
 
-1. `renderer/embedded-00.metal` is byte-identical to the renderer string extracted from the supplied `LiquidAssBackboardd.dylib` arm64e slice. `renderer/ClockOnly.metal` is generated from that exact sample source, renames the entrypoints, and rejects non-clock `useGlyphMask` modes before pixel/helper evaluation; helper source remains shared with the sample and this is not a full renderer/plugin by itself. Three generator/source-lock tests pass; the on-device Metal compiler and runtime pipeline are still unverified.
-2. `renderer/clock_uniforms.h` records the source uniform order and compiles with host vector alignment assertions. The actual iOS Metal compiler still must confirm the upload stride before production use.
-3. `field/clock_field_protocol.h` records the 64-byte field header and 4 MiB payload constraints proved by `LGClockFieldValid` and the producer/consumer traces. The numeric magic `0x4c474446` serializes on arm64 little-endian as bytes `46 44 47 4c`; tests pin that byte order. Unknown fields remain explicitly unnamed.
-4. `field/clock_field_reader.c` implements an offline-safe seqlock snapshot helper; it is not wired to a device path or permission mechanism.
-5. `field/test_clock_field_protocol.py` and the C layout check cover the verified limits and exact header size.
-6. `evidence/clock-hook-manifest.json` contains only the clock display/editor/poster-related system hooks filtered from the package ctor trace; it is not a claim that all private selectors are stable across iOS versions.
-7. `assets/fonts/` contains the two font files shipped in the sample, with hashes in `evidence/reconstruction-sha256.txt`.
-8. `editor/` contains arm64e instruction evidence for stage, resize, font panel, save, cancel, and finish. The save path is confirmed to commit `Clock.Legacy.Style` and `Clock.Legacy.ResizeProgress`; failed commits present an alert; cancel restores prior style/progress.
-9. `editor/editor_transaction_model.py` and its tests model only those observed stage/save/cancel transitions; they are not a substitute for UIKit runtime testing.
-10. The C seqlock reader has passed a local smoke test covering coherent copy, odd-sequence rejection, and mapped-size rejection.
+- A clock-only Metal shader derived from the sample shader, with separate main, editor, and per-poster filter names. Non-clock surfaces are deliberately excluded.
+- A 64-byte shared-field protocol, bounded file publisher/reader, SDF generation, float32-to-binary16 conversion, and a Backboardd-side Metal encoder with explicit completion acknowledgement.
+- A UIKit text-field capture/cache adapter that fails closed on unsupported text/layout configurations.
+- A native UIKit editor, uploaded-font validation, per-poster transaction journal, cancel/restore/commit handling, poster depth-mask adapter, and an optional editor-preview render callback.
+- Clock-only SpringBoard/PosterBoard hooks, a separate Backboardd entry, a private sandbox-profile adapter, and a Preferences controller/schema.
+- Manual-only macOS native validation workflow. It is not triggered by source pushes.
 
-## Still blocking a complete standalone source
+## Validation completed locally
 
-- The sample ctor installs many non-clock hooks in the same initializer; the clock-only hook list must be implemented independently rather than invoking the whole ctor.
-- The exact semantics of field header offsets `0x10`, `0x20`, and `0x3c`, the editor/poster slot routing, and the private Metal upload ABI need more binary evidence or device A/B evidence.
-- The sample uses private SpringBoard/PosterBoard/BackBoard classes and MobileSubstrate. Linux syntax checks are not an iOS build or runtime validation.
-- No repository, remote commit, CI build, deb, installation, injection, respring, or true-device test has been performed in this checkpoint.
+- `python3 -B tests/run_regression.py`: passed; 32 Python tests, field protocol tests, editor transaction model, ABI checks, codec and binary16 checks.
+- `sh evidence/field-native-validate.sh`: passed with GCC/Clang host matrices, 2,591,689 exact SDF oracle samples, publisher concurrency/invalidation stress, and strict ARM64e object compilation. The iSH `mincore` residency oracle is explicitly skipped because the kernel implementation is unreliable.
+- `sh tests/test_backboard_build.sh` and `test_backboard.py`: strict ARM64e objects plus six host/static backboard checks passed.
+- Native editor tests: 209 transaction/store/geometry checks in debug and optimized host builds; all five editor Objective-C++ units compiled to ARM64e objects; the public C ABI compiled in C and C++; both supplied font hashes/names/axes matched the extracted sample.
+- Runtime/configuration/backboard entry/preferences and hook sources pass strict ARM64e iOS 16 syntax checking.
+- No UIKit/CoreText runtime assertions have been executed. These checks are compile/host evidence only.
 
-## Recheck commands
+## Remaining release blockers
+
+- No end-to-end iOS dylib link, Apple Metal compiler/metallib build, signed package, dependency/control/layout validation, or installation has been completed.
+- The private CA filter registration and callback ABI, sample field acknowledgement semantics, and actual SpringBoard/Backboardd rendering remain unverified on-device. The reconstruction uses bounded profiles and fails closed when they do not match; this is not evidence of visual parity.
+- The private sandbox profile and shared field paths need validation on the actual RootHide device.
+- No respring, injection, or device mutation has been performed.
+
+## Recheck
 
 ```sh
-cd sample-reconstruction/field
-python3 -m unittest -v test_clock_field_protocol.py
-clang -std=c11 -Wall -Wextra -Werror -I. check_field.c -o /tmp/check_field && /tmp/check_field
-
-cd ../renderer
-clang -std=c11 -Wall -Wextra -Werror -x c -c -o /tmp/check_uniform.o - <<'EOF'
-#include "clock_uniforms.h"
-int f(void) { return sizeof(LGClockMetalUniformsRecovered); }
-EOF
+python3 -B tests/run_regression.py
+sh evidence/field-native-validate.sh
+sh tests/test_backboard_build.sh
+python3 -B tests/test_native_editor.py
 ```
+
+The native editor command takes several minutes on this iSH host. A usable release still requires a separately authorized macOS/Xcode build and device validation.

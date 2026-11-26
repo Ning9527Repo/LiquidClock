@@ -20,4 +20,15 @@ Scope locked to supplied `LiquidAssBackboardd.dylib` arm64e slice (`0x94000`, SH
 - `evidence/backboard-register.asm` (direct Capstone output for sample `0x83bc..0x9b60`).
 - `evidence/backboard-resolver.asm` (direct Capstone output for `0x45f0..0x56c0`).
 
-No source modules/tests written yet; next action is decode clock host parameters and callback parameter use, then implement/test the bounded pieces.
+## Implementation checkpoint (2026-11-26, active)
+
+Production code now exists in `src/backboard/`: `LACClockFilterContract.h`, `LACClockBackboard.h/.mm`, `LACClockData.h/.cpp`, `LACClockMetal.h/.mm`, `LACQCScanner.h/.cpp`. Clock names are reconstruction-only `com.ning.liquidclock`, `.editor`, `.poster0..15`; main owns its constructor and path/config wiring. No auto-initializer, original initializer, generic host aliases, widget/control routes, sample loading, install or remote build occurs.
+
+- Real Metal implementation loads standalone ClockOnly.metallib, selects `ningClockVertex`/`ningClockFragment`, caches per-device/per-format pipelines, copies a stable field, converts float SDF to immutable R16Float texture, creates the exact 192B uniforms, binds textures0/1 and fragment buffer0, draws a fullscreen triangle and ends encoding. It never commits CA's buffer.
+- Native registration uses a bounded QuartzCore image/ADRP cluster resolver and genuine Gaussian descriptor plus atom-guarded hooks. PAC vtables are never cloned. Source/texture member offsets are finite sample-derived ABI profiles, not arbitrary global addresses. Intended profiles: iOS16.x and actual target iOS17.2.1; all resolver/profile failures stay closed.
+- The NEW reconstruction acknowledgement rule writes sequence CAS-max to +0x20 only in a successful Metal completed handler; token/time/sequence are checked. This is NOT claimed as the sample's unresolved cursor semantics, and is NOT proof of compositing.
+- Registration infrastructure reference was consulted: upstream `LGSymbolResolver.mm` and Tweak.mm callback/registration declarations. Algorithms are independently bounded/reimplemented; exact instruction masks/descriptor/PAC behavior are being checked against retained sample disassembly. Shader/field are sample derivatives, not upstream substitutes. Detailed provenance and checks follow.
+- Final local validation: `sh tests/test_backboard_build.sh` compiled the four backboard Objective-C++/C++ units plus field reader and codec into strict arm64e iOS 16 objects with `-Wall -Wextra -Werror` (exit 0). `python3 -B -m unittest discover -s tests -p 'test_backboard.py' -v` passed all six host/static tests, including the committed sample-byte fixture, clock-only routes, and completion-ACK ordering.
+- These checks do not link a dylib or compile a Metal library; there is no Apple Metal compiler in this iSH environment. They do not verify CA private registration, GPU execution, SpringBoard rendering, or device runtime behavior. The implementation remains a source reconstruction.
+
+Additional narrow evidence: `backboard-render.asm`, `backboard-callback-entry.asm`, `backboard-render-wrapper.asm`, `backboard-add-call.asm`, `backboard-resolver-detail.asm`, reproducible `backboard-narrow.py` (read-only sample).

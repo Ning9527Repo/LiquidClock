@@ -18,8 +18,10 @@ void LACEPosterClearDepthMask(void *foregroundReplica) {
     LACEDepthAttachment *attachment=objc_getAssociatedObject(replica,&kDepthAttachment);if(!attachment)return;
     [CATransaction begin];[CATransaction setDisableActions:YES];
     // Never overwrite a native replacement installed since our last update.
-    if(replica.layer.mask==attachment.composite)replica.layer.mask=attachment.originalMask;
-    attachment.composite.mask=nil;[CATransaction commit];
+    BOOL stillInstalled=replica.layer.mask==attachment.composite;
+    attachment.composite.mask=nil;
+    if(stillInstalled)replica.layer.mask=attachment.originalMask;
+    [CATransaction commit];
     objc_setAssociatedObject(replica,&kDepthAttachment,nil,OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 bool LACEPosterUpdateDepthMask(void *foregroundReplica,void *posterView,CGRect clockRect,bool enabled) {

@@ -13,6 +13,7 @@ NSDictionary *LACENormalizeStyle(id object, NSError **error);
 NSDictionary *LACEStyle(lace::State state);
 bool LACEValidateFonts(NSURL *directory, NSError **error);
 UIFont *LACEFont(lace::State state, CGFloat size);
+void LACERenderEditorPreview(UIView *view);
 @class LACEStore;
 @interface LACESession : NSObject {
 @public lace::Transaction transaction;
@@ -23,11 +24,11 @@ UIFont *LACEFont(lace::State state, CGFloat size);
 - (BOOL)commit:(NSError **)error;
 - (void)cancel;
 @end
-@interface LACEStore : NSObject
+@interface LACEStore : NSObject {
+@public lace::Store core;
+}
 @property(nonatomic,strong) NSURL *fileURL;
-@property(nonatomic,copy) NSDictionary *globalRecord;
 @property(nonatomic,strong) NSMutableDictionary *records;
-@property(nonatomic,strong) NSMutableDictionary *restored;
 @property(nonatomic,strong) LACESession *active;
 @property(nonatomic) BOOL emittingChange;
 @property(nonatomic) LACEChangeCallback callback;

@@ -159,6 +159,8 @@ static void invalid(void) {
 }
 
 int main(void) {
+    const uint8_t tiny_scale_mask[]={0,127,128,255};
+    verify(tiny_scale_mask,2,2,2,FLT_MIN);
     invalid(); exhaustive(); random_masks(); adversarial();
     antialiased_subpixel_masks(); large_sparse_oracle();
     printf("PASS SDF HOST-ONLY: %lu independent brute-force/analytic samples; worst abs error %.9g points\n",comparisons,worst);

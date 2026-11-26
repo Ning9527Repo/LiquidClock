@@ -12,18 +12,20 @@ NSError *LACEError(NSInteger code, NSString *description) {
     return [NSError errorWithDomain:@"LACEClockEditor" code:code
         userInfo:@{NSLocalizedDescriptionKey:description?:@"Clock editor error"}];
 }
-static BOOL Number(id obj) { return [obj isKindOfClass:NSNumber.class] && lace::finite([obj doubleValue]); }
+static lace::Number Number(id obj) {
+    if(!obj)return {};
+    return [obj isKindOfClass:NSNumber.class]?lace::Number{lace::Number::Value,[obj doubleValue]}:
+        lace::Number{lace::Number::Invalid,0};
+}
 NSDictionary *LACENormalizeStyle(id obj, NSError **error) {
     if (![obj isKindOfClass:NSDictionary.class]) {
         if(error)*error=LACEError(10,@"Clock style must be a dictionary");return nil;
     }
-    NSDictionary *d=obj;
-    id modern=d[@"modern"], weight=d[@"weight"], soft=d[@"softness"]?:@60;
-    if (!Number(modern)||!Number(weight)||!Number(soft)||[weight doubleValue]<100||
-        [weight doubleValue]>1000||[soft doubleValue]<0||[soft doubleValue]>100) {
+    NSDictionary *d=obj;lace::Style style;
+    if(!lace::normalizeStyle(Number(d[@"modern"]),Number(d[@"weight"]),Number(d[@"softness"]),style)) {
         if(error)*error=LACEError(11,@"Clock editor style must stay within the font axes");return nil;
     }
-    return @{@"modern":@([modern boolValue]),@"weight":@([weight doubleValue]),@"softness":@([soft doubleValue])};
+    return @{@"modern":@(style.modern),@"weight":@(style.weight),@"softness":@(style.softness)};
 }
 NSDictionary *LACEStyle(lace::State state) {
     return @{@"modern":@(state.modern),@"weight":@(state.weight),@"softness":@(state.softness)};
@@ -33,13 +35,25 @@ static NSDictionary *Record(NSDictionary *raw, NSString *styleKey, NSString *pro
     NSMutableDictionary *result=[NSMutableDictionary dictionary];
     id style=raw[styleKey], progress=raw[progressKey];
     if(style) { NSDictionary *valid=LACENormalizeStyle(style,error);if(!valid)return nil;result[LACEPosterStyleKey]=valid; }
-    if(progress) {
-        if(!Number(progress)||[progress doubleValue]<0||[progress doubleValue]>1) {
-            if(error)*error=LACEError(13,@"Clock resize progress must be a finite number in [0,1]");return nil;
-        }
-        result[LACEPosterProgressKey]=@([progress doubleValue]);
+    std::optional<double> normalized;
+    if(!lace::normalizeProgress(Number(progress),normalized)) {
+        if(error)*error=LACEError(13,@"Clock resize progress must be a finite number in [0,1]");return nil;
     }
+    if(normalized)result[LACEPosterProgressKey]=@(*normalized);
     return [result copy];
+}
+static std::string PosterKey(NSString *poster) {
+    NSData *data=[poster dataUsingEncoding:NSUTF8StringEncoding];
+    return data.length?std::string((const char *)data.bytes,data.length):std::string{};
+}
+// Only call after Record()/ReadJournal() validated Foundation object types.
+static lace::Record CoreRecord(NSDictionary *record) {
+    lace::Record result;NSDictionary *style=record[LACEPosterStyleKey];
+    if(style)result.style=lace::Style{[style[@"modern"] boolValue],[style[@"weight"] doubleValue],[style[@"softness"] doubleValue]};
+    if(record[LACEPosterProgressKey])result.progress=[record[LACEPosterProgressKey] doubleValue];return result;
+}
+static lace::Journal CoreJournal(NSDictionary *posters) {
+    lace::Journal result;for(NSString *key in posters)result[PosterKey(key)]=CoreRecord(posters[key]);return result;
 }
 static NSDictionary *ReadJournal(NSURL *url, NSError **error) {
     NSError *err=nil; NSDictionary *attributes=[[NSFileManager defaultManager] attributesOfItemAtPath:url.path error:&err];
@@ -76,23 +90,22 @@ static NSDictionary *ReadJournal(NSURL *url, NSError **error) {
 @implementation LACEStore
 - (instancetype)initWithURL:(NSURL *)url globals:(NSDictionary *)globals error:(NSError **)error {
     if(!(self=[super init]))return nil;
-    _fileURL=url;_records=[NSMutableDictionary dictionary];_restored=[NSMutableDictionary dictionary];
-    _globalRecord=Record(globals,LACEStyleKey,LACEProgressKey,error);if(!_globalRecord)return nil;
+    _fileURL=url;_records=[NSMutableDictionary dictionary];
+    NSDictionary *global=Record(globals,LACEStyleKey,LACEProgressKey,error);if(!global)return nil;
     NSDictionary *journal=ReadJournal(url,error);if(!journal)return nil;
+    if(!core.configure(CoreRecord(global),CoreJournal(journal[@"posters"]))) {
+        if(error)*error=LACEError(15,@"Invalid clock journal core state");return nil;
+    }
     [_records addEntriesFromDictionary:journal[@"posters"]];return self;
 }
 - (NSDictionary *)committedRecord:(NSString *)poster {
-    NSMutableDictionary *record=[NSMutableDictionary dictionaryWithDictionary:self.globalRecord];
-    [record addEntriesFromDictionary:self.records[poster]?:@{}];
-    [record addEntriesFromDictionary:self.restored[poster]?:@{}];
-    if(!record[LACEPosterStyleKey])record[LACEPosterStyleKey]=LACEStyle(lace::State{});
-    if(!record[LACEPosterProgressKey])record[LACEPosterProgressKey]=@1;
-    return [record copy];
+    lace::State state=lace::resolve(core.committed(PosterKey(poster)));
+    return @{LACEPosterStyleKey:LACEStyle(state),LACEPosterProgressKey:@(state.progress)};
 }
 - (lace::State)stateForPoster:(NSString *)poster preview:(BOOL)preview {
-    if(preview&&[self.active.posterID isEqualToString:poster])return self.active->transaction.draft;
-    NSDictionary *r=[self committedRecord:poster], *s=r[LACEPosterStyleKey];
-    return {[s[@"modern"] boolValue],[s[@"weight"] doubleValue],[s[@"softness"] doubleValue],[r[LACEPosterProgressKey] doubleValue]};
+    LACESession *active=self.active;
+    if(preview&&[active.posterID isEqualToString:poster])return active->transaction.draft;
+    return lace::resolve(core.committed(PosterKey(poster)));
 }
 - (LACESession *)begin:(NSString *)poster {
     if(self.active||self.emittingChange)return nil;
@@ -104,9 +117,13 @@ static NSDictionary *ReadJournal(NSURL *url, NSError **error) {
     if(self.emittingChange){if(error)*error=LACEError(19,@"Schedule mutations after the change callback returns");return NO;}
     NSDictionary *a=Record(info,LACEPosterStyleKey,LACEPosterProgressKey,error);if(!a)return NO;
     NSDictionary *b=Record(props,LACEPosterStyleKey,LACEPosterProgressKey,error);if(!b)return NO;
+    std::string key=PosterKey(poster);
+    if(key.empty()){if(error)*error=LACEError(15,@"Poster identifier must be lossless UTF-8");return NO;}
     if([self.active.posterID isEqualToString:poster])[self.active cancel];
-    NSMutableDictionary *r=[NSMutableDictionary dictionaryWithDictionary:b];[r addEntriesFromDictionary:a];
-    self.restored[poster]=[r copy];[self changed:poster reason:LACEChangeRestore];return YES;
+    if(!core.restore(key,CoreRecord(a),CoreRecord(b))) {
+        if(error)*error=LACEError(15,@"Invalid normalized poster metadata");return NO;
+    }
+    [self changed:poster reason:LACEChangeRestore];return YES;
 }
 - (BOOL)save:(LACESession *)session error:(NSError **)error {
     if(self.active!=session||session->transaction.phase!=lace::Transaction::Saving) {
@@ -124,17 +141,27 @@ static NSDictionary *ReadJournal(NSURL *url, NSError **error) {
         NSDictionary *journal=ReadJournal(self.fileURL,error);
         if(journal) {
             NSDictionary *current=journal[@"posters"][session.posterID];
-            if(current!=session.baseJournalRecord&&![current isEqual:session.baseJournalRecord]) {
+            BOOL same=current==session.baseJournalRecord||[current isEqual:session.baseJournalRecord];
+            std::optional<lace::Record> baseline;
+            if(session.baseJournalRecord)baseline=CoreRecord(session.baseJournalRecord);
+            lace::Store::SaveResult result=core.save(PosterKey(session.posterID),baseline,
+                session->transaction,CoreJournal(journal[@"posters"]),same,[&](const lace::Journal &) {
+                    lace::State state=session->transaction.draft;
+                    NSMutableDictionary *entry=current?[current mutableCopy]:[NSMutableDictionary dictionary];
+                    entry[LACEPosterStyleKey]=LACEStyle(state);entry[LACEPosterProgressKey]=@(state.progress);
+                    NSMutableDictionary *posters=[journal[@"posters"] mutableCopy];posters[session.posterID]=entry;
+                    NSMutableDictionary *next=[journal mutableCopy];next[@"posters"]=posters;
+                    NSData *data=[NSPropertyListSerialization dataWithPropertyList:next format:NSPropertyListBinaryFormat_v1_0 options:0 error:error];
+                    BOOL ok=data&&[data writeToURL:self.fileURL options:NSDataWritingAtomic error:error];
+                    if(ok)self.records=posters;return bool(ok);
+                });
+            saved=result==lace::Store::Saved;
+            if(result==lace::Store::Conflict) {
+                self.records=[journal[@"posters"] mutableCopy];
                 if(error)*error=LACEError(17,@"This poster was saved by another editor; cancel and reopen to reload");
-            } else {
-                lace::State state=session->transaction.draft;
-                NSDictionary *r=@{LACEPosterStyleKey:LACEStyle(state),LACEPosterProgressKey:@(state.progress)};
-                NSMutableDictionary *posters=[journal[@"posters"] mutableCopy];posters[session.posterID]=r;
-                NSMutableDictionary *next=[journal mutableCopy];next[@"posters"]=posters;
-                NSData *data=[NSPropertyListSerialization dataWithPropertyList:next format:NSPropertyListBinaryFormat_v1_0 options:0 error:error];
-                saved=data&&[data writeToURL:self.fileURL options:NSDataWritingAtomic error:error];
-                if(saved) {self.records=posters;self.restored[session.posterID]=r;}
             }
+            if(result==lace::Store::InvalidState&&error)
+                *error=LACEError(15,@"Clock journal state or poster count exceeds limits");
         }
     } @finally {flock(fd,LOCK_UN);close(fd);}
     return saved;

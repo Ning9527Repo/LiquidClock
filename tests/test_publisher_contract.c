@@ -112,11 +112,21 @@ static void slots_and_takeover(void) {
         LGClockFieldHeader *h=(LGClockFieldHeader *)(p->mapping+(size_t)i*LG_CLOCK_FIELD_SLOT_BYTES);
         assert(h->sequence==0 && h->magic==0);
     }
+    const size_t full_count=1024u*1024u;
+    float *full=malloc(full_count*sizeof(float)); assert(full);
+    for (size_t i=0;i<full_count;++i) full[i]=(i&1)?65504:-65504;
+    assert(LACClockFieldPublish(p,15,4,1024,1024,2048,2048,full,full_count));
+    assert(last->sequence==4 && first->sequence==4);
+    assert(!memcmp((unsigned char *)last+64,full,full_count*sizeof(float)));
+    free(full);
     assert(!publish(p,16));
     closed(p);
     assert(!LACClockFieldPublisherOpen(path,1,1));
     p=LACClockFieldPublisherOpen(path,16,0); assert(p);
     first=(LGClockFieldHeader *)p->mapping;
+    unsigned char foreign_before[80]; memcpy(foreign_before,p->mapping,sizeof(foreign_before));
+    assert(!LACClockFieldInvalidate(p,0));
+    assert(!memcmp(foreign_before,p->mapping,sizeof(foreign_before)));
     assert(publish(p,0));
     assert(first->sequence==6 && first->token_10 && first->token_10!=token);
     assert(first->reserved_20==0 && first->reserved_3c==0xabcdef12u);
@@ -147,7 +157,10 @@ static void sequence_limits(void) {
         unsigned char before[80]; memcpy(before,p->mapping,sizeof(before));
         assert(!publish(p,0)); assert(memcmp(before,p->mapping,sizeof(before))==0);
     }
+    h->sequence=UINT64_MAX-1;
     assert(LACClockFieldInvalidate(p,0));
+    assert(h->sequence==UINT64_MAX && !h->mach_absolute_time);
+    assert(LACClockFieldInvalidate(p,0)); /* terminal odd remains terminal */
     assert(h->sequence==UINT64_MAX && !h->mach_absolute_time);
     assert(!publish(p,0));
     closed(p);
@@ -308,6 +321,10 @@ static void concurrency(void) {
 int main(void) {
     alarm(90);
     assert(mkdtemp(directory));
+    unsigned char resident=0;
+    errno=0;
+    if (mincore(NULL,4096,&resident)!=-1 || errno!=ENOMEM)
+        puts("SKIP HOST mincore residency oracle: iSH stub; real munmap forwarding/return and fd close are checked");
     file_policy(); slots_and_takeover(); sequence_limits();
     validation_and_invalidation(); lock_processes(); concurrency();
     assert(rmdir(directory)==0);

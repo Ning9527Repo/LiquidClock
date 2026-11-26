@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "sample_whole_sha256": "ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e",
+  "slice_offset": "0x94000",
+  "device_target": {
+    "system": "iOS17.2.1",
+    "build": "21C66",
+    "source": "delegating agent apple-device observation; not executed by this backend task"
+  },
+  "profile": {
+    "filter_atom_member": 24,
+    "texture_member": 96,
+    "context_destination_member": 248
+  },
+  "fixtures_are": "sample instruction bytes + separately synthetic QuartzCore scanner fixture, NOT a dump of the device QuartzCore image",
+  "instruction_records_sha256": "a2d1d923d986dfbedb349757f67a0750739f3a8ad3364a7df4fd1bbe2bfb4cb7",
+  "instructions": [
+    {
+      "va": "0x7784",
+      "bytes": "aa035df809038052880280524a3900f109d1891ae80309aa087d4093890100b0282101f9aa035df8090b8052080c80524a4500f10ba1891aea030baa4a7d40938b0100b06a2501f9aa035df84a4500f109a1891ae80309aa087d4093890100b0282901f9",
+      "meaning": "filter atom + source/destination texture profile"
+    },
+    {
+      "va": "0x781c",
+      "bytes": "a8035df8084100f1c100005401000014082280d2890100b0282d01f917000014a8035df8084900f1cb0000540100001408008092890100b0282d01f90e000014a8035df8083d00f1c100005401000014082180d2890100b0282d01f905000014890100b0081f80d2282d01f9",
+      "meaning": "16/17 context destination profile"
+    },
+    {
+      "va": "0x7a30",
+      "bytes": "a8035df8084900f1cb02005401000014",
+      "meaning": "projection-based destination resolver only >=18"
+    },
+    {
+      "va": "0x88c4",
+      "bytes": "88010090e81301f908bd43f989010090e91701f9203541f91f093fd6e81341f9e05f05b908bd43f9000100d0007c12911f093fd6e81741f9",
+      "meaning": "intern atom calls"
+    },
+    {
+      "va": "0x8954",
+      "bytes": "ffab02f98801009008a95d3928020036010000148801009008c55e394801003701000014000100d000e813911cfeff97080080520801001208010012e85f163971040014e8c342f9e8ab02f99b000014",
+      "meaning": "PAC hook path passes genuine Gaussian context slot to registration"
+    },
+    {
+      "va": "0x8bec",
+      "bytes": "8801009009e943f9880100900aed43f9490100f908ed43f9e8ab02f9",
+      "meaning": "context starts with vtable pointer"
+    },
+    {
+      "va": "0xacc0",
+      "bytes": "7f2303d5fc6fbea9fd7b01a9fd430091ff0331d1e9c31891e9d302f9480100d0080d43f9080140f9a8831ef820c501f921c101f922bd01f923b901f9206d03bd24b101f9215d03bde52f263926a901f927a501f928b941f928a101f928b141f9289d01f9680100d0083141f9c800f8b60100001400010090000835912df5ff97880f0014e9d342f928a141f96a0100d04a3141f908696af8289901f9680100d0082541f92801f8b701000014e8d342f9089d41f9690100d0292541f9086969f8e8cf02f9",
+      "meaning": "two-shape custom render callback incoming registers"
+    },
+    {
+      "va": "0xeb94",
+      "bytes": "7f2303d5ff0302d1fd7b07a9fdc30191a80b40f9a0831ff8a1031ff8a2831ef8a3031ef8a0c31dbca4031df8a1c31cbca5b31c38e61b00f9e71700f9e81300f9a8035ff8080100b401000014",
+      "meaning": "single-shape render wrapper incoming registers"
+    },
+    {
+      "va": "0xec70",
+      "bytes": "a0835ff8a1035ff8a2835ef8a3035ef8a0c35dbca4035df8a1c35cbca8b35c38e61b40f9e71740f9e91340f9ea0300915f0100f9490500f90501001205f0ff972c000014",
+      "meaning": "single-shape wrapper supplies null second shape"
+    },
+    {
+      "va": "0xee68",
+      "bytes": "480100d008c143f9a0435eb8e11740f91f093fd6",
+      "meaning": "add_filter(atom, genuine descriptor) call"
+    }
+  ]
+}

@@ -30,7 +30,8 @@ NSString *LACResourcePath(NSString *name) {
     return [[gLibraryDirectory stringByAppendingPathComponent:@"LiquidClockResources.bundle"] stringByAppendingPathComponent:name];
 }
 NSString *LACSharedPath(NSString *name) {
-    return [@"/var/mobile/Library/Accessibility/LiquidClock" stringByAppendingPathComponent:name];
+    return [@"/var/mobile/Library/Accessibility" stringByAppendingPathComponent:
+        [@"com.ning.liquidclock-" stringByAppendingString:name]];
 }
 BOOL LACApplySandboxProfile(void) {
     LACSetup();
@@ -39,7 +40,7 @@ BOOL LACApplySandboxProfile(void) {
     // rootless and Library/TweakInject on RootHide; locate only inside our root.
     NSRange library=[root rangeOfString:@"/Library/" options:NSBackwardsSearch];
     if (library.location==NSNotFound) return NO;
-    NSString *base=[root substringToIndex:library.location];
+    NSString *base=library.location==0?@"/" : [root substringToIndex:library.location];
     NSString *path=[base stringByAppendingPathComponent:@"usr/lib/libsandy.dylib"];
     static void *handle;
     if (!handle) handle=dlopen(path.fileSystemRepresentation,RTLD_LAZY|RTLD_LOCAL);
@@ -109,6 +110,17 @@ BOOL LACPublishConfiguration(NSError **error) {
     LACReloadConfiguration();
     CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(),(__bridge CFStringRef)LACReloadNotification,NULL,NULL,true);
     return YES;
+}
+BOOL LACIsClockHostProcess(void) {
+    // Explicit IDs recovered from the sample sandbox profile, not all UIKit.
+    NSArray *allowed=@[@"com.apple.springboard",@"com.apple.PosterBoard",
+        @"com.apple.NanoUniverse.AegirProxyApp.AegirPoster",@"com.apple.weather.poster",
+        @"com.apple.WatchFacesWallpaperSupport.ExtragalacticPoster",
+        @"com.apple.PhotosUIPrivate.PhotosPosterProvider",@"com.apple.EmojiPoster.EmojiPosterExtension",
+        @"com.apple.WallpaperKit.CollectionsPoster",@"com.apple.PridePoster.PridePosterExtension",
+        @"com.apple.UnityPoster.UnityPosterExtension",@"com.apple.GradientPoster.GradientPosterExtension"];
+    return [allowed containsObject:NSBundle.mainBundle.bundleIdentifier?:@""] ||
+           [NSProcessInfo.processInfo.processName isEqual:@"SpringBoard"];
 }
 void LACLog(NSString *event,NSDictionary *fields) {
     // Metadata only: never label text, glyph pixels, poster images, tokens or IDs.

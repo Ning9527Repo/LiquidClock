@@ -47,6 +47,10 @@ static BOOL LACFiniteMap(CGAffineTransform t) {
  * colors are replaced; missing font/paragraph values receive UILabel defaults.
  * UIFont is explicitly CTFont-bridged in the SDK; recreating by name loses axes. */
 static CTParagraphStyleRef LACParagraph(NSParagraphStyle *p) {
+    /* These TextKit paragraph policies have no equivalent in the CT paragraph
+     * settings below. Do not silently drop them while claiming rich fidelity. */
+    if (p.hyphenationFactor != 0 || p.usesDefaultHyphenation ||
+        p.lineBreakStrategy != NSLineBreakStrategyNone) return NULL;
     CTTextAlignment align = (CTTextAlignment)p.alignment;
     /* NSTextAlignment and CTTextAlignment have different enum values. */
     switch (p.alignment) {
@@ -94,6 +98,14 @@ static NSAttributedString *LACSource(UILabel *label) {
                 id p=attrs[NSParagraphStyleAttributeName];
                 if ([p isKindOfClass:NSParagraphStyle.class])
                     [s addAttribute:NSParagraphStyleAttributeName value:[p copy] range:range];
+                /* NSAttributedString copy does not deep-copy attribute values. */
+                for (NSString *key in @[NSWritingDirectionAttributeName,
+                        (__bridge NSString *)kCTWritingDirectionAttributeName,
+                        (__bridge NSString *)kCTLanguageAttributeName]) {
+                    id value=attrs[key];
+                    if ([value conformsToProtocol:@protocol(NSCopying)])
+                        [s addAttribute:key value:[value copy] range:range];
+                }
             }];
         return s;
     }
@@ -138,7 +150,12 @@ static NSAttributedString *LACClockText(UILabel *label, NSAttributedString *sour
     [text addAttribute:NSStrokeColorAttributeName value:UIColor.whiteColor range:all];
     [text addAttribute:(__bridge NSString *)kCTStrokeColorAttributeName
                  value:(__bridge id)UIColor.whiteColor.CGColor range:all];
+    [text addAttribute:NSUnderlineColorAttributeName value:UIColor.whiteColor range:all];
+    [text addAttribute:(__bridge NSString *)kCTUnderlineColorAttributeName
+                 value:(__bridge id)UIColor.whiteColor.CGColor range:all];
+    [text addAttribute:NSStrikethroughColorAttributeName value:UIColor.whiteColor range:all];
     [text removeAttribute:NSBackgroundColorAttributeName range:all];
+    [text removeAttribute:(__bridge NSString *)kCTBackgroundColorAttributeName range:all];
     [text removeAttribute:NSShadowAttributeName range:all];
     return text;
 }
@@ -181,10 +198,9 @@ static BOOL LACCollect(UIView *node, UIView *root, NSMutableArray *labels,
                 @(label.baselineAdjustment),@(label.allowsDefaultTighteningForTruncation),
                 @(label.lineBreakStrategy),@(label.effectiveUserInterfaceLayoutDirection)]];
         }
-    } else {
-        NSUInteger layerBudget=512;
-        if (LACHasUnsupportedLayer(node.layer,&layerBudget)) return NO;
     }
+    NSUInteger layerBudget=512;
+    if (LACHasUnsupportedLayer(node.layer,&layerBudget)) return NO;
     for (UIView *child in node.subviews)
         if (!LACCollect(child,root,labels,signature,budget,depth+1)) return NO;
     return YES;
@@ -221,6 +237,17 @@ static BOOL LACDrawLabel(CGContextRef ctx, UIView *root, UILabel *label,
     if (visible.location+visible.length < (CFIndex)text.length) {
         NSString *tail=[text.string substringFromIndex:(NSUInteger)(visible.location+visible.length)];
         complete=complete && [tail stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet].length==0;
+    }
+    /* A clipping/truncating paragraph may report the entire string visible
+     * while its unbroken line exceeds the frame. Never publish clipped glyphs
+     * as if UIKit's ellipsis/fitting had been reproduced. */
+    for (CFIndex i=0;complete && i<lineCount;++i) {
+        CTLineRef line=(CTLineRef)CFArrayGetValueAtIndex(lines,i);
+        CGPoint origin;
+        CTFrameGetLineOrigins(frame,CFRangeMake(i,1),&origin);
+        double used=CTLineGetTypographicBounds(line,NULL,NULL,NULL)-CTLineGetTrailingWhitespaceWidth(line);
+        complete=isfinite(used) && isfinite(origin.x) && isfinite(origin.y) &&
+                 origin.x >= -0.01 && origin.x+fmax(0.0,used) <= r.size.width+0.01;
     }
     if (!complete) { CFRelease(frame); return NO; }
     CGContextSaveGState(ctx);
@@ -301,9 +328,6 @@ int LACClockGetSDFForView(UIView *view, float scale, uint64_t revision,
     if (!LACFiniteRect(bounds) || bounds.size.width>2048 || bounds.size.height>2048) {
         LACClear(cache); return 0;
     }
-    for (UIView *ancestor=view; ancestor; ancestor=ancestor.superview) {
-        if (ancestor.hidden || ancestor.alpha<=0.01) { LACClear(cache); return 0; }
-    }
     const uint32_t width=(uint32_t)ceil(bounds.size.width*scale);
     const uint32_t height=(uint32_t)ceil(bounds.size.height*scale);
     if (!width || !height || width>1024 || height>1024) { LACClear(cache); return 0; }
@@ -311,6 +335,11 @@ int LACClockGetSDFForView(UIView *view, float scale, uint64_t revision,
                       cache.scale==scale && [cache.traits isEqual:view.traitCollection];
     if (revision && sameGeometry && revision==cache.revision) {
         *out=cache.snapshot; return 1;
+    }
+    /* Explicit-revision hits deliberately do not traverse ancestors/descendants.
+     * The revision owner must invalidate ancestor visibility changes as well. */
+    for (UIView *ancestor=view; ancestor; ancestor=ancestor.superview) {
+        if (ancestor.hidden || ancestor.alpha<=0.01) { LACClear(cache); return 0; }
     }
     NSMutableArray *labels=[NSMutableArray array], *signature=[NSMutableArray array];
     NSUInteger budget=512;

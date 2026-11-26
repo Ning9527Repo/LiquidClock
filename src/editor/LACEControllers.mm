@@ -34,15 +34,17 @@ static void PlaceStack(UIStackView *stack,UIView *host) {
     CGSize extent=[self.timeLabel.text sizeWithAttributes:@{NSFontAttributeName:probe}];
     CGFloat size=100*MIN(width/MAX(1,extent.width),height/MAX(1,probe.lineHeight));
     UIFont *font=LACEFont(self.state,MAX(1,size));self.timeLabel.font=font;
-    // Independent UI adaptation: measure uploaded glyphs for horizontal fit, then
-    // let normalized sample progress interpolate the available vertical preview.
-    // This is not a recovered sample HGHT mapping; HGHT/wdth stay at font defaults.
-    self.maximumHeight=height;self.minimumHeight=MIN(height,MAX(1,font.lineHeight*.62));
-    CGFloat target=self.minimumHeight+(self.maximumHeight-self.minimumHeight)*self.state.progress;
+    // The sample's window-width scale and height endpoints, fitted into this
+    // reconstruction's preview container. Container chrome is not sample UI.
+    CGFloat windowWidth=self.window?CGRectGetWidth(self.window.bounds):CGRectGetWidth(self.bounds);
+    auto range=lace::editorHeightRange(windowWidth,height);if(!range)return;
+    self.minimumHeight=range->minimum;self.maximumHeight=range->maximum;
+    CGFloat target=lace::heightAt(self.state.progress,*range);
     self.timeLabel.transform=CGAffineTransformIdentity;
     self.timeLabel.bounds=CGRectMake(0,0,width,MAX(1,font.lineHeight));
     self.timeLabel.center=CGPointMake(CGRectGetMidX(self.bounds),CGRectGetMidY(self.bounds));
     self.timeLabel.transform=CGAffineTransformMakeScale(1,target/MAX(1,font.lineHeight));
+    LACERenderEditorPreview(self);
 }
 @end
 @interface LACEFontPanel : UIViewController
@@ -90,10 +92,10 @@ static void PlaceStack(UIStackView *stack,UIView *host) {
         field.keyboardType=UIKeyboardTypeDecimalPad;field.text=[NSString stringWithFormat:@"%.0f",weight?s.weight:s.softness];
     }];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    __weak LACEFontPanel *weakSelf=self;
+    __weak LACEFontPanel *weakSelf=self;__weak UIAlertController *weakAlert=alert;
     [alert addAction:[UIAlertAction actionWithTitle:@"应用" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         (void)action;LACEFontPanel *panel=weakSelf;if(!panel)return;
-        NSString *text=alert.textFields.firstObject.text?:@"";NSScanner *scanner=[NSScanner scannerWithString:text];
+        NSString *text=weakAlert.textFields.firstObject.text?:@"";NSScanner *scanner=[NSScanner scannerWithString:text];
         scanner.locale=[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];double value=0;
         if(![scanner scanDouble:&value]||!scanner.isAtEnd||!lace::finite(value)||
             value<(weight?100:0)||value>(weight?1000:100)) {

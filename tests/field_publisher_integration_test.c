@@ -1,5 +1,6 @@
 #define _GNU_SOURCE 1
 #include "../src/clock/LACClockFieldPublisher.h"
+#include "../src/clock/LACClockSDF.h"
 #include "../src/clock/NGClockFieldCodec.h"
 #include "../field/clock_field_protocol.h"
 #include <assert.h>
@@ -46,8 +47,21 @@ int main(void) {
     assert(!LACClockFieldPublish(p,0,1,2,2,2,2,sdf,3));
     const float bad[4]={1,INFINITY,0,0};
     assert(!LACClockFieldPublish(p,0,1,2,2,2,2,bad,4));
+    uint8_t coverage[25]={0}; coverage[12]=255;
+    float generated[25];
+    assert(LACClockSDFCreate(coverage,5,5,5,2,generated,25));
+    assert(LACClockFieldPublish(p,0,4,5,5,2.5f,2.5f,generated,25));
+    unsigned char glyph_snapshot[LG_CLOCK_FIELD_HEADER_SIZE+sizeof(generated)] __attribute__((aligned(8)));
+    assert(LGClockFieldCopyStable(map,(size_t)st.st_size,glyph_snapshot,sizeof(glyph_snapshot)));
+    assert(!memcmp(glyph_snapshot+LG_CLOCK_FIELD_HEADER_SIZE,generated,sizeof(generated)));
+    uint16_t glyph_half[25];
+    assert(NGClockFieldSnapshotToR16(glyph_snapshot,sizeof(glyph_snapshot),glyph_half,sizeof(glyph_half)));
+    assert(glyph_half[12]==0xb400 && glyph_half[11]==0x3400); /* +/-0.25 points */
+    assert(h->reserved_20==77 && h->reserved_3c==0xfeedbeefu);
+    assert(LACClockFieldInvalidate(p,0));
+    assert(!LGClockFieldCopyStable(map,(size_t)st.st_size,glyph_snapshot,sizeof(glyph_snapshot)));
     LACClockFieldPublisherClose(p);
     munmap(map,(size_t)st.st_size); close(fd); unlink(path);
-    puts("PASS: mmap publisher -> stable snapshot -> R16Float codec (host only)");
+    puts("PASS: binary SDF -> mmap publisher -> stable snapshot -> R16Float -> invalidation (HOST-ONLY)");
     return 0;
 }

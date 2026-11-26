@@ -1,0 +1,37 @@
+name: Native clock build
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: macos-26-intel
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Offline protocol geometry and editor tests
+        run: python3 tests/run_regression.py
+      - name: Native arm64 rootless compile and strict signature
+        run: python3 tools/build_native.py --arch arm64 --output build/arm64
+      - name: Native arm64e RootHide compile and strict signature
+        run: python3 tools/build_native.py --arch arm64e --output build/arm64e
+      - name: Verify native architecture and signed code hashes
+        run: python3 tools/verify_native.py build/arm64 build/arm64e
+      - name: Assemble arm64 rootless package
+        run: python3 tools/package_native.py --arch arm64 --input build/arm64 --output build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
+      - name: Assemble arm64e RootHide package
+        run: python3 tools/package_native.py --arch arm64e --input build/arm64e --output build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
+      - name: Validate package structure and metadata
+        run: |
+          dpkg-deb -I build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
+          dpkg-deb -I build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
+          dpkg-deb -c build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
+          dpkg-deb -c build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: liquidclock-native-${{ github.sha }}
+          path: |
+            build/packages/*.deb
+            build/*/native-build.json
+            build/verification-native.json
+          if-no-files-found: error

@@ -3,8 +3,23 @@
 static LACEStore *gStore;
 static __weak LACEEditorController *gEditor;
 static char kBinding;
+static LACEPreviewRenderCallback gPreviewRenderer;
+static void *gPreviewContext;
+static BOOL gRenderingPreview;
+void LACESetPreviewRenderCallback(LACEPreviewRenderCallback callback,void *context) {
+    if(!NSThread.isMainThread)return;gPreviewRenderer=callback;gPreviewContext=context;
+}
+void LACERenderEditorPreview(UIView *view) {
+    if(!NSThread.isMainThread||!gPreviewRenderer||gRenderingPreview)return;
+    gRenderingPreview=YES;
+    @try {gPreviewRenderer((__bridge void *)view,gPreviewContext);}
+    @finally {gRenderingPreview=NO;}
+}
 static BOOL MainThread(void) {return NSThread.isMainThread;}
-static BOOL PosterID(NSString *value) {return [value isKindOfClass:NSString.class]&&value.length>0&&value.length<=512;}
+static BOOL PosterID(NSString *value) {
+    return [value isKindOfClass:NSString.class]&&value.length>0&&value.length<=512&&
+        [value dataUsingEncoding:NSUTF8StringEncoding].length>0;
+}
 static void ExportError(CFErrorRef *outError,NSError *error) {
     if(outError)*outError=error?(CFErrorRef)CFBridgingRetain(error):nullptr;
 }
@@ -81,7 +96,7 @@ bool LACEPresentEditor(void *presenterViewController,CFStringRef posterID) {
     return true;
 }
 void LACECancelEditor(void) {
-    if(!MainThread())return;LACEEditorController *editor=gEditor;
+    if(!MainThread()||gStore.emittingChange)return;LACEEditorController *editor=gEditor;
     if(editor)[editor cancelAndDismiss];else [gStore.active cancel];
 }
 CFDictionaryRef LACECopyPreviewStyle(CFStringRef posterID) {

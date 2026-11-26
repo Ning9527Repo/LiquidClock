@@ -1,4 +1,4 @@
-; Local sample arm64e unslid VA 0x72c48..0x735e8
+; Uploaded sample arm64e unslid VA 0x72c48..0x734f0
 00072c48 pacibsp                                                
 00072c4c stp       d13, d12, [sp, #-0x90]!                      
 00072c50 stp       d11, d10, [sp, #0x10]                        
@@ -553,65 +553,3 @@
 000734e4 mov       x20, x0                                      
 000734e8 ldr       x2, [sp, #0x20]                              
 000734ec bl        #0xacd20                                      ; objc_msgSend$setFillRule:
-000734f0 mov       x0, x25                                      
-000734f4 bl        #0xa9a40                                      ; objc_msgSend$masks
-000734f8 mov       x29, x29                                     
-000734fc bl        #0xa4734                                      ; _objc_retainAutoreleasedReturnValue
-00073500 mov       x19, x0                                      
-00073504 mov       x2, x20                                      
-00073508 mov       x3, x21                                      
-0007350c bl        #0xadea0                                      ; objc_msgSend$setObject:forKey:
-00073510 mov       x0, x19                                      
-00073514 bl        #0xa46f4                                      ; _objc_release
-00073518 b         #0x73320                                     
-0007351c add       x2, sp, #0x40                                
-00073520 add       x3, sp, #0x100                               
-00073524 ldr       x0, [sp, #0x30]                              
-00073528 mov       w4, #0x10                                    
-0007352c bl        #0xa6a20                                      ; objc_msgSend$countByEnumeratingWithState:objects:count:
-00073530 mov       x28, x0                                      
-00073534 cbnz      x0, #0x73258                                 
-00073538 ldr       x0, [sp, #0x30]                              
-0007353c bl        #0xa46f4                                      ; _objc_release
-00073540 adrp      x8, #0xec000                                 
-00073544 ldr       x0, [x8, #0x4c0]                              ; &_OBJC_CLASS_$_CATransaction
-00073548 bl        #0xa6220                                      ; objc_msgSend$commit
-0007354c mov       x0, x25                                      
-00073550 bl        #0xa46f4                                      ; _objc_release
-00073554 ldp       x19, x21, [sp, #0x10]                        
-00073558 ldp       x22, x20, [sp]                               
-0007355c ldr       x26, [sp, #0x28]                             
-00073560 b         #0x73570                                     
-00073564 mov       x0, x25                                      
-00073568 mov       x2, x21                                      
-0007356c bl        #0xa5f60                                      ; objc_msgSend$clearDepthMaskForPosterCell:
-00073570 mov       x0, x26                                      
-00073574 bl        #0xa46f4                                      ; _objc_release
-00073578 ldr       x0, [sp, #0x38]                              
-0007357c bl        #0xa46f4                                      ; _objc_release
-00073580 mov       x0, x22                                      
-00073584 bl        #0xa46f4                                      ; _objc_release
-00073588 mov       x0, x20                                      
-0007358c bl        #0xa46f4                                      ; _objc_release
-00073590 mov       x0, x19                                      
-00073594 bl        #0xa46f4                                      ; _objc_release
-00073598 mov       x0, x21                                      
-0007359c bl        #0xa46f4                                      ; _objc_release
-000735a0 ldur      x8, [x29, #-0x90]                            
-000735a4 adrp      x9, #0xd4000                                 
-000735a8 ldr       x9, [x9, #0x938]                              ; &___stack_chk_guard
-000735ac ldr       x9, [x9]                                      ; &___objc_personality_v0
-000735b0 cmp       x9, x8                                       
-000735b4 b.ne      #0x735e4                                     
-000735b8 add       sp, sp, #0x290                               
-000735bc ldp       x29, x30, [sp, #0x80]                        
-000735c0 ldp       x20, x19, [sp, #0x70]                        
-000735c4 ldp       x22, x21, [sp, #0x60]                        
-000735c8 ldp       x24, x23, [sp, #0x50]                        
-000735cc ldp       x26, x25, [sp, #0x40]                        
-000735d0 ldp       x28, x27, [sp, #0x30]                        
-000735d4 ldp       d9, d8, [sp, #0x20]                          
-000735d8 ldp       d11, d10, [sp, #0x10]                        
-000735dc ldp       d13, d12, [sp], #0x90                        
-000735e0 retab                                                  
-000735e4 bl        #0xa41d4                                      ; ___stack_chk_fail
