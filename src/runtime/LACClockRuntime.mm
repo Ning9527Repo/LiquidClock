@@ -3,6 +3,7 @@
 #import "../clock/LACClockFieldPublisher.h"
 #import "../clock/LACClockTextField.h"
 #import "../clock/LACClockTypography.h"
+#include "../clock/LACClockGeometry.hpp"
 #import <CoreText/CoreText.h>
 #import "../editor/LACClockEditor.h"
 #import "../backboard/LACClockFilterContract.h"
@@ -44,6 +45,14 @@ static void LACConfigureFrameRate(void);
 @interface LACClockState : NSObject
 @property(nonatomic,weak) UIView *source;
 @property(nonatomic,strong) LACBackdropClock *glass;
+@property(nonatomic,weak) UILabel *glyphLabel;
+@property(nonatomic,weak) UIView *geometryHost;
+@property(nonatomic,strong) UIFont *glyphFont;
+@property(nonatomic) CGRect glyphFrame;
+@property(nonatomic) CGFloat digitHeight;
+@property(nonatomic) BOOL replacementGeometry;
+@property(nonatomic,strong) CALayer *glyphMask;
+@property(nonatomic) uint64_t maskGeneration;
 @property(nonatomic,strong) NSMutableArray<LACNativeLabel *> *labels;
 @property(nonatomic,copy) NSString *posterID;
 @property(nonatomic) LACClockChannel channel;
@@ -191,11 +200,12 @@ static double LACFontTextWidth(NSString *text,UIFont *font) {
 }
 static UIFont *LACPosterTypographyFont(LACClockState *s,UILabel *label,CGFloat nativeSize) {
     CFStringRef poster=(__bridge CFStringRef)s.posterID;
-    UIFont *base=CFBridgingRelease(LACECopyPreviewFont(poster,nativeSize));
+    UIFont *base=s.posterID.length?CFBridgingRelease(LACECopyPreviewFont(poster,nativeSize)):label.font;
     double progress=0;
-    if(!base || !LACEGetPreviewProgress(poster,&progress))return base;
+    if(s.posterID.length)LACEGetPreviewProgress(poster,&progress);
+    if(!base)return nil;
     NSString *text=label.attributedText.length?label.attributedText.string:label.text;
-    const double width=CGRectGetWidth(label.bounds),available=CGRectGetHeight(label.bounds);
+    const double width=CGRectGetWidth(s.glyphFrame),available=CGRectGetHeight(s.glyphFrame);
     const double windowWidth=CGRectGetWidth(s.source.window.bounds);
     auto range=lace::editorHeightRange(windowWidth,available);
     if(!range || !text.length || !std::isfinite(width) || width<=0)return base;
@@ -215,40 +225,110 @@ static UIFont *LACPosterTypographyFont(LACClockState *s,UILabel *label,CGFloat n
     },width);
     const double t=(shape.points/scale-130)/42;
     return LACFontAxes(base,shape.points,shape.heightAxis,std::fma(t,last-first,first))?:base;
-    // Intentionally do not resize/reposition Apple's labels/container: no host
-    // coordinate adapter is proven here. Fit uses only its measured bounds.
+    // Font applies only to the independent path; native UILabel is untouched.
+}
+static lacclock::Rect LACRect(CGRect r) { return {r.origin.x,r.origin.y,r.size.width,r.size.height}; }
+static CGRect LACViewRect(UIView *view,UIView *host) {
+    CALayer *a=view.layer.presentationLayer,*b=host.layer.presentationLayer;
+    return a&&b?[b convertRect:a.bounds fromLayer:a]:[view convertRect:view.bounds toView:host];
+}
+static UILabel *LACPrimaryClockLabel(UIView *source) {
+    Ivar ivar=class_getInstanceVariable(source.class,"_textLabel");
+    id value=nil;
+    if(ivar&&ivar_getTypeEncoding(ivar)&&ivar_getTypeEncoding(ivar)[0]=='@')value=object_getIvar(source,ivar);
+    if([value isKindOfClass:UILabel.class]&&[(UIView *)value isDescendantOfView:source])return value;
+    NSArray *labels=LACLabels(source);
+    return labels.count==1?labels.firstObject:nil;
+}
+static BOOL LACPrepareGeometry(LACClockState *s) {
+    s.replacementGeometry=NO;s.glyphLabel=nil;s.geometryHost=nil;s.glyphFont=nil;
+    UIView *source=s.source;UILabel *label=LACPrimaryClockLabel(source);
+    if(!label||!source.window)return NO;
+    UIView *host=source.superview;
+    for(UIView *v=source.superview;v&&v!=source.window;v=v.superview) {
+        if([v isKindOfClass:NSClassFromString(@"CSProminentDisplayView")]||
+           [v isKindOfClass:NSClassFromString(@"SBFLockScreenDateView")]){host=v;break;}
+    }
+    if(!host)return NO;
+    // Only axis-aligned host adapters are implemented; never flatten rotation.
+    for(UIView *v=source;v&&v!=host;v=v.superview)
+        if(!CGAffineTransformIsIdentity(v.transform)||!CATransform3DIsIdentity(v.layer.sublayerTransform))return NO;
+    CGRect clock=LACViewRect(source,host),date=CGRectNull;
+    NSMutableArray *stack=[NSMutableArray arrayWithObject:host];
+    for(unsigned n=0;stack.count&&n<400;++n) {
+        UIView *v=stack.lastObject;[stack removeLastObject];
+        if(v.hidden||v.alpha<=0.01||v==source||[v isKindOfClass:LACBackdropClock.class])continue;
+        if([v isKindOfClass:NSClassFromString(@"CSProminentSubtitleDateView")]||
+           [v isKindOfClass:NSClassFromString(@"SBFLockScreenDateSubtitleDateView")]) {
+            CGRect r=LACViewRect(v,host);
+            if(!CGRectIsNull(date))return NO; // multiple date anchors are ambiguous
+            date=r;
+        }
+        [stack addObjectsFromArray:v.subviews];
+    }
+    if(CGRectIsNull(date))return NO;
+    CGRect viewport=[host convertRect:source.window.bounds fromView:source.window];
+    // Poster cards/editors use their actual host clip; the lock-screen display
+    // container can grow beyond its native label and uses the window viewport.
+    if(host.clipsToBounds)viewport=CGRectIntersection(viewport,host.bounds);
+    lacclock::Rect expanded={};
+    if(!lacclock::expandedClock(LACRect(clock),LACRect(date),CGRectGetWidth(source.window.bounds),CGRectGetMaxY(viewport),expanded))return NO;
+    stack=[NSMutableArray arrayWithObject:source.window];
+    for(unsigned n=0;stack.count&&n<400;++n) {
+        UIView *v=stack.lastObject;[stack removeLastObject];
+        if(v.hidden||v.alpha<=0.01||v==source||[v isKindOfClass:LACBackdropClock.class])continue;
+        NSString *name=NSStringFromClass(v.class);
+        if([@[@"NCNotificationListCell",@"CSAdjunctItemView",@"NCNotificationListHeaderTitleView",@"NCNotificationListSectionRevealHintView"] containsObject:name])
+            lacclock::avoidObstacle(LACRect(LACViewRect(v,host)),expanded);
+        else [stack addObjectsFromArray:v.subviews];
+    }
+    if(!lacclock::validRect(expanded)||expanded.h<20)return NO;
+    double progress=0;
+    if(s.posterID.length)LACEGetPreviewProgress((__bridge CFStringRef)s.posterID,&progress);
+    auto range=lace::editorHeightRange(CGRectGetWidth(source.window.bounds),expanded.h);
+    if(!range)return NO;
+    s.glyphLabel=label;s.geometryHost=host;
+    s.digitHeight=lace::heightAt(progress,*range);
+    s.glyphFrame=CGRectMake(expanded.x,expanded.y,expanded.w,expanded.h);
+    s.replacementGeometry=YES;return YES;
 }
 static void LACRefreshTypography(LACClockState *s) {
-    NSArray<UILabel *> *labels=LACLabels(s.source);
+    LACRestoreLabels(s,YES);
     NSMutableArray *next=[NSMutableArray array];
+    UILabel *primary=LACPrimaryClockLabel(s.source);
+    NSArray *labels=primary?@[primary]:LACLabels(s.source);
     for(UILabel *label in labels) {
         LACNativeLabel *saved=nil;
         for(LACNativeLabel *n in s.labels)if(n.label==label){saved=n;break;}
-        if(!saved) { saved=[LACNativeLabel new];saved.label=label;saved.font=label.font;
-            saved.attributed=label.attributedText;saved.transform=label.transform;saved.appliedTransform=label.transform; }
-        else {
-            if(saved.appliedFont && ![label.font isEqual:saved.appliedFont])saved.font=label.font;
-            if(saved.appliedAttributed && ![label.attributedText isEqualToAttributedString:saved.appliedAttributed])saved.attributed=label.attributedText;
-            if(!CGAffineTransformEqualToTransform(label.transform,saved.appliedTransform))saved.transform=label.transform;
-        }
-        if(s.posterID.length) {
-            UIFont *font=LACPosterTypographyFont(s,label,saved.font.pointSize);
-            if(font) {
-                label.font=font;saved.appliedFont=font;
-                if(saved.attributed.length) {
-                    NSMutableAttributedString *text=[saved.attributed mutableCopy];
-                    [text addAttribute:NSFontAttributeName value:font range:NSMakeRange(0,text.length)];
-                    label.attributedText=text;saved.appliedAttributed=text;
-                }
-            }
-        }
-        double scale=[LACPreferenceValue(@"Clock.CustomScaleEnabled",@YES) boolValue]?LACNumber(@"Clock.CustomScale",1,0.1,1.5):1;
-        saved.appliedTransform=CGAffineTransformConcat(saved.transform,CGAffineTransformMakeScale(scale,scale));
-        label.transform=saved.appliedTransform;
+        if(!saved){saved=[LACNativeLabel new];saved.label=label;}
+        saved.font=label.font;saved.attributed=label.attributedText;
+        saved.transform=label.transform;saved.appliedTransform=label.transform;
         [next addObject:saved];
     }
-    for(LACNativeLabel *old in s.labels)if(![next containsObject:old] && old.hiddenByUs && old.label.layer.opacity==0)old.label.layer.opacity=old.nativeOpacity;
     s.labels=next;
+    if(LACPrepareGeometry(s))s.glyphFont=LACPosterTypographyFont(s,s.glyphLabel,s.glyphLabel.font.pointSize);
+}
+static BOOL LACUpdateGlyphMask(LACClockState *s,const LACClockSDFSnapshot &snapshot) {
+    if(s.glyphMask&&s.maskGeneration==snapshot.generation)return YES;
+    if(!snapshot.distance||snapshot.count!=(size_t)snapshot.width*snapshot.height)return NO;
+    NSMutableData *rgba=[NSMutableData dataWithLength:snapshot.count*4];
+    if(!rgba)return NO;
+    uint8_t *bytes=(uint8_t *)rgba.mutableBytes;
+    double ppp=MIN(snapshot.width/snapshot.points_width,snapshot.height/snapshot.points_height);
+    for(size_t i=0;i<snapshot.count;++i) {
+        double coverage=fmax(0,fmin(1,0.5-snapshot.distance[i]*ppp));
+        uint8_t a=(uint8_t)lrint(coverage*255);
+        bytes[i*4]=a;bytes[i*4+1]=a;bytes[i*4+2]=a;bytes[i*4+3]=a;
+    }
+    CGColorSpaceRef color=CGColorSpaceCreateDeviceRGB();
+    CGDataProviderRef provider=CGDataProviderCreateWithCFData((__bridge CFDataRef)rgba);
+    CGImageRef image=color&&provider?CGImageCreate(snapshot.width,snapshot.height,8,32,snapshot.width*4,color,
+        (CGBitmapInfo)(kCGImageAlphaPremultipliedLast|kCGBitmapByteOrder32Big),provider,NULL,false,kCGRenderingIntentDefault):NULL;
+    if(provider)CGDataProviderRelease(provider);if(color)CGColorSpaceRelease(color);
+    if(!image)return NO;
+    CALayer *mask=[CALayer layer];mask.contents=(__bridge id)image;CGImageRelease(image);
+    mask.frame=CGRectMake(0,0,snapshot.points_width,snapshot.points_height);
+    mask.contentsScale=ppp;s.glyphMask=mask;s.maskGeneration=snapshot.generation;return YES;
 }
 static NSString *LACFieldPath(LACClockState *s) {
     return LACSharedPath(s.channel==LACClockChannelMain?@"main-field.bin":s.channel==LACClockChannelEditor?@"editor-field.bin":@"poster-fields.bin");
@@ -308,13 +388,22 @@ static BOOL LACMakeGlass(LACClockState *s) {
     } @catch(NSException *e) { (void)e;LACLog(@"filter-host-unavailable",@{});return NO; }
 }
 static void LACAlignGlass(LACClockState *s) {
-    UIView *source=s.source,*parent=source.superview;
-    if(!source || !parent)return;
+    UIView *source=s.source,*parent=s.replacementGeometry?s.geometryHost:source.superview;
     LACBackdropClock *glass=s.glass;
+    if(!source||!parent||!glass)return;
     [CATransaction begin];[CATransaction setDisableActions:YES];
-    if(glass.superview!=parent)[parent insertSubview:glass aboveSubview:source];
-    glass.bounds=source.bounds;glass.center=source.center;glass.transform=source.transform;
-    glass.hidden=source.hidden || !source.window;glass.alpha=source.alpha;
+    if(glass.superview!=parent)[parent addSubview:glass];
+    glass.transform=CGAffineTransformIdentity;
+    if(s.replacementGeometry) {
+        glass.bounds=CGRectMake(0,0,s.glyphFrame.size.width,s.glyphFrame.size.height);
+        glass.center=CGPointMake(CGRectGetMidX(s.glyphFrame),CGRectGetMidY(s.glyphFrame));
+    } else {glass.bounds=source.bounds;glass.center=source.center;glass.transform=source.transform;}
+    s.glyphMask.frame=glass.bounds;
+    CGFloat custom=[LACPreferenceValue(@"Clock.CustomScaleEnabled",@YES) boolValue]?LACNumber(@"Clock.CustomScale",1,0.1,1.5):1;
+    glass.transform=CGAffineTransformScale(glass.transform,custom,custom);
+    BOOL hidden=!source.window;CGFloat alpha=1;
+    for(UIView *v=source;v&&v!=parent;v=v.superview){hidden|=v.hidden;alpha*=v.alpha;}
+    glass.hidden=hidden||alpha<=0.01;glass.alpha=alpha;
     [CATransaction commit];
 }
 static void LACAwaitField(LACClockState *s,uint64_t generation,unsigned attempts) {
@@ -368,14 +457,19 @@ void LACClockUpdateView(UIView *view) {
             LACRestoreLabels(s,YES);LACClockInvalidateSDFCacheForView(view);LACInvalidateField(s);
             [s.glass removeFromSuperview];s.glass=nil;LACReleaseChannel(s);return;
         }
-        LACRefreshPoster(s);LACRestoreLabels(s,NO);LACRefreshTypography(s);
+        LACRefreshPoster(s);LACRestoreLabels(s,NO);
+        BOOL wasReplacement=s.replacementGeometry;LACRefreshTypography(s);
+        if(wasReplacement!=s.replacementGeometry){LACInvalidateField(s);s.maskGeneration=0;}
         if(!LACClaimChannel(s)) { LACLog(@"poster-slots-exhausted",@{});return; }
-        CGFloat maximum=MAX(view.bounds.size.width,view.bounds.size.height);
+        CGSize canvas=s.replacementGeometry?s.glyphFrame.size:view.bounds.size;
+        CGFloat maximum=MAX(canvas.width,canvas.height);
         float scale=(float)MIN(view.window.screen.scale,maximum>0?1024.0/maximum:0);
         LACClockSDFSnapshot snapshot={};
         ++gCaptureDepth;
         int captured=0;
-        @try { captured=LACClockGetSDFForView(view,scale,0,&snapshot); }
+        @try { captured=s.replacementGeometry?
+            LACClockGetReplacementSDF(view,s.glyphLabel,s.glyphFont,canvas,s.digitHeight,scale,&snapshot):
+            LACClockGetSDFForView(view,scale,0,&snapshot); }
         @finally { --gCaptureDepth; }
         if(!captured) { LACInvalidateField(s);s.glass.hidden=YES;LACLog(@"unsupported-glyph-source",@{});return; }
         LACClockFieldPublisher *publisher=LACPublisher(s);
@@ -388,7 +482,9 @@ void LACClockUpdateView(UIView *view) {
             s.published=YES;s.generation=snapshot.generation;
             if(!LACRememberPublication(s)) {LACInvalidateField(s);s.glass.hidden=YES;return;}
         }
+        if(!LACUpdateGlyphMask(s,snapshot)){LACInvalidateField(s);s.glass.hidden=YES;return;}
         if(!LACMakeGlass(s))return;
+        s.glass.layer.mask=s.glyphMask;
         LACAlignGlass(s);
         if(LACFieldWasRendered(s)) {s.awaiting=NO;LACHideNative(s);}
         else if(!s.awaiting || s.awaitGeneration!=s.generation) {s.awaiting=YES;s.awaitGeneration=s.generation;LACAwaitField(s,s.generation,0);}

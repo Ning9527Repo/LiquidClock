@@ -45,6 +45,18 @@ int LACClockGetSDFForView(UIView *view, float pixels_per_point, uint64_t revisio
                          LACClockSDFSnapshot *out_snapshot);
 void LACClockInvalidateSDFCacheForView(UIView *view);
 
+/* Independent replacement path, not a capture of label.bounds. Main thread.
+ * Exactly one verified clock label; never mutates its font/frame/transform.
+ * fontOverride==nil preserves run fonts. Single-line outline glyphs only;
+ * unsupported decoration/attachments/bitmap glyphs fail closed. Content,
+ * font, traits, pointSize, digitHeight and scale are automatic cache keys.
+ * CoreText y-up ink is centered horizontally and top-aligned in y-down points.
+ * Same bounds/buffer/generation ownership limits as GetSDFForView. The shared
+ * invalidation API clears both caches, preserving their generation counters. */
+int LACClockGetReplacementSDF(UIView *owner, UILabel *clockLabel,
+    UIFont *fontOverride, CGSize pointSize, CGFloat digitHeight,
+    float pixels_per_point, LACClockSDFSnapshot *out_snapshot);
+
 /* Compatibility copying API; uses automatic cache validation but allocates and
  * copies on each successful call. All outputs are reset on failure. free() the
  * returned distance. For 120Hz use Get + generation-based publication instead. */

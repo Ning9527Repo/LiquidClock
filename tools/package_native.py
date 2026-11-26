@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import argparse,gzip,hashlib,io,json,plistlib,tarfile
-ROOT=Path(__file__).resolve().parents[1];PKG='com.ning.liquidclock';VER='0.1.0'
+ROOT=Path(__file__).resolve().parents[1];PKG='com.ning.liquidclock';VER='0.1.1'
 HOSTS=['com.apple.springboard','com.apple.PosterBoard','com.apple.NanoUniverse.AegirProxyApp.AegirPoster','com.apple.weather.poster','com.apple.WatchFacesWallpaperSupport.ExtragalacticPoster','com.apple.PhotosUIPrivate.PhotosPosterProvider','com.apple.EmojiPoster.EmojiPosterExtension','com.apple.WallpaperKit.CollectionsPoster','com.apple.PridePoster.PridePosterExtension','com.apple.UnityPoster.UnityPosterExtension','com.apple.GradientPoster.GradientPosterExtension']
 SHARED=['preferences.plist','backboard-status.plist','main-field.bin','editor-field.bin','poster-fields.bin','posters.plist','posters.plist.lock']
 def tgz(files):
@@ -31,7 +31,7 @@ def build(a):
  files[lib+'LiquidClock.plist']=(plistlib.dumps({'Filter':{'Bundles':HOSTS}},fmt=plistlib.FMT_BINARY),0o644);files[lib+'LiquidClockBackboard.plist']=(plistlib.dumps({'Filter':{'Bundles':['com.apple.backboardd']}},fmt=plistlib.FMT_BINARY),0o644)
  res=lib+'LiquidClockResources.bundle/';files[res+'ClockOnly.metallib']=(b[names[3]],0o644)
  for f in ('SF-Compact-Display-Regular.otf','SFAdaptiveSoftNumeric-VF.otf'):files[res+'Fonts/'+f]=((ROOT/'assets/fonts'/f).read_bytes(),0o644)
- info={'CFBundleDevelopmentRegion':'English','CFBundleExecutable':'LiquidClockPrefs','CFBundleIdentifier':'com.ning.liquidclock.prefs','CFBundleInfoDictionaryVersion':'6.0','CFBundlePackageType':'BNDL','CFBundleShortVersionString':VER,'CFBundleVersion':'1','MinimumOSVersion':'16.0','NSPrincipalClass':'LACPreferences'}
+ info={'CFBundleDevelopmentRegion':'English','CFBundleExecutable':'LiquidClockPrefs','CFBundleIdentifier':'com.ning.liquidclock.prefs','CFBundleInfoDictionaryVersion':'6.0','CFBundlePackageType':'BNDL','CFBundleShortVersionString':VER,'CFBundleVersion':'2','MinimumOSVersion':'16.0','NSPrincipalClass':'LACPreferences'}
  root=plistlib.loads((ROOT/'prefs/Root.plist').read_bytes());root['LACRequiredController']='LACPreferences';root['LACReloadNotification']='com.ning.liquidclock/Reload'
  for x in root.get('items',[]):
   if x.get('key'):x['defaults']=PKG

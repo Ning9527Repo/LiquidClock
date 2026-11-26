@@ -310,9 +310,100 @@ static void LACClear(LACClockSDFCache *cache) {
     LACClockSDFSnapshot empty={}; cache.snapshot=empty;
 }
 
+#include "LACClockGeometry.hpp"
+static char kLACReplacementCacheKey;
+
+static CGPathRef LACReplacementPath(NSAttributedString *text) CF_RETURNS_RETAINED;
+static CGPathRef LACReplacementPath(NSAttributedString *text) {
+    CTLineRef line=CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)text);
+    if(!line)return NULL;
+    CGMutablePathRef path=CGPathCreateMutable();
+    CFArrayRef runs=CTLineGetGlyphRuns(line);BOOL ok=YES;
+    for(CFIndex r=0;ok&&r<CFArrayGetCount(runs);++r) {
+        CTRunRef run=(CTRunRef)CFArrayGetValueAtIndex(runs,r);
+        NSDictionary *attrs=(__bridge NSDictionary *)CTRunGetAttributes(run);
+        CTFontRef font=(__bridge CTFontRef)attrs[(__bridge NSString *)kCTFontAttributeName];
+        CGAffineTransform matrix=CTRunGetTextMatrix(run);
+        CFIndex count=CTRunGetGlyphCount(run);
+        if(!font||!LACFiniteMap(matrix)||count>1024){ok=NO;break;}
+        for(CFIndex i=0;ok&&i<count;++i) {
+            CGGlyph glyph=0;CGPoint position=CGPointZero;
+            CTRunGetGlyphs(run,CFRangeMake(i,1),&glyph);
+            CTRunGetPositions(run,CFRangeMake(i,1),&position);
+            if(!glyph||!isfinite(position.x)||!isfinite(position.y)){ok=NO;break;}
+            CGPathRef part=CTFontCreatePathForGlyph(font,glyph,NULL);
+            // A missing outline may be a color glyph. No guessed bitmap fallback.
+            if(!part){ok=NO;break;}
+            CGAffineTransform t=matrix;t.tx+=position.x;t.ty+=position.y;
+            CGPathAddPath(path,&t,part);CGPathRelease(part);
+        }
+    }
+    CFRelease(line);
+    if(!ok||CGPathIsEmpty(path)){CGPathRelease(path);return NULL;}
+    return path;
+}
+
+int LACClockGetReplacementSDF(UIView *owner,UILabel *label,UIFont *fontOverride,
+    CGSize pointSize,CGFloat digitHeight,float scale,LACClockSDFSnapshot *out) {
+    if(out)memset(out,0,sizeof(*out));
+    if(!out||!owner||!NSThread.isMainThread)return 0;
+    LACClockSDFCache *cache=objc_getAssociatedObject(owner,&kLACReplacementCacheKey);
+    if(!cache){cache=[LACClockSDFCache new];objc_setAssociatedObject(owner,&kLACReplacementCacheKey,cache,OBJC_ASSOCIATION_RETAIN_NONATOMIC);}
+    unsigned width=0,height=0;
+    if(!label||!lacclock::rasterSize(pointSize.width,pointSize.height,scale,width,height)||
+       !isfinite(digitHeight)||digitHeight<=0||digitHeight>pointSize.height){LACClear(cache);return 0;}
+    NSAttributedString *source=LACSource(label);
+    if(!source.length||source.length>128||[source.string rangeOfCharacterFromSet:NSCharacterSet.newlineCharacterSet].location!=NSNotFound){LACClear(cache);return 0;}
+    NSMutableAttributedString *styled=[source mutableCopy];
+    if(fontOverride) {
+        NSRange all=NSMakeRange(0,styled.length);
+        [styled addAttribute:NSFontAttributeName value:fontOverride range:all];
+        [styled addAttribute:(__bridge NSString *)kCTFontAttributeName value:fontOverride range:all];
+    }
+    NSAttributedString *text=LACClockText(label,styled);
+    __block BOOL supported=text!=nil;
+    [text enumerateAttributesInRange:NSMakeRange(0,text.length) options:0 usingBlock:^(NSDictionary *a,NSRange range,BOOL *stop){
+        (void)range;(void)stop;
+        for(NSString *key in @[NSUnderlineStyleAttributeName,NSStrikethroughStyleAttributeName,NSStrokeWidthAttributeName,NSBaselineOffsetAttributeName])
+            if([a[key] doubleValue]!=0)supported=NO;
+    }];
+    if(!supported){LACClear(cache);return 0;}
+    NSArray *signature=@[text,@(digitHeight),[NSValue valueWithCGSize:pointSize],@(scale),owner.traitCollection];
+    if(cache.samples&&[signature isEqualToArray:cache.signature]){*out=cache.snapshot;return 1;}
+    CGPathRef path=LACReplacementPath(text);
+    lacclock::PathFit fit={};
+    CGRect ink=path?CGPathGetPathBoundingBox(path):CGRectZero;
+    if(!path||!lacclock::fitPath({ink.origin.x,ink.origin.y,ink.size.width,ink.size.height},pointSize.width,digitHeight,fit)) {
+        if(path)CGPathRelease(path);LACClear(cache);return 0;
+    }
+    const size_t count=(size_t)width*height;
+    uint8_t *mask=(uint8_t *)calloc(count,1);
+    CGColorSpaceRef gray=CGColorSpaceCreateDeviceGray();
+    CGContextRef ctx=mask&&gray?CGBitmapContextCreate(mask,width,height,8,width,gray,kCGImageAlphaNone):NULL;
+    if(gray)CGColorSpaceRelease(gray);
+    if(!ctx){free(mask);CGPathRelease(path);LACClear(cache);return 0;}
+    CGContextScaleCTM(ctx,scale,scale);
+    CGContextClipToRect(ctx,CGRectMake(0,0,pointSize.width,pointSize.height));
+    // One y flip, at the ink's maxY, places its top at row zero.
+    CGContextConcatCTM(ctx,CGAffineTransformMake(fit.scale,0,0,-fit.scale,fit.tx,fit.ty));
+    CGContextSetGrayFillColor(ctx,1,1);CGContextSetShouldAntialias(ctx,true);
+    CGContextAddPath(ctx,path);CGContextFillPath(ctx);CGContextFlush(ctx);
+    CGContextRelease(ctx);CGPathRelease(path);
+    BOOL inside=NO,outside=NO;
+    for(size_t i=0;i<count;++i){inside|=mask[i]>=128;outside|=mask[i]<128;}
+    float *distance=inside&&outside?(float *)malloc(count*sizeof(float)):NULL;
+    if(distance&&!LACClockSDFCreate(mask,width,height,width,scale,distance,count)){free(distance);distance=NULL;}
+    free(mask);
+    if(!distance||cache.generationCounter==UINT64_MAX){free(distance);LACClear(cache);return 0;}
+    free(cache.samples);cache.samples=distance;cache.signature=signature;
+    LACClockSDFSnapshot built={width,height,(float)pointSize.width,(float)pointSize.height,distance,count,++cache.generationCounter};
+    cache.snapshot=built;*out=built;return 1;
+}
+
 void LACClockInvalidateSDFCacheForView(UIView *view) {
     if (!view || !NSThread.isMainThread) return;
     LACClear(objc_getAssociatedObject(view,&kLACClockSDFCacheKey));
+    LACClear(objc_getAssociatedObject(view,&kLACReplacementCacheKey));
 }
 
 int LACClockGetSDFForView(UIView *view, float scale, uint64_t revision,

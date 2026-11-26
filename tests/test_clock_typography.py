@@ -87,8 +87,8 @@ class Typography(unittest.TestCase):
                     'lace::editorHeightRange(windowWidth,available)',
                     'lace::heightAt(progress,*range)',
                     'CTLineGetTypographicBounds',
-                    'LACPosterTypographyFont(s,label,saved.font.pointSize)',
-                    'CGAffineTransformConcat(saved.transform,CGAffineTransformMakeScale(scale,scale))'):
+                    'LACPosterTypographyFont(s,s.glyphLabel,s.glyphLabel.font.pointSize)',
+                    'CGAffineTransformScale(glass.transform,custom,custom)'):
             self.assertIn(api,RUNTIME)
         self.assertLess(RUNTIME.index('static UIFont *LACPosterTypographyFont('),
                         RUNTIME.index('static void LACRefreshTypography('))

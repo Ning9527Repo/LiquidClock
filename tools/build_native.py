@@ -155,8 +155,8 @@ def main():
         'CFBundleIdentifier': 'com.ning.liquidclock.prefs',
         'CFBundleInfoDictionaryVersion': '6.0',
         'CFBundlePackageType': 'BNDL',
-        'CFBundleShortVersionString': '0.1.0',
-        'CFBundleVersion': '1',
+        'CFBundleShortVersionString': '0.1.1',
+        'CFBundleVersion': '2',
         'MinimumOSVersion': '16.0',
         'NSPrincipalClass': 'LACPreferences',
     }, fmt=plistlib.FMT_XML, sort_keys=False))

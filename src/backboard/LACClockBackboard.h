@@ -8,7 +8,7 @@ extern "C" {
 typedef enum LACClockBackboardStatus {
     LACClockBackboardNotInitialized=0,
     LACClockBackboardReady=1, /* registered, NOT evidence of a rendered frame */
-    LACClockBackboardWaitingForTable=2, /* retryable ONLY before hooks begin */
+    LACClockBackboardWaitingForTable=2, /* retryable after both hooks succeed, never a partial hook */
     LACClockBackboardBadConfiguration=-1,
     LACClockBackboardUnsupportedABI=-2,
     LACClockBackboardResolverFailed=-3,
@@ -32,7 +32,8 @@ typedef struct LACClockBackboardOptions {
  * Requires an already-present MSHookFunction export, not a loaded sample.
  * Private-layout profiles: iOS16.x and iOS17.2.1 (including RootHide); all
  * other layouts FAIL CLOSED. Resolver fixtures are not runtime certification.
- * Only WaitingForTable may be retried, before any intern/hook/registration.
+ * Only WaitingForTable may be retried. Both hooks install once before waiting;
+ * atom intern and add-filter registration occur only after table readiness.
  * Other repeated calls return the previous result; no partial-hook retry.
  * The process entry uses 250ms/30s bounded retries (the cap is a local policy).
  * There is deliberately no teardown: registered callbacks/completion blocks

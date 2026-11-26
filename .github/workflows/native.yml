@@ -23,13 +23,13 @@ jobs:
       - name: Verify native architecture and signed code hashes
         run: python3 tools/verify_native.py build/arm64 build/arm64e
       - name: Assemble arm64 rootless package
-        run: python3 tools/package_native.py --arch arm64 --input build/arm64 --output build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
+        run: python3 tools/package_native.py --arch arm64 --input build/arm64 --output build/packages/com.ning.liquidclock_0.1.1_iphoneos-arm64.deb
       - name: Assemble arm64e RootHide package
-        run: python3 tools/package_native.py --arch arm64e --input build/arm64e --output build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
+        run: python3 tools/package_native.py --arch arm64e --input build/arm64e --output build/packages/com.ning.liquidclock_0.1.1_iphoneos-arm64e.deb
       - name: Validate package structure and metadata
         run: |
-          python3 tools/verify_package.py --arch arm64 build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64.deb
-          python3 tools/verify_package.py --arch arm64e build/packages/com.ning.liquidclock_0.1.0_iphoneos-arm64e.deb
+          python3 tools/verify_package.py --arch arm64 build/packages/com.ning.liquidclock_0.1.1_iphoneos-arm64.deb
+          python3 tools/verify_package.py --arch arm64e build/packages/com.ning.liquidclock_0.1.1_iphoneos-arm64e.deb
       - uses: actions/upload-artifact@v4
         with:
           name: liquidclock-native-${{ github.sha }}

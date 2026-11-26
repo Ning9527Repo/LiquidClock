@@ -25,7 +25,8 @@ using os_unfair_lock=int;
 static void os_unfair_lock_lock(int*){}
 static void os_unfair_lock_unlock(int*){}
 struct NSOperatingSystemVersion {unsigned majorVersion,minorVersion,patchVersion;};
-static const char *getprogname(){return "backboardd";}
+#define getprogname lacMockProgramName
+static const char *lacMockProgramName(){return "backboardd";}
 static uintptr_t liveTable,contextWord=0x3000;
 static unsigned internCalls,hookCalls,addCalls,scanCalls,imageCalls;
 static unsigned failHook;
@@ -80,7 +81,7 @@ int main(int argc,char **argv){
     if(!std::strcmp(scenario,"wait")){
         for(unsigned retry=0;retry<=120;++retry){
             require(LACClockBackboardInitialize(&o)==LACClockBackboardWaitingForTable);
-            require(!internCalls&&!hookCalls&&!addCalls&&scanCalls==1&&imageCalls==1);
+            require(!internCalls&&hookCalls==2&&!addCalls&&scanCalls==1&&imageCalls==1);
         }
         liveTable=0x9000;
         require(LACClockBackboardInitialize(&o)==LACClockBackboardReady);
@@ -96,7 +97,9 @@ int main(int argc,char **argv){
         if(!std::strcmp(scenario,"ready"))require(got==LACClockBackboardReady&&addCalls==18&&hookCalls==2);
         else {
             require(got<0&&!addCalls);
-            if(failHook)require(hookCalls==failHook);else require(!hookCalls);
+            if(failHook)require(hookCalls==failHook);
+            else if(metalMissing)require(hookCalls==2);
+            else require(!hookCalls);
         }
     }
     auto previous=LACClockBackboardGetStatus();

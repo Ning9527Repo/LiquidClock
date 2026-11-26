@@ -198,9 +198,10 @@ bool resolveQC(const QCImage &im,uint32_t gaussianAtom,Resolution *out,ptrdiff_t
             uintptr_t q=p-8-n*4,candidate=im.pair(q,true);
             if(candidate&&!(candidate&7)&&im.contains(candidate,8)) {tab=candidate;break;}
         }
-        if(!tab)continue;
-        if(r.addFilter&&(r.addFilter!=t||r.gaussianContextSlot!=gauss||r.tableSlot!=tab))return false;
+        if(!tab)return false; // the sample selects the first qualifying cluster, not a later fallback
+        if(r.addFilter)return false; // only one successful cluster is consumed
         r.addFilter=t;r.gaussianContextSlot=gauss;r.tableSlot=tab;
+        break;
     }
     if(!r.addFilter||!r.tableSlot||!r.gaussianContextSlot)return false;
     uintptr_t vtableRaw=0,tableRaw=0;

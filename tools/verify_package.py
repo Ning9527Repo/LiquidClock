@@ -73,7 +73,7 @@ def verify(path, arch):
         if ': ' in line:
             key, value = line.split(': ', 1); fields[key] = value
     expected_arch = 'iphoneos-arm64' if arch == 'arm64' else 'iphoneos-arm64e'
-    if fields.get('Package') != 'com.ning.liquidclock' or fields.get('Version') != '0.1.0':
+    if fields.get('Package') != 'com.ning.liquidclock' or fields.get('Version') != '0.1.1':
         raise ValueError('control package/version mismatch')
     if fields.get('Architecture') != expected_arch:
         raise ValueError('control architecture mismatch')

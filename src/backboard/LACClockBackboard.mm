@@ -21,7 +21,7 @@ static os_unfair_lock initLock=OS_UNFAIR_LOCK_INIT;
 static int state=LACClockBackboardNotInitialized;
 static const char *lastError="not initialized";
 static lac::Resolution resolved={};
-static bool resolverReady=false;
+static bool resolverReady=false,routeAtomsReady=false,hooksInstalled=false;
 static Identity originalIdentity;
 static RenderOne originalOne;
 static RenderTwo originalTwo;
@@ -37,6 +37,7 @@ static bool readable(uintptr_t p,void *out,size_t n) {
         (vm_address_t)out,&copied)==KERN_SUCCESS&&copied==n;
 }
 static const Route *routeFor(void *filter) {
+    if(!__atomic_load_n(&routeAtomsReady,__ATOMIC_ACQUIRE))return nullptr;
     uint32_t atom=0;
     if(!readable((uintptr_t)filter+filterAtomOffset,&atom,sizeof(atom)))return nullptr;
     for(unsigned i=0;i<18;i++)if(atom&&routes[i].atom==atom)return &routes[i];
@@ -153,52 +154,55 @@ LACClockBackboardStatus LACClockBackboardInitialize(const LACClockBackboardOptio
                 }
                 resolved.internAtom=atomAddress;resolverReady=true;
             }
+            Hook hook=(Hook)lac::callable((uintptr_t)dlsym(RTLD_DEFAULT,"MSHookFunction"));
+            if(!hooksInstalled) {
+                if(!hook) {status=fail(LACClockBackboardHookUnavailable,"PAC-safe genuine-descriptor path needs existing MSHookFunction");break;}
+                /* A failure from here onward is terminal: MSHookFunction may
+                 * already have replaced one IMP even if a later trampoline is absent. */
+                fail(LACClockBackboardHookUnavailable,"partial hook installation; retry disabled");
+                void *trampoline=nullptr;
+                hook((void*)resolved.identity,(void*)lac::stripCode((uintptr_t)&identityHook),&trampoline);
+                if(!trampoline) {status=fail(LACClockBackboardHookUnavailable,"identity hook produced no trampoline; filters not registered");break;}
+                originalIdentity=(Identity)lac::callable((uintptr_t)trampoline);
+                trampoline=nullptr;
+                void *replacement=resolved.twoShapes?(void*)lac::stripCode((uintptr_t)&renderTwoHook):
+                    (void*)lac::stripCode((uintptr_t)&renderOneHook);
+                hook((void*)resolved.render,replacement,&trampoline);
+                if(!trampoline) {status=fail(LACClockBackboardHookUnavailable,"render hook produced no trampoline; filters not registered");break;}
+                if(resolved.twoShapes)originalTwo=(RenderTwo)lac::callable((uintptr_t)trampoline);
+                else originalOne=(RenderOne)lac::callable((uintptr_t)trampoline);
+                hooksInstalled=true;
+            }
+            /* The sample installs this hook path once, then checks the live
+             * filter table and retries at 250ms without reinstalling it. */
             uintptr_t tableRaw=0;
             if(!readable(resolved.tableSlot,&tableRaw,sizeof(tableRaw))) {
                 status=fail(LACClockBackboardResolverFailed,"filter table slot unreadable");break;
             }
             resolved.filterTable=lac::stripData(tableRaw);
             if(!lac::filterTableReady(resolved)) {
-                status=fail(LACClockBackboardWaitingForTable,"filter table pending; no hooks installed; retry in 250ms");break;
+                status=fail(LACClockBackboardWaitingForTable,"filter table pending after one-time hooks; retry in 250ms");break;
             }
-            Intern intern=(Intern)lac::callable(resolved.internAtom);
-            uint32_t gaussianAtom=intern("gaussianBlur");
-            if(!gaussianAtom) {status=fail(LACClockBackboardRegistrationFailed,"Gaussian atom unavailable after table readiness");break;}
-            Hook hook=(Hook)lac::callable((uintptr_t)dlsym(RTLD_DEFAULT,"MSHookFunction"));
-            if(!hook) {status=fail(LACClockBackboardHookUnavailable,"PAC-safe genuine-descriptor path needs existing MSHookFunction");break;}
             if(!LACClockMetalInitialize(o)) {status=fail(LACClockBackboardMetalUnavailable,"ClockOnly.metallib/functions/device unavailable");break;}
-            for(unsigned i=0;i<18;i++) {
-                char name[64];Route &r=routes[i];
+            stopEncoders=(Stop)lac::callable(resolved.stopEncoders);
+            /* Sample 0x8868..0x88f4 interns only after live table readiness.
+             * Fill a temporary route table; publish once all atoms validate. */
+            Intern intern=(Intern)lac::callable(resolved.internAtom);
+            Route pendingRoutes[18]={};
+            uint32_t gaussianAtom=intern("gaussianBlur");
+            bool validAtoms=gaussianAtom!=0;
+            for(unsigned i=0;validAtoms&&i<18;i++) {
+                char name[64];Route &r=pendingRoutes[i];
                 r.channel=i==0?LACClockChannelMain:(i==1?LACClockChannelEditor:LACClockChannelPoster);
                 r.slot=i<2?0:i-2;
-                if(!LACClockCopyFilterType(r.channel,r.slot,name,sizeof(name))||!(r.atom=intern(name))||r.atom==gaussianAtom) {
-                    status=fail(LACClockBackboardRegistrationFailed,"invalid/colliding clock atom");break;
-                }
-                for(unsigned j=0;j<i;j++)if(routes[j].atom==r.atom) {
-                    status=fail(LACClockBackboardRegistrationFailed,"duplicate clock atom");break;
-                }
+                validAtoms=LACClockCopyFilterType(r.channel,r.slot,name,sizeof(name))&&
+                    (r.atom=intern(name))&&r.atom!=gaussianAtom;
+                for(unsigned j=0;j<i;j++)if(pendingRoutes[j].atom==r.atom)validAtoms=false;
             }
-            if(state<0)break;
-            stopEncoders=(Stop)lac::callable(resolved.stopEncoders);
-            /* Never copy PAC vtables. Keep genuine Gaussian context + vtable,
-             * and route only our 18 atoms through guarded function hooks. This
-             * mirrors the SAMPLE's PAC registration infrastructure. Runtime
-             * hook installer is responsible for relocations and executable PAC
-             * trampolines; scanned raw entries are NOT called as signed pointers. */
-            /* From the first hook onward initialization is irreversible.
-             * Never retry even if an installer throws or produces no trampoline. */
-            fail(LACClockBackboardHookUnavailable,"hook installation incomplete; retry disabled");
-            void *trampoline=nullptr;
-            hook((void*)resolved.identity,(void*)lac::stripCode((uintptr_t)&identityHook),&trampoline);
-            if(!trampoline) {status=fail(LACClockBackboardHookUnavailable,"identity hook produced no trampoline; no filters registered");break;}
-            originalIdentity=(Identity)lac::callable((uintptr_t)trampoline);
-            trampoline=nullptr;
-            void *replacement=resolved.twoShapes?(void*)lac::stripCode((uintptr_t)&renderTwoHook):
-                (void*)lac::stripCode((uintptr_t)&renderOneHook);
-            hook((void*)resolved.render,replacement,&trampoline);
-            if(!trampoline) {status=fail(LACClockBackboardHookUnavailable,"render hook produced no trampoline; no filters registered");break;}
-            if(resolved.twoShapes)originalTwo=(RenderTwo)lac::callable((uintptr_t)trampoline);
-            else originalOne=(RenderOne)lac::callable((uintptr_t)trampoline);
+            if(!validAtoms) {status=fail(LACClockBackboardRegistrationFailed,"invalid/colliding clock atom; no registration");break;}
+            memcpy(routes,pendingRoutes,sizeof(routes));
+            __atomic_store_n(&routeAtomsReady,true,__ATOMIC_RELEASE);
+            fail(LACClockBackboardRegistrationFailed,"filter registration incomplete; retry disabled");
             Add add=(Add)lac::callable(resolved.addFilter);
             for(unsigned i=0;i<18;i++)add(routes[i].atom,(void*)resolved.gaussianContextSlot);
             __atomic_store_n(&lastError,"registered; GPU-completed ACK still required before hiding native glyphs",__ATOMIC_RELEASE);

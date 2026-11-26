@@ -65,7 +65,8 @@ int main() {
         ambiguous.word(off+12,0x94000000u|((delta/4)&0x3ffffff));
         ambiguous.pointer(0x3400+i*16,ambiguous.at(0x2000));
     }
-    assert(!lac::resolveQC(ambiguous.image,0,&r,0xf8));
+    assert(lac::resolveQC(ambiguous.image,0,&r,0xf8));
+    assert(r.gaussianContextSlot==ambiguous.at(0x3010)); // first fixed-position cluster wins
     Fixture pending;pending.pointer(0x3100,0);
     assert(lac::resolveQC(pending.image,0,&r,0xf8)&&!lac::filterTableReady(r));
     pending.pointer(0x3100,pending.at(0x3300));
