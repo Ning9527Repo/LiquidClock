@@ -1,4 +1,5 @@
 name: Native clock build
+# Authorized one-time package build for main.
 on:
   push:
     branches: [main]
