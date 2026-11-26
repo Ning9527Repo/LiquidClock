@@ -170,35 +170,47 @@ bool selectProfile(unsigned major,unsigned minor,unsigned patch,ABIProfile *out)
     return false;
 }
 bool resolveQC(const QCImage &im,uint32_t gaussianAtom,Resolution *out,ptrdiff_t profileDestinationOffset) {
-    if(!out||!gaussianAtom||!im.text||im.textSize<32||im.textSize>64*1024*1024u||im.spanCount>32)return false;
+    if(!out||!im.text||im.textSize<32||im.textSize>64*1024*1024u||im.spanCount>32)return false;
     Resolution r={};r.commandOffset=-1;r.destinationOffset=-1;
     for(size_t off=8;off+28<=im.textSize;off+=4) {
         uintptr_t p=im.text+off,ctx=0,t=0;uint32_t atom=0;
         if(!registration(im,p,&ctx,&t,&atom))continue;
-        uintptr_t gauss=atom==gaussianAtom?ctx:0,cursor=p;unsigned count=1;
+        uintptr_t gauss=atom==gaussianAtom?ctx:0,secondContext=0,cursor=p;unsigned count=1;
         for(;count<8;count++) {
             bool found=false;
             for(unsigned gap=1;gap<16&&im.contains(cursor+gap*4,20,5);gap++) {
                 uintptr_t c=0,target=0;uint32_t a=0;
                 if(registration(im,cursor+gap*4,&c,&target,&a)&&target==t) {
-                    cursor+=gap*4;if(a==gaussianAtom)gauss=c;found=true;break;
+                    cursor+=gap*4;if(count==1)secondContext=c;
+                    if(a==gaussianAtom)gauss=c;found=true;break;
                 }
             }
             if(!found)break;
         }
-        if(count<4||!gauss)continue;
+        if(count<4)continue;
+        /* Sample 0x5484..0x54a4 selects cluster[1] without interning atoms.
+         * Consume this cluster once: suffixes are not independent clusters. */
+        off=(size_t)(cursor-im.text);
+        if(!gaussianAtom)gauss=secondContext;
+        if(!gauss)continue;
         uintptr_t tab=0;
         for(unsigned n=0;n<24&&p>=im.text+8+n*4;n++) {
             uintptr_t q=p-8-n*4,candidate=im.pair(q,true);
             if(candidate&&!(candidate&7)&&im.contains(candidate,8)) {tab=candidate;break;}
         }
         if(!tab)continue;
-        if(r.addFilter&&(r.addFilter!=t||r.gaussianContext!=gauss||r.tableSlot!=tab))return false;
-        r.addFilter=t;r.gaussianContext=gauss;r.tableSlot=tab;
+        if(r.addFilter&&(r.addFilter!=t||r.gaussianContextSlot!=gauss||r.tableSlot!=tab))return false;
+        r.addFilter=t;r.gaussianContextSlot=gauss;r.tableSlot=tab;
     }
-    if(!r.addFilter||!r.tableSlot||!r.gaussianContext)return false;
-    uintptr_t vt=0,table=0;memcpy(&vt,(void*)r.gaussianContext,8);memcpy(&table,(void*)r.tableSlot,8);
-    if(!stripData(table)||!slots(im,stripData(vt),&r))return false;
+    if(!r.addFilter||!r.tableSlot||!r.gaussianContextSlot)return false;
+    uintptr_t vtableRaw=0,tableRaw=0;
+    /* Sample 0x84b8 -> 0x84bc -> 0x8540 passes stripData(*contextSlot)
+     * directly to the vtable resolver. There is no extra object dereference. */
+    memcpy(&vtableRaw,(void*)r.gaussianContextSlot,8);
+    r.gaussianVtable=stripData(vtableRaw);
+    memcpy(&tableRaw,(void*)r.tableSlot,8);
+    r.filterTable=stripData(tableRaw); /* null is transient, not a scan failure */
+    if(!r.gaussianVtable||!slots(im,r.gaussianVtable,&r))return false;
     uintptr_t anchor=im.uniqueString("!memoryless_in_use ()");
     r.stopEncoders=im.functionStart(im.uniqueXref(anchor),0x800);
     anchor=im.uniqueString("Command buffer allocation failed!\n");
@@ -233,4 +245,5 @@ bool resolveQC(const QCImage &im,uint32_t gaussianAtom,Resolution *out,ptrdiff_t
     if(r.commandOffset<0||r.destinationOffset<0x80||r.destinationOffset>0x400)return false;
     *out=r;return true;
 }
+bool filterTableReady(const Resolution &r) { return r.filterTable!=0; }
 } // namespace lac

@@ -4,6 +4,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 static LACClockBackboardStatus gStatus=LACClockBackboardNotInitialized;
+static unsigned gTableRetries;
+static const unsigned kMaxTableRetries=120; // local bounded policy: 30 seconds
 static void LACConfigureBackboard(void) {
     LACReloadConfiguration();
     LACClockVisualParameters p=LACClockDefaultVisualParameters();
@@ -22,15 +24,34 @@ static void LACConfigureBackboard(void) {
             LACLog(@"backend-parameters-rejected",@{@"channel":@(channel)});
 }
 static void LACWriteBackboardStatus(void) {
-    NSString *error=@(LACClockBackboardLastError()?:"");
+    BOOL exhausted=gStatus==LACClockBackboardWaitingForTable&&gTableRetries>=kMaxTableRetries;
+    NSString *error=exhausted?@"filter table still pending after 30 seconds; retries exhausted":@(LACClockBackboardLastError()?:"");
     NSDictionary *status=@{@"schema":@1,@"registered":@(gStatus==LACClockBackboardReady),
         @"status":@(gStatus),@"error":error,@"pid":@(getpid()),
+        @"updatedAt":NSDate.date,@"tableRetries":@(gTableRetries),@"retryExhausted":@(exhausted),
         @"os":NSProcessInfo.processInfo.operatingSystemVersionString};
     NSData *data=[NSPropertyListSerialization dataWithPropertyList:status
         format:NSPropertyListBinaryFormat_v1_0 options:0 error:NULL];
     if([data writeToFile:LACSharedPath(@"backboard-status.plist") options:NSDataWritingAtomic error:NULL])
         chmod(LACSharedPath(@"backboard-status.plist").fileSystemRepresentation,0644);
     LACLog(@"backboard-initialize",@{@"status":@(gStatus),@"error":error});
+}
+static void LACAttemptBackboard(unsigned retry) {
+    gTableRetries=retry;
+    LACClockBackboardOptions o={};o.version=LAC_CLOCK_FILTER_CONTRACT_VERSION;
+    o.mainFieldPath=LACSharedPath(@"main-field.bin").fileSystemRepresentation;
+    o.editorFieldPath=LACSharedPath(@"editor-field.bin").fileSystemRepresentation;
+    o.posterFieldsPath=LACSharedPath(@"poster-fields.bin").fileSystemRepresentation;
+    o.metalLibraryPath=LACResourcePath(@"ClockOnly.metallib").fileSystemRepresentation;
+    o.fieldOwnerUID=501;
+    gStatus=LACClockBackboardInitialize(&o);
+    if(retry%4==0||gStatus!=LACClockBackboardWaitingForTable||retry==kMaxTableRetries)
+        LACWriteBackboardStatus();
+    if(gStatus==LACClockBackboardWaitingForTable&&retry<kMaxTableRetries) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,250*NSEC_PER_MSEC),dispatch_get_main_queue(),^{
+            LACAttemptBackboard(retry+1);
+        });
+    }
 }
 static void LACBackboardReload(CFNotificationCenterRef center,void *observer,CFStringRef name,const void *object,CFDictionaryRef info) {
     (void)center;(void)observer;(void)name;(void)object;(void)info;
@@ -41,13 +62,7 @@ __attribute__((constructor)) static void LACBackboardEntry(void) {
         if(![NSProcessInfo.processInfo.processName isEqual:@"backboardd"])return;
         dispatch_async(dispatch_get_main_queue(),^{
             LACReloadConfiguration();LACApplySandboxProfile();
-            LACClockBackboardOptions o={};o.version=LAC_CLOCK_FILTER_CONTRACT_VERSION;
-            o.mainFieldPath=LACSharedPath(@"main-field.bin").fileSystemRepresentation;
-            o.editorFieldPath=LACSharedPath(@"editor-field.bin").fileSystemRepresentation;
-            o.posterFieldsPath=LACSharedPath(@"poster-fields.bin").fileSystemRepresentation;
-            o.metalLibraryPath=LACResourcePath(@"ClockOnly.metallib").fileSystemRepresentation;
-            o.fieldOwnerUID=501;
-            gStatus=LACClockBackboardInitialize(&o);LACConfigureBackboard();LACWriteBackboardStatus();
+            LACConfigureBackboard();LACAttemptBackboard(0);
             CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),NULL,LACBackboardReload,
                 (__bridge CFStringRef)LACReloadNotification,NULL,CFNotificationSuspensionBehaviorDeliverImmediately);
         });

@@ -8,6 +8,7 @@ extern "C" {
 typedef enum LACClockBackboardStatus {
     LACClockBackboardNotInitialized=0,
     LACClockBackboardReady=1, /* registered, NOT evidence of a rendered frame */
+    LACClockBackboardWaitingForTable=2, /* retryable ONLY before hooks begin */
     LACClockBackboardBadConfiguration=-1,
     LACClockBackboardUnsupportedABI=-2,
     LACClockBackboardResolverFailed=-3,
@@ -31,7 +32,9 @@ typedef struct LACClockBackboardOptions {
  * Requires an already-present MSHookFunction export, not a loaded sample.
  * Private-layout profiles: iOS16.x and iOS17.2.1 (including RootHide); all
  * other layouts FAIL CLOSED. Resolver fixtures are not runtime certification.
- * Repeated calls return the previous result; no retry after a partial hook.
+ * Only WaitingForTable may be retried, before any intern/hook/registration.
+ * Other repeated calls return the previous result; no partial-hook retry.
+ * The process entry uses 250ms/30s bounded retries (the cap is a local policy).
  * There is deliberately no teardown: registered callbacks/completion blocks
  * and their mappings have process lifetime. Do not unload this implementation.
  */

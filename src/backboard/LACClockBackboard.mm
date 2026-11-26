@@ -21,6 +21,7 @@ static os_unfair_lock initLock=OS_UNFAIR_LOCK_INIT;
 static int state=LACClockBackboardNotInitialized;
 static const char *lastError="not initialized";
 static lac::Resolution resolved={};
+static bool resolverReady=false;
 static Identity originalIdentity;
 static RenderOne originalOne;
 static RenderTwo originalTwo;
@@ -119,7 +120,7 @@ LACClockBackboardStatus LACClockBackboardGetStatus(void) {
 const char *LACClockBackboardLastError(void) {return __atomic_load_n(&lastError,__ATOMIC_ACQUIRE);}
 LACClockBackboardStatus LACClockBackboardInitialize(const LACClockBackboardOptions *o) {
     os_unfair_lock_lock(&initLock);
-    if(state!=LACClockBackboardNotInitialized) {
+    if(state!=LACClockBackboardNotInitialized&&state!=LACClockBackboardWaitingForTable) {
         LACClockBackboardStatus previous=LACClockBackboardGetStatus();
         os_unfair_lock_unlock(&initLock);return previous;
     }
@@ -139,17 +140,30 @@ LACClockBackboardStatus LACClockBackboardInitialize(const LACClockBackboardOptio
                 status=fail(LACClockBackboardUnsupportedABI,"supported private profiles: iOS16.x and iOS17.2.1 only");break;
             }
             textureOffset=profile.texture;
-            lac::QCImage im={};
-            if(!quartzCore(&im)) {status=fail(LACClockBackboardResolverFailed,"bounded QuartzCore image discovery failed");break;}
-            uintptr_t atomAddress=lac::stripCode((uintptr_t)dlsym(RTLD_DEFAULT,"CAInternAtomWithCString"));
-            if(!atomAddress)atomAddress=lac::resolveInternWrapper(im);
-            if(!im.contains(atomAddress,4,5)) {status=fail(LACClockBackboardResolverFailed,"atom export/unique wrapper unavailable");break;}
-            Intern intern=(Intern)lac::callable(atomAddress);
-            uint32_t gaussianAtom=intern("gaussianBlur");
-            if(!lac::resolveQC(im,gaussianAtom,&resolved,profile.destination)) {
-                status=fail(LACClockBackboardResolverFailed,"ambiguous/missing Gaussian registration, callbacks or Metal layout");break;
+            if(!resolverReady) {
+                lac::QCImage im={};
+                if(!quartzCore(&im)) {status=fail(LACClockBackboardResolverFailed,"bounded QuartzCore image discovery failed");break;}
+                uintptr_t atomAddress=lac::stripCode((uintptr_t)dlsym(RTLD_DEFAULT,"CAInternAtomWithCString"));
+                if(!atomAddress)atomAddress=lac::resolveInternWrapper(im);
+                if(!im.contains(atomAddress,4,5)) {status=fail(LACClockBackboardResolverFailed,"atom export/unique wrapper unavailable");break;}
+                /* Sample 0x51ec,0x5484: select built-in cluster[1], without
+                 * invoking intern while QuartzCore's table may still be null. */
+                if(!lac::resolveQC(im,0,&resolved,profile.destination)) {
+                    status=fail(LACClockBackboardResolverFailed,"ambiguous/missing Gaussian registration, callbacks or Metal layout");break;
+                }
+                resolved.internAtom=atomAddress;resolverReady=true;
             }
-            resolved.internAtom=atomAddress;
+            uintptr_t tableRaw=0;
+            if(!readable(resolved.tableSlot,&tableRaw,sizeof(tableRaw))) {
+                status=fail(LACClockBackboardResolverFailed,"filter table slot unreadable");break;
+            }
+            resolved.filterTable=lac::stripData(tableRaw);
+            if(!lac::filterTableReady(resolved)) {
+                status=fail(LACClockBackboardWaitingForTable,"filter table pending; no hooks installed; retry in 250ms");break;
+            }
+            Intern intern=(Intern)lac::callable(resolved.internAtom);
+            uint32_t gaussianAtom=intern("gaussianBlur");
+            if(!gaussianAtom) {status=fail(LACClockBackboardRegistrationFailed,"Gaussian atom unavailable after table readiness");break;}
             Hook hook=(Hook)lac::callable((uintptr_t)dlsym(RTLD_DEFAULT,"MSHookFunction"));
             if(!hook) {status=fail(LACClockBackboardHookUnavailable,"PAC-safe genuine-descriptor path needs existing MSHookFunction");break;}
             if(!LACClockMetalInitialize(o)) {status=fail(LACClockBackboardMetalUnavailable,"ClockOnly.metallib/functions/device unavailable");break;}
@@ -171,6 +185,9 @@ LACClockBackboardStatus LACClockBackboardInitialize(const LACClockBackboardOptio
              * mirrors the SAMPLE's PAC registration infrastructure. Runtime
              * hook installer is responsible for relocations and executable PAC
              * trampolines; scanned raw entries are NOT called as signed pointers. */
+            /* From the first hook onward initialization is irreversible.
+             * Never retry even if an installer throws or produces no trampoline. */
+            fail(LACClockBackboardHookUnavailable,"hook installation incomplete; retry disabled");
             void *trampoline=nullptr;
             hook((void*)resolved.identity,(void*)lac::stripCode((uintptr_t)&identityHook),&trampoline);
             if(!trampoline) {status=fail(LACClockBackboardHookUnavailable,"identity hook produced no trampoline; no filters registered");break;}
@@ -183,7 +200,7 @@ LACClockBackboardStatus LACClockBackboardInitialize(const LACClockBackboardOptio
             if(resolved.twoShapes)originalTwo=(RenderTwo)lac::callable((uintptr_t)trampoline);
             else originalOne=(RenderOne)lac::callable((uintptr_t)trampoline);
             Add add=(Add)lac::callable(resolved.addFilter);
-            for(unsigned i=0;i<18;i++)add(routes[i].atom,(void*)resolved.gaussianContext);
+            for(unsigned i=0;i<18;i++)add(routes[i].atom,(void*)resolved.gaussianContextSlot);
             __atomic_store_n(&lastError,"registered; GPU-completed ACK still required before hiding native glyphs",__ATOMIC_RELEASE);
             __atomic_store_n(&state,(int)LACClockBackboardReady,__ATOMIC_RELEASE);
             status=LACClockBackboardReady;

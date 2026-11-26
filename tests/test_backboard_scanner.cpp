@@ -15,13 +15,14 @@ struct alignas(4096) Fixture {
         unsigned low=(unsigned)(at(target)&4095);
         word(off+4,(load?0xf9400000u:0x91000000u)|((load?low/8:low)<<10)|(reg<<5)|reg);
     }
-    Fixture() {
+    explicit Fixture(unsigned registrations=4) {
         memset(memory,0,sizeof(memory));memset(&image,0,sizeof(image));
         for(unsigned i=0;i<8192;i+=4)word(i,0xd503201f);
         image.spans[0]={at(0),8192,5};image.spans[1]={at(8192),4096,1};image.spans[2]={at(12288),4096,3};
         image.spanCount=3;image.text=at(0);image.textSize=8192;
         pair(0xe0,0x3100,9,true);pointer(0x3100,at(0x3300));
-        for(unsigned i=0;i<4;i++) {
+        assert(registrations>=4&&registrations<=8);
+        for(unsigned i=0;i<registrations;i++) {
             unsigned off=0x100+i*16;pair(off,0x3000+i*16,1);
             word(off+8,0x52800000u|((10+i)<<5));
             int32_t delta=(int32_t)(0x600-(off+12));word(off+12,0x94000000u|((delta/4)&0x3ffffff));
@@ -44,7 +45,36 @@ struct alignas(4096) Fixture {
 int main() {
     Fixture f;lac::Resolution r={};
     assert(lac::resolveQC(f.image,11,&r,0xf8));
-    assert(r.addFilter==f.at(0x600)&&r.gaussianContext==f.at(0x3010)&&r.tableSlot==f.at(0x3100));
+    assert(r.addFilter==f.at(0x600)&&r.gaussianContextSlot==f.at(0x3010)&&
+           r.gaussianVtable==f.at(0x2000)&&
+           r.filterTable==f.at(0x3300)&&r.tableSlot==f.at(0x3100));
+    assert(lac::filterTableReady(r));
+    assert(lac::resolveQC(f.image,0,&r,0xf8)); // no intern at startup
+    assert(r.gaussianContextSlot==f.at(0x3010)&&r.gaussianVtable==f.at(0x2000));
+    for(unsigned count=5;count<=8;++count) {
+        Fixture longer(count);
+        assert(lac::resolveQC(longer.image,0,&r,0xf8));
+        assert(r.gaussianContextSlot==longer.at(0x3010));
+    }
+    Fixture ambiguous;
+    ambiguous.pair(0x3e0,0x3500,9,true);ambiguous.pointer(0x3500,ambiguous.at(0x3300));
+    for(unsigned i=0;i<4;++i) {
+        unsigned off=0x400+i*16;ambiguous.pair(off,0x3400+i*16,1);
+        ambiguous.word(off+8,0x52800000u|((20+i)<<5));
+        int32_t delta=(int32_t)(0x600-(off+12));
+        ambiguous.word(off+12,0x94000000u|((delta/4)&0x3ffffff));
+        ambiguous.pointer(0x3400+i*16,ambiguous.at(0x2000));
+    }
+    assert(!lac::resolveQC(ambiguous.image,0,&r,0xf8));
+    Fixture pending;pending.pointer(0x3100,0);
+    assert(lac::resolveQC(pending.image,0,&r,0xf8)&&!lac::filterTableReady(r));
+    pending.pointer(0x3100,pending.at(0x3300));
+    assert(lac::resolveQC(pending.image,0,&r,0xf8)&&lac::filterTableReady(r));
+    Fixture extra;extra.pointer(0x3010,extra.at(0x3200));extra.pointer(0x3200,extra.at(0x2000));
+    assert(!lac::resolveQC(extra.image,0,&r,0xf8)); // false double-indirection fixture rejected
+    Fixture outside;outside.pointer(0x3010,UINTPTR_MAX-4);
+    assert(!lac::resolveQC(outside.image,0,&r,0xf8));
+    assert(lac::resolveQC(f.image,11,&r,0xf8));
     assert(r.renderSlot==6&&r.edgeSlot==9&&r.render==f.at(0x900)&&r.twoShapes);
     assert(r.stopEncoders==f.at(0x1000)&&r.commandOffset==0x5a0&&r.destinationOffset==0xf8);
     assert(!lac::resolveQC(f.image,99,&r,0xf8));

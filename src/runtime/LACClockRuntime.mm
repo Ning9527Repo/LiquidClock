@@ -2,6 +2,8 @@
 #import "LACConfiguration.h"
 #import "../clock/LACClockFieldPublisher.h"
 #import "../clock/LACClockTextField.h"
+#import "../clock/LACClockTypography.h"
+#import <CoreText/CoreText.h>
 #import "../editor/LACClockEditor.h"
 #import "../backboard/LACClockFilterContract.h"
 #import <QuartzCore/QuartzCore.h>
@@ -170,6 +172,52 @@ static void LACHideNative(LACClockState *s) {
     }
     [CATransaction commit];
 }
+// Keep every helper before its first call. No cached style/progress: the editor
+// owns draft/commit/cancel/restore resolution for this poster.
+static UIFont *LACFontAxes(UIFont *base,CGFloat points,double height,double width) {
+    NSMutableDictionary *axes=[base.fontDescriptor.fontAttributes[(__bridge NSString *)kCTFontVariationAttribute] mutableCopy];
+    if(!axes)return nil; // compact/non-variable font: do not invent axes
+    axes[@(0x48474854)]=@(height);axes[@(0x77647468)]=@(width);
+    UIFontDescriptor *descriptor=[base.fontDescriptor fontDescriptorByAddingAttributes:
+        @{(__bridge NSString *)kCTFontVariationAttribute:axes}];
+    return [UIFont fontWithDescriptor:descriptor size:points];
+}
+static double LACFontTextWidth(NSString *text,UIFont *font) {
+    if(!font || !text.length)return INFINITY;
+    NSAttributedString *attributed=[[NSAttributedString alloc]initWithString:text attributes:@{NSFontAttributeName:font}];
+    CTLineRef line=CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)attributed);
+    if(!line)return INFINITY;
+    double width=CTLineGetTypographicBounds(line,NULL,NULL,NULL);CFRelease(line);return width;
+}
+static UIFont *LACPosterTypographyFont(LACClockState *s,UILabel *label,CGFloat nativeSize) {
+    CFStringRef poster=(__bridge CFStringRef)s.posterID;
+    UIFont *base=CFBridgingRelease(LACECopyPreviewFont(poster,nativeSize));
+    double progress=0;
+    if(!base || !LACEGetPreviewProgress(poster,&progress))return base;
+    NSString *text=label.attributedText.length?label.attributedText.string:label.text;
+    const double width=CGRectGetWidth(label.bounds),available=CGRectGetHeight(label.bounds);
+    const double windowWidth=CGRectGetWidth(s.source.window.bounds);
+    auto range=lace::editorHeightRange(windowWidth,available);
+    if(!range || !text.length || !std::isfinite(width) || width<=0)return base;
+    const double scale=windowWidth/lace::ClockReferenceWidth;
+    const double digitHeight=lace::heightAt(progress,*range);
+    const auto shape=lacclock::shapeForHeight(digitHeight,scale);
+    if(!LACFontAxes(base,shape.points,shape.heightAxis,100))return base;
+    // Sample 0x672e0..0x67524: width-axis fits at (130,HGHT100) and
+    // (172,HGHT310), followed by interpolation in point-size space.
+    UIFont *probe=LACFontAxes(base,130*scale,100,100);
+    const double compactWidth=MIN(width,LACFontTextWidth(text,probe));
+    const double first=lacclock::fittedWidth([&](double axis) {
+        return LACFontTextWidth(text,LACFontAxes(base,130*scale,100,axis));
+    },compactWidth);
+    const double last=lacclock::fittedWidth([&](double axis) {
+        return LACFontTextWidth(text,LACFontAxes(base,172*scale,310,axis));
+    },width);
+    const double t=(shape.points/scale-130)/42;
+    return LACFontAxes(base,shape.points,shape.heightAxis,std::fma(t,last-first,first))?:base;
+    // Intentionally do not resize/reposition Apple's labels/container: no host
+    // coordinate adapter is proven here. Fit uses only its measured bounds.
+}
 static void LACRefreshTypography(LACClockState *s) {
     NSArray<UILabel *> *labels=LACLabels(s.source);
     NSMutableArray *next=[NSMutableArray array];
@@ -184,8 +232,7 @@ static void LACRefreshTypography(LACClockState *s) {
             if(!CGAffineTransformEqualToTransform(label.transform,saved.appliedTransform))saved.transform=label.transform;
         }
         if(s.posterID.length) {
-            CFTypeRef ref=LACECopyPreviewFont((__bridge CFStringRef)s.posterID,saved.font.pointSize);
-            UIFont *font=CFBridgingRelease(ref);
+            UIFont *font=LACPosterTypographyFont(s,label,saved.font.pointSize);
             if(font) {
                 label.font=font;saved.appliedFont=font;
                 if(saved.attributed.length) {
@@ -382,6 +429,8 @@ void LACClockUpdateSubtitle(UIView *view) {
     if(text.length) { label.text=text;state.applied=text; }
 }
 static void LACEditorChanged(CFStringRef poster,CFDictionaryRef style,double progress,LACEChangeReason reason,void *context) {
+    // Notification only: LACRefreshTypography pulls the editor's authoritative
+    // preview APIs (including cancel/restore), rather than caching callback data.
     (void)style;(void)progress;(void)reason;(void)context;
     NSString *identity=(__bridge NSString *)poster;
     for(LACClockState *s in gClockStates.allObjects)if([s.posterID isEqual:identity]) {

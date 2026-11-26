@@ -41,6 +41,38 @@ class Backboard(unittest.TestCase):
             self.assertEqual(image.u32(address),word,hex(address))
         self.assertEqual(image.u32(0xee74),0xf94017e1) # add_filter x1=context
         self.assertEqual(image.u32(0xee78),0xd63f091f) # zero-context PAC function call
+    def test_07_sample_gaussian_indirection_cluster_and_retry(self):
+        if not SAMPLE.exists():
+            self.skipTest('uploaded sample absent; byte checks not performed')
+        sys.path.insert(0,str(ROOT/'tools'))
+        from macho import Image
+        image=Image(SAMPLE)
+        self.assertEqual(image.whole_sha,'ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e')
+        for address,word in [(0x84b4,0xf942c3e8),(0x84b8,0xf9400100),
+                (0x84bc,0x97fff03e),(0x8540,0xf942bfe0),(0x8548,0x97fff8aa),
+                (0x548c,0x71000529),(0x5490,0x1a9fd508),(0x54a4,0xf8697908),
+                (0x87e4,0xf942c7e8),(0x87e8,0xf9400108),
+                (0x8808,0xd2965001),(0x880c,0xf2a1dcc1)]:
+            self.assertEqual(image.u32(address),word,hex(address))
+        self.assertEqual(0xee6<<16|0xb280,250_000_000)
+
+    def test_08_wait_precedes_intern_and_irreversible_hooks(self):
+        source=(ROOT/'src/backboard/LACClockBackboard.mm').read_text()
+        entry=(ROOT/'src/runtime/LACBackboardEntry.mm').read_text()
+        self.assertIn('resolveQC(im,0,&resolved,profile.destination)',source)
+        wait=source.index('if(!lac::filterTableReady(resolved))')
+        self.assertLess(source.index('readable(resolved.tableSlot'),wait)
+        self.assertLess(wait,source.index('intern("gaussianBlur")'))
+        self.assertLess(wait,source.index('hook((void*)resolved.identity'))
+        self.assertLess(source.index('retry disabled'),source.index('hook((void*)resolved.identity'))
+        self.assertIn('state!=LACClockBackboardNotInitialized&&state!=LACClockBackboardWaitingForTable',source)
+        self.assertIn('add(routes[i].atom,(void*)resolved.gaussianContextSlot)',source)
+        self.assertIn('gStatus==LACClockBackboardWaitingForTable&&retry<kMaxTableRetries',entry)
+        self.assertIn('kMaxTableRetries=120',entry)
+        self.assertIn('250*NSEC_PER_MSEC',entry)
+        self.assertIn('@"updatedAt":NSDate.date',entry)
+        self.assertIn('@"retryExhausted":@(exhausted)',entry)
+
     def test_06_committed_narrow_fixture_receipt(self):
         receipt=json.loads((ROOT/'evidence/backboard-profile.json').read_text())
         self.assertEqual(receipt['sample_whole_sha256'],'ea891e4347dfcea64703753c9ac39705718ac330d73e6a944a7c8da3416c918e')
