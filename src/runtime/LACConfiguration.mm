@@ -56,8 +56,8 @@ static BOOL LACValidValue(NSString *key,id value) {
 void LACReloadConfiguration(void) {
     LACSetup();
     CFPreferencesAppSynchronize((__bridge CFStringRef)LACPreferenceDomain);
+    LACApplySandboxProfile();
     NSDictionary *file=[NSDictionary dictionaryWithContentsOfFile:LACSharedPath(@"preferences.plist")];
-    if (!file) { LACApplySandboxProfile(); file=[NSDictionary dictionaryWithContentsOfFile:LACSharedPath(@"preferences.plist")]; }
     NSMutableDictionary *next=[NSMutableDictionary dictionary];
     if ([file[@"schema"] isEqual:@1] && [file[@"values"] isKindOfClass:NSDictionary.class]) {
         for (NSString *key in LACKeys()) {

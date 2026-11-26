@@ -1,5 +1,7 @@
 name: Native clock build
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
   repository_dispatch:
     types: [native-build]

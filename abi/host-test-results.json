@@ -12,7 +12,7 @@
         "-O2",
         "abi/test_abi.c",
         "-o",
-        "/tmp/clock-abi-host-u2tv0rjg/test_abi"
+        "/tmp/clock-abi-host-wxnfv382/test_abi"
       ],
       "returncode": 0,
       "stdout": "",
@@ -20,7 +20,7 @@
     },
     {
       "command": [
-        "/tmp/clock-abi-host-u2tv0rjg/test_abi"
+        "/tmp/clock-abi-host-wxnfv382/test_abi"
       ],
       "returncode": 0,
       "stdout": "",
@@ -36,7 +36,7 @@
         "-O2",
         "abi/test_reader_edges.c",
         "-o",
-        "/tmp/clock-abi-host-u2tv0rjg/test_reader_edges"
+        "/tmp/clock-abi-host-wxnfv382/test_reader_edges"
       ],
       "returncode": 0,
       "stdout": "",
@@ -44,7 +44,7 @@
     },
     {
       "command": [
-        "/tmp/clock-abi-host-u2tv0rjg/test_reader_edges"
+        "/tmp/clock-abi-host-wxnfv382/test_reader_edges"
       ],
       "returncode": 0,
       "stdout": "",
@@ -61,7 +61,7 @@
         "field/test_reader.c",
         "field/clock_field_reader.c",
         "-o",
-        "/tmp/clock-abi-host-u2tv0rjg/test_reader"
+        "/tmp/clock-abi-host-wxnfv382/test_reader"
       ],
       "returncode": 0,
       "stdout": "",
@@ -69,7 +69,7 @@
     },
     {
       "command": [
-        "/tmp/clock-abi-host-u2tv0rjg/test_reader"
+        "/tmp/clock-abi-host-wxnfv382/test_reader"
       ],
       "returncode": 0,
       "stdout": "",
@@ -83,7 +83,7 @@
       ],
       "returncode": 0,
       "stdout": "",
-      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.007s\n\nOK\n"
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.011s\n\nOK\n"
     }
   ]
 }
